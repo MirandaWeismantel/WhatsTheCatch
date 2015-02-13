@@ -9,8 +9,8 @@ from pygame.locals import *
 
 '''
 * Represents an Image in the game. While there is nothing preventing one from
-* doing so, Images should be static in position and unchanging in appearance 
-* throughout the game.
+* modifying the appearance and position, Images should be static in position 
+* and unchanging in appearance throughout the game.
 '''
 class Image( pygame.sprite.Sprite ):
     
