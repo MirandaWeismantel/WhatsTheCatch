@@ -18,12 +18,21 @@ from Image import Image
 class Sprite( Image ):
     
     '''
+    * Creates a Sprite with the given width, height located at the given 
+    * (x, y). All values are in pixels 
+    '''
+    def __init__( self , width , height , x , y ):
+        Image.__init__( self , width , height , x , y )
+        
+    '''
     * Draws this sprite onto the screen in the appropriate location and with
     * the appropriate graphical appearance. This should be overridden
     * in subclasses.
+    *
+    * @param screen        the screen onto which to draw this Sprite
     '''
-    def draw( self ):
-        pass
+    def draw( self , screen ):
+        Image.draw( self , screen )
     
     '''
     * Moves the animation of this sprite forward by 1 frame, 
@@ -43,6 +52,8 @@ class Sprite( Image ):
     def moveTo( self , x , y ):
         self.x = x
         self.y = y
+        self.rect.x = x
+        self.rect.y = y
     
     '''
     * Moves the sprite by the given amounts in the x and y directions
@@ -51,8 +62,7 @@ class Sprite( Image ):
     * @param dy         amount by which to move in the y direction , in pixels
     '''
     def move( self , dx , dy ):
-        self.x += dx
-        self.y += dy
+        self.moveTo( self.x + dx , self.y + dy )
     
     '''
     * Handles what happens when this sprite collides with another sprite. 
@@ -62,4 +72,17 @@ class Sprite( Image ):
     * @param otherSprite     the sprite with which this sprite collided
     '''
     def onCollide( self , otherSprite ):
+        pass
+    
+    '''
+    * Handles what happens when the user clicks on this sprite.
+    * 
+    * @param mouseX           the x coordinate in pixels where the user 
+    *                         clicked. The coordinate is relative to the 
+    *                         game screen - not this Sprite
+    * @param mouseY           the y coordinate in pixels where the user
+    *                         clicked. The coordinate is relative to the
+    *                         game screen - not this Sprite
+    '''
+    def onClick( self , mouseX , mouseY ):
         pass
