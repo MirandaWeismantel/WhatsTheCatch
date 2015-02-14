@@ -56,6 +56,7 @@ while( state == 0 ):
             if ( sprite1 != sprite2 ) :
                 if ( pygame.sprite.collide_rect( sprite1 , sprite2 ) ):
                     sprite1.onCollide( sprite2 )
+                    sprite2.onCollide( sprite1 )
                     
     
     pygame.display.update()
