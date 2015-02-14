@@ -41,7 +41,7 @@ while( state == 0 ):
     
     #draw images into the background
     for image in images:
-        image.draw()
+        image.draw( screen )
         
     #draw sprites on top of the images
     for sprite in sprites:
