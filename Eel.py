@@ -38,4 +38,5 @@ class Eel( Sprite ):
     '''
     def onCollide( self , otherSprite ):
         if ( isinstance( otherSprite , Eel ) ):
-            print "Collision detected!"
+            #TODO
+            pass
