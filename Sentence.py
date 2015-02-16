@@ -7,6 +7,7 @@ Created on Feb 15, 2015
 import pygame
 from pygame.locals import *
 
+
 pygame.font.init()
 
 '''
@@ -52,6 +53,9 @@ class Word:
 * Represents a blank in the sentence
 '''
 class Blank:
+    
+    BLANK_TEXT = "_____"
+    BLANK_TO_FILL_TEXT = "_"
     
     '''
     * a list of words that can be used to fill this blank
@@ -137,6 +141,12 @@ class Blank:
     '''   
     def getFilledWord( self ):
         return self.filledWord
+    
+    def toString( self ):
+        if ( self.isFilled() ):
+            return self.filledWord.toString()
+        else:
+            return self.BLANK_TEXT
 '''
 * Represents a sentence that the user will have to complete
 '''
@@ -150,7 +160,12 @@ class Sentence:
     '''
     * the font with which this sentence is displayed
     '''
-    sentenceFont = pygame.font.SysFont( "Courier New" , 15 )
+    sentenceFont = pygame.font.SysFont( "Courier New" , 18 )
+
+    '''
+    * the font with which to fill in blanks
+    '''    
+    fillInFont = pygame.font.SysFont( "Courier New" , 120 )
     
     '''
     * how this sentence is punctuated
@@ -202,13 +217,7 @@ class Sentence:
     def toString( self ):
         rtn = ""
         for component in self.sequence:
-            if isinstance( component , Word ):
-                rtn += " " + component.toString()
-            elif isinstance( component , Blank ):
-                if ( component.isFilled() ):
-                    rtn += " " + component.getFilledWord().toString()
-                else:
-                    rtn += " _____"
+            rtn += " " + component.toString()
             
         return rtn.strip() + self.punctuation
     
@@ -218,6 +227,64 @@ class Sentence:
     * @param screen         where to draw this sentence and its blank
     '''                      
     def draw( self , screen ):
-        textDisplay = self.sentenceFont.render( self.toString() , 1 , 
+        entireText = self.toString()
+        
+        #determine if we need to draw the text separately or not, as
+        #the first blank that the user needs to fill in must be in bold red,
+        #but we must render text of different size and font separately
+        idxOfFirstBlank = entireText.find( Blank.BLANK_TEXT )
+        
+        #if the first blank does not exist, then it's very easy for 
+        #us to render
+        if ( idxOfFirstBlank == -1 ) :
+            textToFirstBlank = entireText
+            textOfFirstBlank = ""
+            textToEnd = ""
+            
+        #if the first blank exists, we have divide the text up into the part
+        #before the blank, the first blank, and the part after the first blank
+        else:
+            textToFirstBlank = entireText[ 0 : idxOfFirstBlank ]
+            textOfFirstBlank = Blank.BLANK_TO_FILL_TEXT
+            textToEnd = entireText[ idxOfFirstBlank + len( Blank.BLANK_TEXT ) : 
+                                                            len( entireText ) ]
+        
+        #render the text before the first blank
+        display1 = self.sentenceFont.render( textToFirstBlank , 1 , 
                                                     [0 , 0 , 0] )
-        screen.blit( textDisplay , (10 , 10) )
+        
+        #calculate the dimensions of the text before the first blank
+        width1 = self.sentenceFont.size( textToFirstBlank )[ 0 ]
+        height1 = self.sentenceFont.size( textToFirstBlank )[ 1 ]
+        
+        #render the text of the first blank in red and with a large, thick font
+        displayBlank = self.fillInFont.render( textOfFirstBlank , 1 , 
+                                                    [ 255, 0 , 0 ] )
+        
+        #calculate the dimensions of the text of the first blank 
+        widthBlank = self.fillInFont.size( textOfFirstBlank )[ 0 ]
+        heightBlank = self.fillInFont.size( textOfFirstBlank )[ 1 ]
+        
+        #render the text after the first blank
+        display3 = self.sentenceFont.render( textToEnd , 1 , [ 0 , 0 , 0 ] )
+        
+        #blitting the text before the first blank is easy, we just draw it
+        #where is should start
+        screen.blit( display1 , (10 , 10 ) )
+        
+        #we have to calculate offsets to render the text of the first blank - 
+        #particularly, it is width1 to the left of its previous text
+        #but since the font is also really big to get thickness, the underscore
+        #also appears much lower than the rest of the text. We have to offset
+        #this by blitting this underscore higher
+        #
+        #the extra 3 offset on the height is there to help even it out with
+        #the height of other blanks and look nice
+        screen.blit( displayBlank , (10 + width1 , 10 - (heightBlank - height1 ) + 3 ) )
+        
+        #blitting the text after the first blank is straightforward.
+        #we just offset it by the width of the text up to and including the
+        #first blank
+        screen.blit( display3 , (10 + width1 + widthBlank , 10 ) )
+
+        
