@@ -1,3 +1,12 @@
-This is the task file.
+=== Tuesday February 17 ===
+* Add eels and lives
+* Draw words on fish
+* Have fish be caught when it is brought above the water. (When the hook is above water, it can't collide with more fish)
+* When fish is caught, we update the sentence
+* Allow fish to be caught after boat has moved, or disable boat movement.
 
-
+=== Beta ===
+* Abstract out onMousePressed(), onKeyPressed() into image
+* Abstract out Screen object for larger world
+* SentenceFactory
+* Animations
