@@ -14,6 +14,7 @@ from Eel import Eel
 from Statistics import Statistics
 from Fish import Fish
 from Boat import Boat
+from FishingHook import FishingHook
 
 pygame.init()
 
@@ -56,6 +57,9 @@ testBoat = Boat()
 testBoat.moveTo(300, 100)
 sprites.append( testBoat )
 
+testHook = FishingHook()
+testHook.moveTo(testBoat.x, 180)
+sprites.append( testHook )
 #No need to modify the code below. It just runs the game.
 
 # States:
@@ -68,7 +72,6 @@ while( state != 0 ):
     
     if ( state == 1 ):
         #start with the background image and get the user input from the boat
-        testBoat.key_press()
         screen.blit(background, backgroundRect)
         
         #draw images into the background
