@@ -15,6 +15,7 @@ from Statistics import Statistics
 from Fish import Fish
 from Boat import Boat
 from FishingHook import FishingHook
+from Sentence import Word , Blank , Sentence
 
 pygame.init()
 
@@ -60,6 +61,16 @@ sprites.append( testBoat )
 testHook = FishingHook()
 testHook.moveTo(testBoat.x, 180)
 sprites.append( testHook )
+
+word1 = Word( "I" )
+blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
+word2 = Word( "a" )
+blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
+testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
+
+filled = False
+filled2 = False
+
 #No need to modify the code below. It just runs the game.
 
 # States:
@@ -93,7 +104,14 @@ while( state != 0 ):
                         sprite1.onCollide( sprite2 )
                         sprite2.onCollide( sprite1 )
                     
-    
+        if testEel.x > 200 and not filled :
+            testSentence.fillInNextBlank( Word( "want" ) )
+            filled = True
+            
+        if testEel.x > 300 and not filled2 :
+            testSentence.fillInNextBlank( Word( "toy" ) )
+            filled2 = True
+        testSentence.draw( screen )
         pygame.display.update()
     
     if ( stats.getLives() <= 0 ):
