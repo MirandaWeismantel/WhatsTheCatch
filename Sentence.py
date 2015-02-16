@@ -280,7 +280,8 @@ class Sentence:
         #
         #the extra 3 offset on the height is there to help even it out with
         #the height of other blanks and look nice
-        screen.blit( displayBlank , (10 + width1 , 10 - (heightBlank - height1 ) + 3 ) )
+        screen.blit( displayBlank , (10 + width1 , 10 - 
+                                     (heightBlank - height1 ) + 3 ) )
         
         #blitting the text after the first blank is straightforward.
         #we just offset it by the width of the text up to and including the
