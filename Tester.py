@@ -1,7 +1,7 @@
 '''
 Created on Feb 13, 2015
 
-@author: mjchao
+@author: mjchao, weismant
 
 Testing module for graphics
 '''
@@ -12,9 +12,16 @@ from pygame.locals import *
 
 from Eel import Eel
 from Statistics import Statistics
+from Fish import Fish
+from Boat import Boat
 
 pygame.init()
-screen = pygame.display.set_mode( [500 , 500] );
+
+background = pygame.image.load("res/background.png")
+backgroundRect = background.get_rect()
+
+size = (width, height) = background.get_size()
+screen = pygame.display.set_mode(size)
 
 #list of images to be drawn
 images = []
@@ -41,6 +48,14 @@ testEel2.EEL_SPEED = 0
 testEel2.moveTo( 300 , 50 )
 sprites.append( testEel2 )
 
+testFish = Fish()
+testFish.moveTo(-50, 200)
+sprites.append( testFish )
+
+testBoat = Boat()
+testBoat.moveTo(300, 100)
+sprites.append( testBoat )
+
 #No need to modify the code below. It just runs the game.
 
 # States:
@@ -52,8 +67,9 @@ state = 1
 while( state != 0 ):
     
     if ( state == 1 ):
-        #start with a new blank screen
-        screen.fill( [255, 255, 255] )
+        #start with the background image and get the user input from the boat
+        testBoat.key_press()
+        screen.blit(background, backgroundRect)
         
         #draw images into the background
         for image in images:
