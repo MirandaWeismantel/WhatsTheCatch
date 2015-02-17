@@ -11,7 +11,7 @@ from FishingHook import FishingHook
 class Fish( Sprite ):
     
     '''
-        * How fast the Eel moves per tick of the pygame clock. This quantity is
+        * How fast the Fish moves per tick of the pygame clock. This quantity is
         * in pixels
         '''
     fishSpeed = 1
@@ -25,7 +25,7 @@ class Fish( Sprite ):
         pass
     
     '''
-        * Draws this eel onto the screen
+        * Draws this fish onto the screen
         '''
     def draw( self , screen ):
         self.key_press()
@@ -33,7 +33,7 @@ class Fish( Sprite ):
         pass
     
     '''
-        * Draws this eel onto the screen
+        * Draws this fish onto the screen
         '''
     def move(self, dx, dy):
         if (self.x + dx == 600):
@@ -52,7 +52,7 @@ class Fish( Sprite ):
         
     
     '''
-        * Moves the eel to the right by the speed of an eel
+        * Moves the fish to the right by the speed of a fish
         '''
     def animate( self ):
         self.move( self.fishSpeed , self.fishShift );
