@@ -10,8 +10,8 @@
 * (Complete) Words on fish need to be drawn directly onto screen - not blitted onto image because the fish is flipped when it starts traveling the other direction
 * (Complete) Fish generator 
 * More sentences for Alpha release.
-* Generate eels
-* Hook should only be able to catch 1 fish at a time
+* Generate eels, and have eels only move left to right and delete them when they go too far off screen
+* (Complete) Hook should only be able to catch 1 fish at a time
 
 === Beta ===
 * Abstract out onMousePressed(), onKeyPressed() into image
