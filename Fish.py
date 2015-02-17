@@ -16,6 +16,7 @@ class Fish( Sprite ):
     '''
     fishSpeed = 1
     fishShift = 50
+    caught = False
     
         
     def __init__( self, word ):
@@ -23,8 +24,8 @@ class Fish( Sprite ):
         self.setImage( pygame.image.load( "res/fish.png" ).convert() );
         self.hooked = False
         self.word = word
-        self.setHeight( 25 )
-        print self.rect.width
+        self.setWidth( 32 )
+        self.drawWord()
         pass
     
     '''
@@ -69,12 +70,12 @@ class Fish( Sprite ):
             self.hooked = True
         
     '''
-        *Draw the word on to the fish
-        '''
+    * Draws the word on to the fish
+    '''
     def drawWord( self ):
         font = pygame.font.SysFont('Courier New', 15)
-        text = font.render(self.word, True, (255, 0, 0))
-        self.image.blit(text, self.rect)
+        text = font.render(self.word.toString(), True, (0, 0, 0))
+        self.image.blit(text, (self.rect.x+10 , self.rect.y+15) )
             
             
     def key_press(self):
@@ -91,6 +92,7 @@ class Fish( Sprite ):
                     self.y = 20
                     self.x = 0
                     self.hooked = False
+                    self.caught = True
                 else:   
                     self.y -= dist # move right
             elif key[pygame.K_DOWN]: # left key

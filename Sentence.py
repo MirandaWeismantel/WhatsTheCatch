@@ -133,7 +133,7 @@ class Blank:
                 return False
             
         raise Exception( 'Unknown word used to fill in blank: ' + 
-                                                            word.toString() )
+                        word.toString() + ", " + self.acceptableWords[ 0 ].toString() )
      
     '''
     * @return             the word with which this blank is filled, or None

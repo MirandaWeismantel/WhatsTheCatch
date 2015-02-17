@@ -49,10 +49,10 @@ testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
 #CONTINUE HERE
 #create a random word that will be passed and drawn on the fish
 #first create a random number that will stand for either a word from the incorrect or correct list
-correctOrIncorrectList = random.randrange(1,2,1)
+#correctOrIncorrectList = random.randrange(1,2,1)
 #create a random number that will select a word from the appropriate list
-if (correctOrIncorrectList == 1)
-    wordNum = random.randrange(1,blank1)
+#if (correctOrIncorrectList == 1):
+    #wordNum = random.randrange(1,blank1)
     
 
 
@@ -68,7 +68,7 @@ testEel2.EEL_SPEED = 0
 testEel2.moveTo( 300 , 300 )
 sprites.append( testEel2 )
 
-testFish = Fish()
+testFish = Fish( Word( "want" ) )
 testFish.moveTo(-50, 200)
 sprites.append( testFish )
 
@@ -79,11 +79,6 @@ sprites.append( testBoat )
 testHook = FishingHook( testBoat )
 testHook.moveTo(testBoat.x, 180)
 sprites.append( testHook )
-
-
-
-filled = False
-filled2 = False
 
 #No need to modify the code below. It just runs the game.
 
@@ -107,6 +102,10 @@ while( state != 0 ):
         for sprite in sprites:
             sprite.animate()
             sprite.draw( screen )
+            if ( isinstance( sprite , Fish ) ):
+                if ( sprite.caught ):
+                    testSentence.fillInNextBlank( sprite.word )
+                    sprites.remove( sprite )
         
         #check for collisions
         for i in range( 0 , len(sprites) ):
@@ -118,13 +117,6 @@ while( state != 0 ):
                         sprite1.onCollide( sprite2 )
                         sprite2.onCollide( sprite1 )
                     
-        if testEel.x > 200 and not filled :
-            testSentence.fillInNextBlank( Word( "want" ) )
-            filled = True
-            
-        if testEel.x > 300 and not filled2 :
-            testSentence.fillInNextBlank( Word( "toy" ) )
-            filled2 = True
         testSentence.draw( screen )
         pygame.display.update()
     
