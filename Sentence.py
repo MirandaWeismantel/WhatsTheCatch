@@ -132,9 +132,8 @@ class Blank:
                 self.filled = False
                 return False
             
-        raise Exception( 'Unknown word used to fill in blank: ' + 
-                        word.toString() + ", " + self.acceptableWords[ 0 ].toString() )
-     
+        return False 
+    
     '''
     * @return             the word with which this blank is filled, or None
     *                     if this blank is not yet filled
@@ -209,6 +208,28 @@ class Sentence:
                 
         raise Exception( "No more blanks to fill! " + 
                             "Check if sentence is complete first!" );
+            
+    '''
+    * Creates a list of words that cannot be used to fill in the next blank
+    *
+    * @return             a list of words unacceptable words for filling in
+    *                     the next blank
+    '''                
+    def getUnacceptableWordsForNextBlank( self ):
+        for component in self.sequence:
+            if ( isinstance( component , Blank ) ):
+                if ( not component.isFilled() ):
+                    return component.unacceptableWords
+                
+    '''
+    * @return             a list of acceptable words that can be used to fill 
+    *                     in the first unfilled blank
+    '''
+    def getAcceptableWordsForNextBlank( self ):
+        for component in self.sequence:
+            if isinstance( component , Blank ):
+                if not component.isFilled():
+                    return component.acceptableWords
       
     '''
     * @return             the textual representation of this sentence

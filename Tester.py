@@ -31,6 +31,9 @@ images = []
 #list of sprites to be drawn
 sprites = []
 
+#list of active fish in the ocean
+fishes = []
+
 #contains the player's score, lives, etc.
 stats = Statistics()
 
@@ -54,7 +57,52 @@ testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
 #if (correctOrIncorrectList == 1):
     #wordNum = random.randrange(1,blank1)
     
+def createFish( word ):
+    newFish = Fish( word )
+    newFish.moveTo( -50 , random.randrange( 200 , 500 ) )
+    sprites.append( newFish )
+    fishes.append( newFish )
+    
+totalAcceptableFish = 1
+totalUnacceptableFish = 1
+def generateFish():
+    global totalAcceptableFish
+    global totalUnacceptableFish
+    
+    if testSentence.isComplete():
+        return
+    
+    numAcceptableFish = 0
+    acceptableWords = testSentence.getAcceptableWordsForNextBlank()
+    
+    numUnacceptableFish = 0
+    unacceptableWords = testSentence.getUnacceptableWordsForNextBlank()
+    for fish in fishes:
+        for word in testSentence.getAcceptableWordsForNextBlank():
+            if fish.word.equals( word ):
+                numAcceptableFish += 1
+                break
+        for word in testSentence.getUnacceptableWordsForNextBlank():
+            if fish.word.equals( word ):
+                numUnacceptableFish += 1
+    
+    while numAcceptableFish < totalAcceptableFish:
+        createFish( acceptableWords[ random.randrange( 0 , len( acceptableWords ) ) ] )
+        numAcceptableFish += 1
+    
+    while numUnacceptableFish < totalUnacceptableFish:
+        createFish( unacceptableWords[ random.randrange( 0 , len( unacceptableWords ) ) ] )
+        numUnacceptableFish += 1
+        
 
+#TODO
+def createNewSentence():
+    global testSentence
+    word1 = Word( "I" )
+    blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
+    word2 = Word( "a" )
+    blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
+    testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
 
 #just create all your images and sprites here and add them to the images
 #and sprites list
@@ -71,6 +119,7 @@ sprites.append( testEel2 )
 testFish = Fish( Word( "want" ) )
 testFish.moveTo(-50, 200)
 sprites.append( testFish )
+fishes.append( testFish )
 
 testBoat = Boat()
 testBoat.moveTo(300, 100)
@@ -102,10 +151,19 @@ while( state != 0 ):
         for sprite in sprites:
             sprite.animate()
             sprite.draw( screen )
-            if ( isinstance( sprite , Fish ) ):
-                if ( sprite.caught ):
-                    testSentence.fillInNextBlank( sprite.word )
-                    sprites.remove( sprite )
+                    
+        for fish in fishes:
+            if ( isinstance( fish , Fish ) ):
+                if ( fish.caught ):
+                    if ( not testSentence.isComplete() ):
+                        testSentence.fillInNextBlank( fish.word )
+                        fishes.remove( fish )
+                        sprites.remove( fish )
+                        generateFish()
+                    
+                    if ( testSentence.isComplete() ):
+                        createNewSentence()
+                        generateFish()
         
         #check for collisions
         for i in range( 0 , len(sprites) ):
