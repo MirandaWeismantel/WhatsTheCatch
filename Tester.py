@@ -41,13 +41,13 @@ stats.addLife()
 
 #just create all your images and sprites here and add them to the images
 #and sprites list
-testEel = Eel()
-testEel.moveTo( 0 , 50 )
+testEel = Eel( stats )
+testEel.moveTo( 0 , 300 )
 sprites.append( testEel )
 
-testEel2 = Eel()
+testEel2 = Eel( stats )
 testEel2.EEL_SPEED = 0
-testEel2.moveTo( 300 , 50 )
+testEel2.moveTo( 300 , 300 )
 sprites.append( testEel2 )
 
 testFish = Fish()
