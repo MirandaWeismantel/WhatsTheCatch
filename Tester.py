@@ -42,6 +42,7 @@ stats.addLife()
 #just create all your images and sprites here and add them to the images
 #and sprites list
 testEel = Eel( stats )
+testEel.EEL_SPEED = 0
 testEel.moveTo( 0 , 300 )
 sprites.append( testEel )
 

@@ -22,6 +22,7 @@ class Fish( Sprite ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/fish.png" ).convert() );
         self.hooked = False
+        self.setHeight( 25 )
         pass
     
     '''
@@ -76,7 +77,7 @@ class Fish( Sprite ):
                 self.x -= dist # move left
             if key[pygame.K_UP]: # right key
                 if (self.y - dist <120):
-                    self.y = 0
+                    self.y = 20
                     self.x = 0
                     self.hooked = False
                 else:   
