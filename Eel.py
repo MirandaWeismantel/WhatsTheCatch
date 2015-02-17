@@ -6,6 +6,7 @@ Created on Feb 13, 2015
 
 import pygame
 from Sprite import Sprite
+from FishingHook import FishingHook
 
 class Eel( Sprite ):
     
@@ -15,10 +16,17 @@ class Eel( Sprite ):
     '''
     EEL_SPEED = 1
     
-    def __init__( self ):
+    '''
+    * The statistics object that stores the player's lives. The eel will
+    * subtract lives from the statistics object if it touches the fishing line
+    * or fishing hook
+    '''
+    stats = None
+    
+    def __init__( self , stats ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/eel.png" ).convert() );
-        pass
+        self.stats = stats
     
     '''
     * Draws this eel onto the screen 
@@ -37,6 +45,6 @@ class Eel( Sprite ):
     * Handles what happens when collision is detected
     '''
     def onCollide( self , otherSprite ):
-        if ( isinstance( otherSprite , Eel ) ):
-            #TODO
+        if ( isinstance( otherSprite , FishingHook ) ):
+            self.stats.subtractLife()
             pass
