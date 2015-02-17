@@ -18,6 +18,7 @@ from FishingHook import FishingHook
 from Sentence import Word , Blank , Sentence
 
 pygame.init()
+pygame.font.init()
 
 background = pygame.image.load("res/background.png")
 backgroundRect = background.get_rect()
@@ -36,6 +37,14 @@ fishes = []
 
 #contains the player's score, lives, etc.
 stats = Statistics()
+statsFont = pygame.font.SysFont('Courier New', 15)
+def drawStats( screen ):
+    global stats
+    global statsFont
+    livesText = "Lives: " + str( stats.getLives() )
+    text = statsFont.render(livesText , True , (0, 0, 0))
+    screen.blit( text , (400 , 0 ) )
+    
 
 #player starts with 3 lives
 stats.addLife()
@@ -176,6 +185,8 @@ while( state != 0 ):
                         sprite2.onCollide( sprite1 )
                     
         testSentence.draw( screen )
+        drawStats( screen )
+        
         pygame.display.update()
     
     if ( stats.getLives() <= 0 ):
