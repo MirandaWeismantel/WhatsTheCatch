@@ -68,7 +68,7 @@ testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
     
 def createFish( word ):
     newFish = Fish( word )
-    newFish.moveTo( -50 , random.randrange( 200 , 500 ) )
+    newFish.moveTo( -50 , random.randrange( 200 , 300 ) )
     sprites.append( newFish )
     fishes.append( newFish )
     
@@ -169,6 +169,7 @@ while( state != 0 ):
                         fishes.remove( fish )
                         sprites.remove( fish )
                         generateFish()
+                        testHook.resetHook()
                     
                     if ( testSentence.isComplete() ):
                         createNewSentence()

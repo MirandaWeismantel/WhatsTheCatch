@@ -17,6 +17,7 @@ class Fish( Sprite ):
     fishSpeed = 1
     fishShift = 50
     caught = False
+    hooked = False
     
         
     def __init__( self, word ):
@@ -63,12 +64,12 @@ class Fish( Sprite ):
         self.move( self.fishSpeed , self.fishShift );
     
     '''
-        * Handles what happens when collision is detected
-        '''
+    * Handles what happens when collision is detected
+    '''
     def onCollide( self , otherSprite ):
         if ( isinstance( otherSprite , FishingHook ) ):
-            self.fishSpeed = 0
-            self.hooked = True
+            if ( otherSprite.canHookFish( self ) ):
+                self.hook()
         
     '''
     * Draws the word on to the fish
@@ -104,3 +105,11 @@ class Fish( Sprite ):
                     
     def flipImage(self):
         self.image = pygame.transform.flip(self.image, 1, 0)
+        
+    def hook( self ):
+        self.fishSpeed = 0
+        self.hooked = True
+        
+    def unhook(self):
+        self.fishSpeed = 1
+        self.hooked = False

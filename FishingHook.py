@@ -15,11 +15,17 @@ class FishingHook( Sprite ):
     * The boat to which this fishing hook belongs
     '''
     boat = None
+    
+    '''
+    * The fish that is currently hooked (None, if no fish is hooked)
+    '''
+    hookedFish = None
      
     def __init__( self , boat ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/hook.png" ).convert() );
         self.boat = boat
+        self.setHeight( 40 )
         pass
     
     def moveTo( self , x , y ):
@@ -68,11 +74,46 @@ class FishingHook( Sprite ):
                 self.move( 0 , dist )
     
     '''
+    * @param          a fish that might possibly be hooked by this fishing hook
+    * @return         if the fishing hook can hook another fish. Only one fish
+    *                 can be on a fishing hook at any time
+    '''
+    def canHookFish( self , fish ):
+        
+        #if we don't have a fish on the hook right now, then we can hook
+        #this provided fish
+        if self.hookedFish == None:
+            return True
+        
+        #if the provided fish is the fish that is currently hooked, then
+        #of course we can hook it. This is necessary depending on whether
+        #fish.onCollide( fishingHook ) happened first or whether
+        #fishingHook.onCollide( fish ) happened first. If fishingHook's
+        #onCollide happened first, then its hookedFish is already updated
+        #thus, when the fish calls canHookFish(...) on the fishing hook,
+        #self.hookedFish of the fishing hook has already been updated.
+        #thus, we cannot just check self.hookFish == None
+        else:
+            return self.hookedFish == fish
+    
+    '''
+    * Handles collisions with other sprites
+    '''
+    def onCollide( self , otherSprite ):
+        from Fish import Fish
+        if ( isinstance( otherSprite , Fish ) ):
+            if ( self.hookedFish == None ):
+                self.hookedFish = otherSprite
+                
+    '''
     * Resets the fishing hook to start on the surface of the water again.
     * This is used when an eel hits the hook
     '''            
     def resetHook( self ):
         boatLocation = self.boat.getLocation()
         self.moveTo( boatLocation[ 0 ] , boatLocation[ 1 ] )
+        if ( not self.hookedFish == None ):
+            self.hookedFish.unhook()
+            self.hookedFish = None
             
 
