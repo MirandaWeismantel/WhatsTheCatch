@@ -1,5 +1,5 @@
 === Tuesday February 17 ===
-* Add eels and lives
+* Add eels and lives (fishing hook and line will need a reset method to prevent eel from collding multiple times)
 * Draw words on fish
 * Have fish be caught when it is brought above the water. (When the hook is above water, it can't collide with more fish)
 * When fish is caught, we update the sentence
