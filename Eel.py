@@ -30,6 +30,7 @@ class Eel( Sprite ):
         
         #slightly offset eel picture's extra whitespace width
         self.setWidth( 48 )
+        self.setHeight( 15 )
     
     '''
     * Draws this eel onto the screen 
@@ -47,7 +48,7 @@ class Eel( Sprite ):
         self.x = x
         self.y = y
         self.rect.x = x
-        self.rect.y = y+10
+        self.rect.y = y+15
         
     '''
     * Moves the eel to the right by the speed of an eel
