@@ -1,9 +1,15 @@
 === Tuesday February 17 ===
-* Add eels and lives (fishing hook and line will need a reset method to prevent eel from collding multiple times) (fishing hook needs to use move() method)
-* Draw words on fish
-* Have fish be caught when it is brought above the water. (When the hook is above water, it can't collide with more fish)
-* When fish is caught, we update the sentence
-* Allow fish to be caught after boat has moved, or disable boat movement.
+* (Partially complete) Add eels and lives (fishing hook and line will need a reset method to prevent eel from collding multiple times) (fishing hook needs to use move() method)
+* (Partially complete) Draw words on fish
+* (Complete) Have fish be caught when it is brought above the water. (When the hook is above water, it can't collide with more fish)
+* (Complete) When fish is caught, we update the sentence.
+* (Complete) Allow fish to be caught after boat has moved, or disable boat movement.
+
+== Tuesday Night Feburary 17 ===
+* Draw lives onto screen
+* Words on fish need to be drawn directly onto screen - not blitted onto image because the fish is flipped when it starts traveling the other direction
+* Fish generator 
+* More sentences for Alpha release.
 
 === Beta ===
 * Abstract out onMousePressed(), onKeyPressed() into image
