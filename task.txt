@@ -11,6 +11,7 @@
 * (Complete) Fish generator 
 * More sentences for Alpha release.
 * Generate eels
+* Hook should only be able to catch 1 fish at a time
 
 === Beta ===
 * Abstract out onMousePressed(), onKeyPressed() into image
