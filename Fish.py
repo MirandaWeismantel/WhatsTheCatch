@@ -75,7 +75,7 @@ class Fish( Sprite ):
             elif key[pygame.K_LEFT]: # left key
                 self.x -= dist # move left
             if key[pygame.K_UP]: # right key
-                if (self.y - dist <190):
+                if (self.y - dist <120):
                     self.y = 0
                     self.x = 0
                     self.hooked = False

@@ -9,11 +9,6 @@ from Sprite import Sprite
 from Boat import Boat
 
 class FishingHook( Sprite ):
-    
-    '''
-    * How fast the Eel moves per tick of the pygame clock. This quantity is
-    * in pixels
-    '''
 
     def __init__( self ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
@@ -21,7 +16,7 @@ class FishingHook( Sprite ):
         pass
     
     '''
-    * Draws this eel onto the screen 
+    * Draws this fishing hook onto the screen 
     '''
     def draw( self , screen ):
         self.key_press()
@@ -33,17 +28,29 @@ class FishingHook( Sprite ):
         key = pygame.key.get_pressed()
         dist = 1
         if key[pygame.K_RIGHT]: # right key
-            self.x += dist # move right
+            
+            #move fishing hook right
+            self.move( dist , 0 )
         elif key[pygame.K_LEFT]: # left key
-            self.x -= dist # move left
-        if key[pygame.K_UP]: # right key
-            if (self.y - dist <180):
-                self.y = self.y
+            
+            #move fishing hook left
+            self.move( -1*dist , 0 )
+        if key[pygame.K_UP]:
+            if (self.y - dist <100):
+                
+                #don't let hook move too high, so we do nothing
+                pass
             else:   
-                self.y -= dist # move right
-        elif key[pygame.K_DOWN]: # left key
+                
+                #move right
+                self.move( 0 , -1*dist )
+        elif key[pygame.K_DOWN]:
             if (self.y + dist >490):
-                self.y = self.y
+                
+                #don't let hook move too low, so we do nothing
+                pass
             else:   
-                self.y += dist # move left
+                
+                #move left
+                self.move( 0 , dist )
 
