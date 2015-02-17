@@ -22,6 +22,12 @@ class FishingHook( Sprite ):
         self.boat = boat
         pass
     
+    def moveTo( self , x , y ):
+        self.x = x
+        self.y = y
+        self.rect.x = x
+        self.rect.y = y-5
+    
     '''
     * Draws this fishing hook onto the screen 
     '''

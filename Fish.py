@@ -25,6 +25,7 @@ class Fish( Sprite ):
         self.hooked = False
         self.word = word
         self.setWidth( 32 )
+        self.setHeight( 25 )
         self.drawWord()
         pass
     
