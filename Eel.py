@@ -27,6 +27,9 @@ class Eel( Sprite ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/eel.png" ).convert() );
         self.stats = stats
+        
+        #slightly offset eel picture's extra whitespace width
+        self.setWidth( 48 )
     
     '''
     * Draws this eel onto the screen 
@@ -35,6 +38,17 @@ class Eel( Sprite ):
         Sprite.draw( self , screen )
         pass
     
+    '''
+    * TEMPORARY: The eel png is too tall (height too great). We need to offset
+    * this by overriding the moveTo method to offset this extra height in
+    * detecting collisions
+    '''
+    def moveTo( self , x , y ):
+        self.x = x
+        self.y = y
+        self.rect.x = x
+        self.rect.y = y+10
+        
     '''
     * Moves the eel to the right by the speed of an eel
     '''
@@ -47,4 +61,8 @@ class Eel( Sprite ):
     def onCollide( self , otherSprite ):
         if ( isinstance( otherSprite , FishingHook ) ):
             self.stats.subtractLife()
+            
+            #reset the fishing hook to start back at the surface
+            #so that it doesn't keep colliding with  this eel
+            otherSprite.resetHook()
             pass

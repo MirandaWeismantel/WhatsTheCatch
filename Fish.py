@@ -11,9 +11,9 @@ from FishingHook import FishingHook
 class Fish( Sprite ):
     
     '''
-        * How fast the Fish moves per tick of the pygame clock. This quantity is
-        * in pixels
-        '''
+    * How fast the Fish moves per tick of the pygame clock. This quantity is
+    * in pixels
+    '''
     fishSpeed = 1
     fishShift = 50
     
@@ -24,6 +24,7 @@ class Fish( Sprite ):
         self.hooked = False
         self.word = word
         self.setHeight( 25 )
+        print self.rect.width
         pass
     
     '''

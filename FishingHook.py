@@ -10,9 +10,16 @@ from Boat import Boat
 
 class FishingHook( Sprite ):
 
-    def __init__( self ):
+    
+    '''
+    * The boat to which this fishing hook belongs
+    '''
+    boat = None
+     
+    def __init__( self , boat ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/hook.png" ).convert() );
+        self.boat = boat
         pass
     
     '''
@@ -53,4 +60,13 @@ class FishingHook( Sprite ):
                 
                 #move left
                 self.move( 0 , dist )
+    
+    '''
+    * Resets the fishing hook to start on the surface of the water again.
+    * This is used when an eel hits the hook
+    '''            
+    def resetHook( self ):
+        boatLocation = self.boat.getLocation()
+        self.moveTo( boatLocation[ 0 ] , boatLocation[ 1 ] )
+            
 

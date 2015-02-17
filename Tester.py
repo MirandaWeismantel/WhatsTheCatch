@@ -76,7 +76,7 @@ testBoat = Boat()
 testBoat.moveTo(300, 100)
 sprites.append( testBoat )
 
-testHook = FishingHook()
+testHook = FishingHook( testBoat )
 testHook.moveTo(testBoat.x, 180)
 sprites.append( testHook )
 
