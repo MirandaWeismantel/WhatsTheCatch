@@ -14,35 +14,40 @@ class Image( pygame.sprite.Sprite ):
     
     '''
     * x coordinate of the Image on the screen, in pixels. The x coordinate
-    * is the x value of the top, left corner of the Image.
+    * is the x value of the top, left corner of the Image. Do not modify this
+    * value directly.
     '''
     x = 0
     
     '''
     * y coordinate of the Image on the screen, in pixels. The y coordinate
-    * is the y value of the top, left corner of the Image.
+    * is the y value of the top, left corner of the Image. Do not modify this
+    * value directly.
     '''
     y = 0
     
     '''
     * the width (span in the x direction) of the Image on the screen, in pixels.
+    * Do not modify this value directly - use setWidth() instead
     '''
     width = 0
     
     '''
     * the height (span in the y direction) of the Image on the screen, in 
-    * pixels.
+    * pixels. Do not modify this value directly - use setHeight() instead 
     '''
     height = 0
     
     '''
     * the bounding rectangle of this Image. This is the bounding rectangle from
-    * pygame.sprite.Sprite used for detecting collisions
+    * pygame.sprite.Sprite used for detecting collisions. Do not modify this 
+    * value. It should be handled solely by the Image object
     '''
     rect = None
     
     '''
-    * the image to be displayed by this Image in its draw method
+    * the image to be displayed by this Image in its draw method. Do not modify
+    * this value directly - use setImage() instead.
     '''
     image = None
     

@@ -44,7 +44,9 @@ class Sprite( Image ):
         pass
     
     '''
-    * Sets the sprite's location to the given coordinates
+    * Sets the sprite's location to the given coordinates. The preferred way
+    * to move a Sprite is to use moveTo() or move(). Do not modify the
+    * x and y coordinates directly.
     *
     * @param x         the new x coordinates for the sprite, in pixels
     * @param y         the new y coordinates for the sprite, in pixels
@@ -56,7 +58,9 @@ class Sprite( Image ):
         self.rect.y = y
     
     '''
-    * Moves the sprite by the given amounts in the x and y directions
+    * Moves the sprite by the given amounts in the x and y directions. The
+    * preferred way to move a Sprite is to use moveTo() or move(). Do not
+    * modify the x and y coordinates directly.
     *
     * @param dx         amount by which to move in the x direction, in pixels
     * @param dy         amount by which to move in the y direction , in pixels
