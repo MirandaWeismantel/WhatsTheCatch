@@ -7,7 +7,7 @@ Testing module for graphics
 '''
 
 
-import pygame
+import pygame, random
 from pygame.locals import *
 
 from Eel import Eel
@@ -39,6 +39,23 @@ stats.addLife()
 stats.addLife()
 stats.addLife()
 
+word1 = Word( "I" )
+blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
+word2 = Word( "a" )
+blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
+testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
+
+
+#CONTINUE HERE
+#create a random word that will be passed and drawn on the fish
+#first create a random number that will stand for either a word from the incorrect or correct list
+correctOrIncorrectList = random.randrange(1,2,1)
+#create a random number that will select a word from the appropriate list
+if (correctOrIncorrectList == 1)
+    wordNum = random.randrange(1,blank1)
+    
+
+
 #just create all your images and sprites here and add them to the images
 #and sprites list
 testEel = Eel( stats )
@@ -63,11 +80,7 @@ testHook = FishingHook()
 testHook.moveTo(testBoat.x, 180)
 sprites.append( testHook )
 
-word1 = Word( "I" )
-blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
-word2 = Word( "a" )
-blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
-testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
+
 
 filled = False
 filled2 = False

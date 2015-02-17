@@ -18,10 +18,11 @@ class Fish( Sprite ):
     fishShift = 50
     
         
-    def __init__( self ):
+    def __init__( self, word ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/fish.png" ).convert() );
         self.hooked = False
+        self.word = word
         self.setHeight( 25 )
         pass
     
@@ -65,6 +66,15 @@ class Fish( Sprite ):
         if ( isinstance( otherSprite , FishingHook ) ):
             self.fishSpeed = 0
             self.hooked = True
+        
+    '''
+        *Draw the word on to the fish
+        '''
+    def drawWord( self ):
+        font = pygame.font.SysFont('Courier New', 15)
+        text = font.render(self.word, True, (255, 0, 0))
+        self.image.blit(text, self.rect)
+            
             
     def key_press(self):
         """ Handles Keys """
