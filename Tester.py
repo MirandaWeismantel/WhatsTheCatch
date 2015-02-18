@@ -60,7 +60,6 @@ blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
 word2 = Word( "a" )
 blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
 sentence1 = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
-sentences.append(sentence1)
 
 s2word1 = Word( "A cute" )
 s2blank1 = Blank( [Word( "kitten" )] , [Word( "cactus" ) , Word( "jump" ) ] )
@@ -68,6 +67,15 @@ s2word2 = Word( "is a" )
 s2blank2 = Blank( [Word("pet")] , [Word("toy") , Word( "food" ) , Word( "orange" )])
 sentence2 = Sentence( [s2word1 , s2blank1 , s2word2 , s2blank2 ] , "." )
 sentences.append(sentence2)
+
+s3word1 = Word( "Let's go to the" )
+s3blank1 = Blank( [Word( "store" )] , [Word( "ear" ) , Word( "long" ) ] )
+s3word2 = Word( "to" )
+s3blank2 = Blank( [Word("buy"), Word("get")] , [Word("wake") , Word( "flower" ) , Word( "orange" )])
+s3word3 = Word( "some" )
+s3blank3 = Blank( [Word("bread"), Word("milk")] , [Word("hair") , Word( "canyon" )])
+sentence3 = Sentence( [s3word1 , s3blank1 , s3word2 , s3blank2, s3word3, s3blank3 ] , "." )
+sentences.append(sentence3)
 
 
 #CONTINUE HERE
@@ -93,9 +101,6 @@ def generateFish():
     global totalUnacceptableFish
     
     if testSentence.isComplete():
-        for fish in fishes:
-            fishes.remove( fish )
-            sprites.remove( fish )
         return
     
     numAcceptableFish = 0
