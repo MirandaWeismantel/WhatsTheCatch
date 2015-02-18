@@ -62,7 +62,7 @@ blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
 sentence1 = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
 
 s2word1 = Word( "A cute" )
-s2blank1 = Blank( [Word( "kitten" )] , [Word( "cactus" ) , Word( "jump" ) ] )
+s2blank1 = Blank( [Word( "kitten" ), Word("puppy")] , [Word( "cactus" ) , Word( "jump" ) ] )
 s2word2 = Word( "is a" )
 s2blank2 = Blank( [Word("pet")] , [Word("toy") , Word( "food" ) , Word( "orange" )])
 sentence2 = Sentence( [s2word1 , s2blank1 , s2word2 , s2blank2 ] , "." )
@@ -76,6 +76,23 @@ s3word3 = Word( "some" )
 s3blank3 = Blank( [Word("bread"), Word("milk")] , [Word("hair") , Word( "canyon" )])
 sentence3 = Sentence( [s3word1 , s3blank1 , s3word2 , s3blank2, s3word3, s3blank3 ] , "." )
 sentences.append(sentence3)
+
+s4word1 = Word( "I like to" )
+s4blank1 = Blank( [Word( "give" )] , [Word( "oil" ) , Word( "shirt" ) ] )
+s4word2 = Word( "my friends" )
+s4blank2 = Blank( [Word("hugs"), Word("toys")] , [Word( "9" ) , Word( "rain" )])
+sentence4 = Sentence( [s4word1 , s4blank1 , s4word2 , s4blank2 ] , "." )
+sentences.append(sentence4)
+
+s5word1 = Word( "The snow is" )
+s5blank1 = Blank( [Word( "white" )] , [Word( "ill" ) , Word( "goat" ) ] )
+s5word2 = Word( "and" )
+s5blank2 = Blank( [Word("cold")] , [Word( "far" ) , Word( "up" )])
+sentence5 = Sentence( [s5word1 , s5blank1 , s5word2 , s5blank2 ] , "." )
+sentences.append(sentence5)
+
+endWord = Word( "Congratulations!!" )
+endSentence = Sentence( [endWord] , "." )
 
 
 #CONTINUE HERE
@@ -129,9 +146,12 @@ def generateFish():
 #TODO
 def createNewSentence():
     global testSentence
+    for fish in fishes:
+        sprites.remove( fish )
     del fishes[:]
     testSentence.deleteWords() 
     testSentence = random.choice(sentences)
+    sentences.remove(testSentence)
     '''
     word1 = Word( "I" )
     blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
@@ -200,8 +220,11 @@ while( state != 0 ):
                         testHook.resetHook()
                     
                     if ( testSentence.isComplete() ):
-                        createNewSentence()
-                        generateFish()
+                        if not sentences:
+                            testSentence = endSentence;
+                        if sentences:    
+                            createNewSentence()
+                            generateFish()
         
         #check for collisions
         for i in range( 0 , len(sprites) ):
