@@ -11,6 +11,7 @@
 * (Complete) Fish generator 
 * More sentences for Alpha release.
 * Generate eels, and have eels only move left to right and delete them when they go too far off screen
+* Draw fishing line
 * (Complete) Hook should only be able to catch 1 fish at a time
 
 === Beta ===
