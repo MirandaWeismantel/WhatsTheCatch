@@ -242,6 +242,10 @@ class Sentence:
             
         return rtn.strip() + self.punctuation
     
+    def deleteWords(self):
+        del Blank.acceptableWords[:]
+        del Blank.unacceptableWords[:]
+    
     '''
     * Draws this sentence onto the screen
     *

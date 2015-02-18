@@ -8,6 +8,7 @@ Testing module for graphics
 
 
 import pygame, random
+import random
 from pygame.locals import *
 
 from Eel import Eel
@@ -35,6 +36,9 @@ sprites = []
 #list of active fish in the ocean
 fishes = []
 
+#list of sentences to be used
+sentences = []
+
 #contains the player's score, lives, etc.
 stats = Statistics()
 statsFont = pygame.font.SysFont('Courier New', 15)
@@ -55,7 +59,15 @@ word1 = Word( "I" )
 blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
 word2 = Word( "a" )
 blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
-testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
+sentence1 = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
+sentences.append(sentence1)
+
+s2word1 = Word( "A cute" )
+s2blank1 = Blank( [Word( "kitten" )] , [Word( "cactus" ) , Word( "jump" ) ] )
+s2word2 = Word( "is a" )
+s2blank2 = Blank( [Word("pet")] , [Word("toy") , Word( "food" ) , Word( "orange" )])
+sentence2 = Sentence( [s2word1 , s2blank1 , s2word2 , s2blank2 ] , "." )
+sentences.append(sentence2)
 
 
 #CONTINUE HERE
@@ -65,6 +77,7 @@ testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
 #create a random number that will select a word from the appropriate list
 #if (correctOrIncorrectList == 1):
     #wordNum = random.randrange(1,blank1)
+testSentence = sentence1
     
 def createFish( word ):
     newFish = Fish( word )
@@ -74,11 +87,15 @@ def createFish( word ):
     
 totalAcceptableFish = 3
 totalUnacceptableFish = 2
+
 def generateFish():
     global totalAcceptableFish
     global totalUnacceptableFish
     
     if testSentence.isComplete():
+        for fish in fishes:
+            fishes.remove( fish )
+            sprites.remove( fish )
         return
     
     numAcceptableFish = 0
@@ -107,11 +124,16 @@ def generateFish():
 #TODO
 def createNewSentence():
     global testSentence
+    del fishes[:]
+    testSentence.deleteWords() 
+    testSentence = random.choice(sentences)
+    '''
     word1 = Word( "I" )
     blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
     word2 = Word( "a" )
     blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
     testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
+    '''
 
 #just create all your images and sprites here and add them to the images
 #and sprites list
@@ -144,7 +166,8 @@ sprites.append( testHook )
 # 0 = terminate program
 # 1 = game is running
 # 2 = game is paused
-# 3 = game is over (i.e. player has to start a new game)
+# 3 = game is over (i.e. player has to start a new game
+
 state = 1
 while( state != 0 ):
     
