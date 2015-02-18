@@ -107,7 +107,6 @@ testSentence = sentence1
 def createFish( word ):
     newFish = Fish( word )
     newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 450 ) )
-    print "Fish moved to " + str( newFish.x ) + " " + str( newFish.y )
     sprites.append( newFish )
     fishes.append( newFish )
     
