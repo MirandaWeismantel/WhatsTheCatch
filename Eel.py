@@ -54,7 +54,7 @@ class Eel( Sprite ):
     * Moves the eel to the right by the speed of an eel
     '''
     def animate( self ):
-        self.move( self.EEL_SPEED , 0 );
+        self.move( self.EEL_SPEED, 0 );
         
     '''
     * Handles what happens when collision is detected

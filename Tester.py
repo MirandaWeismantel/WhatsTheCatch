@@ -116,13 +116,13 @@ def createNewSentence():
 #just create all your images and sprites here and add them to the images
 #and sprites list
 testEel = Eel( stats )
-testEel.EEL_SPEED = 0
-testEel.moveTo( 0 , 300 )
+testEel.EEL_SPEED = 1.5      #in the future this can be randomized
+testEel.moveTo( -250 , 300 )
 sprites.append( testEel )
 
 testEel2 = Eel( stats )
-testEel2.EEL_SPEED = 0
-testEel2.moveTo( 300 , 300 )
+testEel2.EEL_SPEED = 2
+testEel2.moveTo( -100 , 300 )
 sprites.append( testEel2 )
 
 testFish = Fish( Word( "want" ) )
