@@ -36,6 +36,9 @@ sprites = []
 #list of active fish in the ocean
 fishes = []
 
+#list of active eels on the screen
+eels = []
+
 #list of sentences to be used
 sentences = []
 
@@ -142,7 +145,14 @@ def generateFish():
         createFish( unacceptableWords[ random.randrange( 0 , len( unacceptableWords ) ) ] )
         numUnacceptableFish += 1
         
-
+def createEel():
+    newEel = Eel( stats )
+    newEel.moveTo( -250, 300 ) #TODO Make Random
+    sprites.append( newEel )
+    eels.append( newEel )
+    testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
+    
+    
 #TODO
 def createNewSentence():
     global testSentence
@@ -208,6 +218,10 @@ while( state != 0 ):
         for sprite in sprites:
             sprite.animate()
             sprite.draw( screen )
+            
+        for eel in eels:
+            if ( eel.isOutOfBounds() ):
+                    createEel()
                     
         for fish in fishes:
             if ( isinstance( fish , Fish ) ):
