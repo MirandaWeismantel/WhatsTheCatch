@@ -17,6 +17,7 @@ from Fish import Fish
 from Boat import Boat
 from FishingHook import FishingHook
 from Sentence import Word , Blank , Sentence
+from FishingLine import FishingLine
 
 pygame.init()
 pygame.font.init()
@@ -54,6 +55,12 @@ def drawStats( screen ):
 stats.addLife()
 stats.addLife()
 stats.addLife()
+
+'''
+THE SENTENCES
+One day we will make the sentence factory function.
+But for now we will just have an array of sentences.
+'''
 
 word1 = Word( "I" )
 blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
@@ -94,6 +101,9 @@ sentences.append(sentence5)
 endWord = Word( "Congratulations!!" )
 endSentence = Sentence( [endWord] , "." )
 
+'''
+END OF SENTENCES
+'''
 
 #CONTINUE HERE
 #create a random word that will be passed and drawn on the fish
@@ -181,9 +191,15 @@ testBoat = Boat()
 testBoat.moveTo(300, 100)
 sprites.append( testBoat )
 
-testHook = FishingHook( testBoat )
+testLine = FishingLine(testBoat)
+testLine.moveTo(testBoat.x + 31, 111)
+sprites.append( testLine )
+
+testHook = FishingHook( testBoat, testLine )
 testHook.moveTo(testBoat.x, 180)
 sprites.append( testHook )
+
+
 
 #No need to modify the code below. It just runs the game.
 

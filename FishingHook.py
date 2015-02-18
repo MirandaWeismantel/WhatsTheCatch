@@ -7,6 +7,7 @@ Created on Feb 13, 2015
 import pygame
 from Sprite import Sprite
 from Boat import Boat
+from FishingLine import FishingLine
 
 class FishingHook( Sprite ):
 
@@ -21,10 +22,11 @@ class FishingHook( Sprite ):
     '''
     hookedFish = None
      
-    def __init__( self , boat ):
+    def __init__( self , boat, line):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/hook.png" ).convert() );
         self.boat = boat
+        self.line = line
         self.setHeight( 40 )
         pass
     
@@ -55,7 +57,7 @@ class FishingHook( Sprite ):
             #move fishing hook left
             self.move( -1*dist , 0 )
         if key[pygame.K_UP]:
-            if (self.y - dist <100):
+            if (self.y - dist <105):
                 
                 #don't let hook move too high, so we do nothing
                 pass
@@ -111,9 +113,12 @@ class FishingHook( Sprite ):
     '''            
     def resetHook( self ):
         boatLocation = self.boat.getLocation()
-        self.moveTo( boatLocation[ 0 ] , boatLocation[ 1 ] )
+        self.moveTo( boatLocation[ 0 ] , boatLocation[ 1 ]+10 )
+        self.line.setHeight(10)
+        self.line.image = pygame.transform.scale(self.line.image, (5, self.height))
         if ( not self.hookedFish == None ):
             self.hookedFish.unhook()
             self.hookedFish = None
+            
             
 

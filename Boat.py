@@ -14,7 +14,7 @@ class Boat( Sprite ):
     * in pixels
     '''
 
-    def __init__( self ):
+    def __init__( self):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/boat.png" ).convert() );
         pass
