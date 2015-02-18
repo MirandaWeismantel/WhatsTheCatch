@@ -15,9 +15,22 @@ class Fish( Sprite ):
     * in pixels
     '''
     fishSpeed = 1
+    
+    '''
+    * the speed of the fish before it was hooked. This way, if the fish gets
+    * unhooked (i.e. the hook touches an eel), the fish continues swiming
+    * in the correct direction
+    '''
+    lastFishSpeed = 1
+    
     fishShift = 50
     caught = False
     hooked = False
+    
+    '''
+    * if the fish is facing right
+    '''
+    facingRight = True
     
         
     def __init__( self, word ):
@@ -104,12 +117,18 @@ class Fish( Sprite ):
                     self.y += dist # move left
                     
     def flipImage(self):
+        self.facingRight = not self.facingRight
         self.image = pygame.transform.flip(self.image, 1, 0)
         
     def hook( self ):
+        #TODO
         self.fishSpeed = 0
         self.hooked = True
         
     def unhook(self):
-        self.fishSpeed = 1
+        if ( self.facingRight ):
+            self.fishSpeed = 1
+        else:
+            self.fishSpeed = -1
+        
         self.hooked = False

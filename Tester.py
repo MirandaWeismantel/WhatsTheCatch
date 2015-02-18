@@ -68,12 +68,12 @@ testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
     
 def createFish( word ):
     newFish = Fish( word )
-    newFish.moveTo( -50 , random.randrange( 200 , 300 ) )
+    newFish.moveTo( random.randrange( -200 , 0 ) , random.randrange( 200 , 500 ) )
     sprites.append( newFish )
     fishes.append( newFish )
     
-totalAcceptableFish = 1
-totalUnacceptableFish = 1
+totalAcceptableFish = 3
+totalUnacceptableFish = 2
 def generateFish():
     global totalAcceptableFish
     global totalUnacceptableFish
