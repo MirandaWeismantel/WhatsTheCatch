@@ -1,4 +1,8 @@
 '''
+ATTENTION: If you're grading this, please read README.md first
+'''
+
+'''
 Created on Feb 13, 2015
 
 @author: mjchao, weismant
