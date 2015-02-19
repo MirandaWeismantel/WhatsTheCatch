@@ -154,14 +154,6 @@ def generateFish():
     while numUnacceptableFish < totalUnacceptableFish:
         createFish( unacceptableWords[ random.randrange( 0 , len( unacceptableWords ) ) ] )
         numUnacceptableFish += 1
-        
-def createEel():
-    newEel = Eel( stats )
-    newEel.moveTo( -250, 300 ) #TODO Make Random
-    sprites.append( newEel )
-    eels.append( newEel )
-    testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
-    
     
 #TODO
 def createNewSentence():
@@ -182,16 +174,6 @@ def createNewSentence():
 
 #just create all your images and sprites here and add them to the images
 #and sprites list
-testEel = Eel( stats )
-testEel.EEL_SPEED = 1.5      #in the future this can be randomized
-testEel.moveTo( -250 , 250 )
-sprites.append( testEel )
-
-testEel2 = Eel( stats )
-testEel2.EEL_SPEED = 2
-testEel2.moveTo( -100 , 400 )
-sprites.append( testEel2 )
-
 testFish = Fish( Word( "want" ) )
 testFish.moveTo(-50, 200)
 sprites.append( testFish )
@@ -209,6 +191,22 @@ testHook = FishingHook( testBoat, testLine )
 testHook.moveTo(testBoat.x, 180)
 sprites.append( testHook )
 
+testEel = Eel( stats , testHook , testLine )
+testEel.EEL_SPEED = 1.5      #in the future this can be randomized
+testEel.moveTo( -250 , 250 )
+sprites.append( testEel )
+
+testEel2 = Eel( stats , testHook , testLine )
+testEel2.EEL_SPEED = 2
+testEel2.moveTo( -100 , 400 )
+sprites.append( testEel2 )
+
+def createEel():
+    newEel = Eel( stats , testHook , testLine  )
+    newEel.moveTo( -250, 300 ) #TODO Make Random
+    sprites.append( newEel )
+    eels.append( newEel )
+    testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
 
 
 #No need to modify the code below. It just runs the game.

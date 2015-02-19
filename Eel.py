@@ -24,10 +24,16 @@ class Eel( Sprite ):
     '''
     stats = None
     
-    def __init__( self , stats ):
+    fishingHook = None
+    fishingLine = None
+    
+    def __init__( self , stats , fishingHook , fishingLine ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/eel.png" ).convert() );
         self.stats = stats
+        
+        self.fishingHook = fishingHook
+        self.fishingLine = fishingLine
         
         #slightly offset eel picture's extra whitespace width
         self.setWidth( 48 )
@@ -93,5 +99,10 @@ class Eel( Sprite ):
             
             #reset the fishing hook to start back at the surface
             #so that it doesn't keep colliding with  this eel
+            self.fishingLine.resetLine()
             otherSprite.resetHook()
             pass
+        elif ( isinstance( otherSprite , FishingLine ) ):
+            self.stats.subtractLife()
+            otherSprite.resetLine()
+            self.fishingHook.resetHook()

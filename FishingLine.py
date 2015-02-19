@@ -24,13 +24,6 @@ class FishingLine( Sprite ):
         self.image = pygame.transform.scale(self.image, (5, self.height))
         self.boat = boat
         pass
-
-        
-    def moveTo( self , x , y ):
-        self.x = x
-        self.y = y
-        self.rect.x = x
-        self.rect.y = y-5
     
     '''
     * Draws this fishing hook onto the screen 
@@ -55,18 +48,18 @@ class FishingLine( Sprite ):
         if key[pygame.K_UP]:
             if (self.height < 2):
                 pass
-            else:
-                self.height -= 1   
+            else: 
                 self.image = pygame.transform.scale(self.image, (5, self.height))
+                self.setHeight( self.getHeight()-1 )
         elif key[pygame.K_DOWN]:
             if (self.y + dist >490):
                 
                 #don't let hook move too low, so we do nothing
                 pass
             else:   
-                self.height += 1
                 #move left
                 self.image = pygame.transform.scale(self.image, (5, self.height))
+                self.setHeight( self.getHeight()+1 )
     
 
     '''
@@ -75,7 +68,7 @@ class FishingLine( Sprite ):
     def onCollide( self , otherSprite ):
         from Eel import Eel
         if ( isinstance( otherSprite , Eel ) ):
-            self.remove()
+            pass
                 
     '''
     * Resets the fishing hook to start on the surface of the water again.
@@ -83,7 +76,9 @@ class FishingLine( Sprite ):
     '''            
     def resetLine( self ):
         boatLocation = self.boat.getLocation()
-        self.moveTo( boatLocation[ 0 ] , boatLocation[ 1 ] )
+        self.setHeight( 1 )
+        self.image = pygame.transform.scale(self.image, (5, self.height))
+        self.moveTo( boatLocation[ 0 ]+31 , 111 )
     
 
             
