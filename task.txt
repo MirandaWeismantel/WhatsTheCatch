@@ -9,12 +9,13 @@
 * (Complete) Draw lives onto screen
 * (Complete) Words on fish need to be drawn directly onto screen - not blitted onto image because the fish is flipped when it starts traveling the other direction
 * (Complete) Fish generator 
-* More sentences for Alpha release.
-* Generate eels, and have eels only move left to right and delete them when they go too far off screen
-* Draw fishing line
+* (Complete) More sentences for Alpha release.
+* (Complete) Generate eels, and have eels only move left to right and delete them when they go too far off screen
+* (Complete) Draw fishing line
 * (Complete) Hook should only be able to catch 1 fish at a time
 
 === Beta ===
+* Refactor code, remove magic numbers, use methods to modify properties - not direct access
 * Abstract out onMousePressed(), onKeyPressed() into image
 * Abstract out Screen object for larger world
 * SentenceFactory
