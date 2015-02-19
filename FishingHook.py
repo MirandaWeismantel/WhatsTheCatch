@@ -28,13 +28,14 @@ class FishingHook( Sprite ):
         self.boat = boat
         self.line = line
         self.setHeight( 40 )
+        self.setWidth( 40 )
         pass
     
     def moveTo( self , x , y ):
         self.x = x
         self.y = y
         self.rect.x = x
-        self.rect.y = y-5
+        self.rect.y = y-10
     
     '''
     * Draws this fishing hook onto the screen 

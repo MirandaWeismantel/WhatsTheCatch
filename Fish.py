@@ -51,6 +51,12 @@ class Fish( Sprite ):
         self.drawWord( screen )
         pass
     
+    def moveTo( self , x , y ):
+        self.x = x
+        self.y = y
+        self.rect.x = x
+        self.rect.y = y-7
+    
     '''
         * Draws this fish onto the screen
         '''
@@ -90,7 +96,7 @@ class Fish( Sprite ):
     def drawWord( self , screen ):
         font = pygame.font.SysFont('Courier New', 15)
         text = font.render(self.word.toString(), True, (0, 0, 0))
-        screen.blit(text, (self.rect.x+10 , self.rect.y+15) )
+        screen.blit(text, (self.x+10 , self.y+15) )
             
             
     def key_press(self):
