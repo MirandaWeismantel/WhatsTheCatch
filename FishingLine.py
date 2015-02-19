@@ -84,6 +84,6 @@ class FishingLine( Sprite ):
     def resetLine( self ):
         boatLocation = self.boat.getLocation()
         self.moveTo( boatLocation[ 0 ] , boatLocation[ 1 ] )
-        
+    
 
             

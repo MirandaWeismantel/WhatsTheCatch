@@ -7,6 +7,7 @@ Created on Feb 13, 2015
 import pygame
 from Sprite import Sprite
 from FishingHook import FishingHook
+from FishingLine import FishingLine
 
 class Eel( Sprite ):
     
@@ -15,7 +16,7 @@ class Eel( Sprite ):
     * in pixels
     '''
     EEL_SPEED = 1
-    
+    EEL_SHIFT = 30
     '''
     * The statistics object that stores the player's lives. The eel will
     * subtract lives from the statistics object if it touches the fishing line
@@ -53,6 +54,26 @@ class Eel( Sprite ):
     '''
     * Moves the eel to the right by the speed of an eel
     '''
+        
+    def move(self, dx, dy):
+        if (self.x + dx == 1000):
+            self.EEL_SPEED = self.EEL_SPEED * -1
+            self.moveTo( self.x , self.y + dy )
+            self.flipImage()
+        elif (self.x + dx == -500):
+            self.EEL_SPEED = self.EEL_SPEED * -1
+            self.moveTo( self.x , self.y + dy )
+            self.flipImage()
+        if (self.y + dy < 160):
+            self.EEL_SHIFT = self.EEL_SHIFT * -1
+        elif (self.y + dy > 500):
+            self.EEL_SHIFT = self.EEL_SHIFT * -1
+        self.moveTo( self.x + dx , self.y )
+        
+        
+    def flipImage(self):
+        self.image = pygame.transform.flip(self.image, 1, 0)
+            
     def animate( self ):
         self.move( self.EEL_SPEED, 0 );
         

@@ -174,12 +174,12 @@ def createNewSentence():
 #and sprites list
 testEel = Eel( stats )
 testEel.EEL_SPEED = 1.5      #in the future this can be randomized
-testEel.moveTo( -250 , 300 )
+testEel.moveTo( -250 , 250 )
 sprites.append( testEel )
 
 testEel2 = Eel( stats )
 testEel2.EEL_SPEED = 2
-testEel2.moveTo( -100 , 300 )
+testEel2.moveTo( -100 , 400 )
 sprites.append( testEel2 )
 
 testFish = Fish( Word( "want" ) )
