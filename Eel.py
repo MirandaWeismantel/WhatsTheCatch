@@ -78,6 +78,13 @@ class Eel( Sprite ):
         self.move( self.EEL_SPEED, 0 );
         
     '''
+    *Checks to see if the eel has gone far off of the screen
+    '''
+    def isOutOfBounds( self ):    
+        if (self.x > 500):
+            return True
+        
+    '''
     * Handles what happens when collision is detected
     '''
     def onCollide( self , otherSprite ):
