@@ -1,5 +1,8 @@
 '''
 ATTENTION: If you're grading this, please read README.md first
+To start, run the program in Eclipse
+To restart, exit and start again
+When you're done, please exit the game
 '''
 
 '''
@@ -20,8 +23,9 @@ from Statistics import Statistics
 from Fish import Fish
 from Boat import Boat
 from FishingHook import FishingHook
-from Sentence import Word , Blank , Sentence
+from Sentence import Word , Sentence
 from FishingLine import FishingLine
+from SentenceFactory import SentenceFactory
 
 pygame.init()
 pygame.font.init()
@@ -44,9 +48,6 @@ fishes = []
 #list of active eels on the screen
 eels = []
 
-#list of sentences to be used
-sentences = []
-
 #contains the player's score, lives, etc.
 stats = Statistics()
 statsFont = pygame.font.SysFont('Courier New', 15)
@@ -63,65 +64,19 @@ stats.addLife()
 stats.addLife()
 stats.addLife()
 
-'''
-THE SENTENCES
-One day we will make the sentence factory function.
-But for now we will just have an array of sentences.
-'''
+factory = SentenceFactory( "sample.txt" )
 
-word1 = Word( "I" )
-blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
-word2 = Word( "a" )
-blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
-sentence1 = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
+#check that the data file is formatted correctly
+factory.validate()
 
-s2word1 = Word( "A cute" )
-s2blank1 = Blank( [Word( "kitten" ), Word("puppy")] , [Word( "cactus" ) , Word( "jump" ) ] )
-s2word2 = Word( "is a" )
-s2blank2 = Blank( [Word("pet")] , [Word("toy") , Word( "food" ) , Word( "orange" )])
-sentence2 = Sentence( [s2word1 , s2blank1 , s2word2 , s2blank2 ] , "." )
-sentences.append(sentence2)
-
-s3word1 = Word( "Let's go to the" )
-s3blank1 = Blank( [Word( "store" )] , [Word( "ear" ) , Word( "long" ) ] )
-s3word2 = Word( "to" )
-s3blank2 = Blank( [Word("buy"), Word("get")] , [Word("wake") , Word( "flower" ) , Word( "orange" )])
-s3word3 = Word( "some" )
-s3blank3 = Blank( [Word("bread"), Word("milk")] , [Word("hair") , Word( "canyon" )])
-sentence3 = Sentence( [s3word1 , s3blank1 , s3word2 , s3blank2, s3word3, s3blank3 ] , "." )
-sentences.append(sentence3)
-
-s4word1 = Word( "I like to" )
-s4blank1 = Blank( [Word( "give" )] , [Word( "oil" ) , Word( "shirt" ) ] )
-s4word2 = Word( "my friends" )
-s4blank2 = Blank( [Word("hugs"), Word("toys")] , [Word( "9" ) , Word( "rain" )])
-sentence4 = Sentence( [s4word1 , s4blank1 , s4word2 , s4blank2 ] , "." )
-sentences.append(sentence4)
-
-s5word1 = Word( "The snow is" )
-s5blank1 = Blank( [Word( "white" )] , [Word( "ill" ) , Word( "goat" ) ] )
-s5word2 = Word( "and" )
-s5blank2 = Blank( [Word("cold")] , [Word( "far" ) , Word( "up" )])
-sentence5 = Sentence( [s5word1 , s5blank1 , s5word2 , s5blank2 ] , "." )
-sentences.append(sentence5)
-
+testSentence = None
+    
 endWord = Word( "Congratulations!!" )
-endSentence = Sentence( [endWord] , "." )
-
-'''
-END OF SENTENCES
-'''
-
-#CONTINUE HERE
-#create a random word that will be passed and drawn on the fish
-#first create a random number that will stand for either a word from the incorrect or correct list
-#correctOrIncorrectList = random.randrange(1,2,1)
-#create a random number that will select a word from the appropriate list
-#if (correctOrIncorrectList == 1):
-    #wordNum = random.randrange(1,blank1)
-testSentence = sentence1
+endSentence = Sentence( [endWord] , "." )    
     
 def createFish( word ):
+    global fishes
+    global sprites
     newFish = Fish( word )
     newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 450 ) )
     sprites.append( newFish )
@@ -133,6 +88,8 @@ totalUnacceptableFish = 2
 def generateFish():
     global totalAcceptableFish
     global totalUnacceptableFish
+    global fishes
+    global sprites
     
     if testSentence.isComplete():
         return
@@ -159,22 +116,22 @@ def generateFish():
         createFish( unacceptableWords[ random.randrange( 0 , len( unacceptableWords ) ) ] )
         numUnacceptableFish += 1
     
-#TODO
 def createNewSentence():
     global testSentence
+    global fishes
+    global sprites
+    global factory
+    
     for fish in fishes:
         sprites.remove( fish )
     del fishes[:]
-    testSentence.deleteWords() 
-    testSentence = random.choice(sentences)
-    sentences.remove(testSentence)
-    '''
-    word1 = Word( "I" )
-    blank1 = Blank( [Word( "want" )] , [Word( "Ohio" ) , Word( "Yellow" ) ] )
-    word2 = Word( "a" )
-    blank2 = Blank( [Word("toy")] , [Word("eat") , Word( "run" ) , Word( "blue" )])
-    testSentence = Sentence( [word1 , blank1 , word2 , blank2 ] , "." )
-    '''
+    fishes = []
+    
+    if ( factory.hasMoreSentences() ):
+        testSentence = factory.next()
+    else :
+        testSentence = endSentence
+        
 
 #just create all your images and sprites here and add them to the images
 #and sprites list
@@ -222,6 +179,8 @@ def createEel():
 # 3 = game is over (i.e. player has to start a new game
 
 state = 1
+createNewSentence()
+generateFish()
 while( state != 0 ):
     
     if ( state == 1 ):
@@ -251,10 +210,7 @@ while( state != 0 ):
                         generateFish()
                         testHook.resetHook()
                     
-                    if ( testSentence.isComplete() ):
-                        if not sentences:
-                            testSentence = endSentence;
-                        if sentences:    
+                    if ( testSentence.isComplete() ):  
                             createNewSentence()
                             generateFish()
         
