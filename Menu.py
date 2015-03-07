@@ -5,6 +5,7 @@ Created on Mar 3, 2015
 '''
 
 import pygame
+import Tester
 from pygame.locals import *
 
 pygame.init()
@@ -21,18 +22,18 @@ screen = pygame.display.set_mode(size)
 sprites = []
 
 
-class Button(Image):
+class Button(pygame.sprite.Sprite):
     def __init__(self, color, filename, location):
         pygame.sprite.Sprite.__init__(self)
-        #self.image = pygame.image.load(filename).convert()
-        #self.image.set_colorkey(color) 
-        #self.image = pygame.transform.scale(self.image, (40,40))
+        self.image = pygame.image.load(filename).convert()
+        self.image.set_colorkey(color) 
+        self.image = pygame.transform.scale(self.image, (40,40))
         self.rect = self.image.get_rect()
         self.rect.x = location[0]
         self.rect.y = location[1] 
         
 def menu():
-    newGame = Button((255,255,255), "../res/testButton.png", (50,50))
+    newGame = Button((255,255,255), "res/testButton.png", (50,50))
     
     state = 0
     while state == 0:
@@ -50,5 +51,6 @@ def menu():
         if (loc[0] > 50 and loc[0] < 90 and loc[1] > 50 and loc[1] < 90):
             Tester.mainGame()
             menu()
+            
         
 menu()
