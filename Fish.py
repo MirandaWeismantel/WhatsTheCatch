@@ -121,6 +121,10 @@ class Fish( Sprite ):
                     self.y = self.y
                 else:   
                     self.y += dist # move left
+            if key[pygame.K_SPACE]:
+                self.unhook()
+                
+                
                     
     def flipImage(self):
         self.facingRight = not self.facingRight
@@ -132,6 +136,8 @@ class Fish( Sprite ):
         self.hooked = True
         
     def unhook(self):
+        self.moveTo(self.x, self.y+20)
+        
         if ( self.facingRight ):
             self.fishSpeed = 1
         else:

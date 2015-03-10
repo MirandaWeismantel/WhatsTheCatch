@@ -75,7 +75,9 @@ class FishingHook( Sprite ):
                 
                 #move left
                 self.move( 0 , dist )
-    
+        if key[pygame.K_SPACE]:
+            self.hookedFish = None
+
     '''
     * @param          a fish that might possibly be hooked by this fishing hook
     * @return         if the fishing hook can hook another fish. Only one fish
