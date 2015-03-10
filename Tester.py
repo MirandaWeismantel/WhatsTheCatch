@@ -178,66 +178,67 @@ def createEel():
 # 2 = game is paused
 # 3 = game is over (i.e. player has to start a new game
 
-state = 1
-createNewSentence()
-generateFish()
-while( state != 0 ):
-    
-    if ( state == 1 ):
-        #start with the background image and get the user input from the boat
-        screen.blit(background, backgroundRect)
+def mainGame():
+    state = 1
+    createNewSentence()
+    generateFish()
+    while( state != 0 ):
         
-        #draw images into the background
-        for image in images:
-            image.draw( screen )
+        if ( state == 1 ):
+            #start with the background image and get the user input from the boat
+            screen.blit(background, backgroundRect)
             
-        #draw sprites on top of the images
-        for sprite in sprites:
-            sprite.animate()
-            sprite.draw( screen )
-            
-        for eel in eels:
-            if ( eel.isOutOfBounds() ):
-                    createEel()
-                    
-        for fish in fishes:
-            if ( isinstance( fish , Fish ) ):
-                if ( fish.caught ):
-                    if ( not testSentence.isComplete() ):
-                        testSentence.fillInNextBlank( fish.word )
-                        fishes.remove( fish )
-                        sprites.remove( fish )
-                        generateFish()
-                        testHook.resetHook()
-                    
-                    if ( testSentence.isComplete() ):  
-                            createNewSentence()
+            #draw images into the background
+            for image in images:
+                image.draw( screen )
+                
+            #draw sprites on top of the images
+            for sprite in sprites:
+                sprite.animate()
+                sprite.draw( screen )
+                
+            for eel in eels:
+                if ( eel.isOutOfBounds() ):
+                        createEel()
+                        
+            for fish in fishes:
+                if ( isinstance( fish , Fish ) ):
+                    if ( fish.caught ):
+                        if ( not testSentence.isComplete() ):
+                            testSentence.fillInNextBlank( fish.word )
+                            fishes.remove( fish )
+                            sprites.remove( fish )
                             generateFish()
+                            testHook.resetHook()
+                        
+                        if ( testSentence.isComplete() ):  
+                                createNewSentence()
+                                generateFish()
+            
+            #check for collisions
+            for i in range( 0 , len(sprites) ):
+                for j in range( i+1 , len(sprites) ):
+                    sprite1 = sprites[ i ]
+                    sprite2 = sprites[ j ]
+                    if ( sprite1 != sprite2 ) :
+                        if ( pygame.sprite.collide_rect( sprite1 , sprite2 ) ):
+                            sprite1.onCollide( sprite2 )
+                            sprite2.onCollide( sprite1 )
+                        
+            testSentence.draw( screen )
+            drawStats( screen )
+            
+            pygame.display.update()
         
-        #check for collisions
-        for i in range( 0 , len(sprites) ):
-            for j in range( i+1 , len(sprites) ):
-                sprite1 = sprites[ i ]
-                sprite2 = sprites[ j ]
-                if ( sprite1 != sprite2 ) :
-                    if ( pygame.sprite.collide_rect( sprite1 , sprite2 ) ):
-                        sprite1.onCollide( sprite2 )
-                        sprite2.onCollide( sprite1 )
-                    
-        testSentence.draw( screen )
-        drawStats( screen )
+        if ( stats.getLives() <= 0 ):
+            state = 3
         
-        pygame.display.update()
-    
-    if ( stats.getLives() <= 0 ):
-        state = 3
-    
-    #check if the user wants to quit
-    for event in pygame.event.get():  
-        if event.type == KEYDOWN and event.key == K_ESCAPE:
-            state = 0
-        if event.type == pygame.QUIT:
-            state = 0
+        #check if the user wants to quit
+        for event in pygame.event.get():  
+            if event.type == KEYDOWN and event.key == K_ESCAPE:
+                state = 0
+            if event.type == pygame.QUIT:
+                state = 0
             
             
-        
+#mainGame()       

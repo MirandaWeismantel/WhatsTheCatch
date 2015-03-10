@@ -47,7 +47,7 @@ def menu():
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 state = 1
-            if event.type == MOUSEBUTTONDOWN:
+            elif event.type == MOUSEBUTTONDOWN:
                 state = 2
             
     if (state == 2):
@@ -56,10 +56,11 @@ def menu():
         if (loc[0] > 50 and loc[0] < 90 and loc[1] > 50 and loc[1] < 90):
             print("main game")
             Tester.mainGame()
-        if (loc[0] > 100 and loc[0] < 140 and loc[1] > 50 and loc[1] < 90):
-            print("instructions")
-            Instructions.instructions_load()
+#         if (loc[0] > 100 and loc[0] < 140 and loc[1] > 50 and loc[1] < 90):
+#             print("instructions")
+#             Instructions.instructions_load()
         menu()
+
             
         
 menu()
