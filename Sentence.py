@@ -6,6 +6,7 @@ Created on Feb 15, 2015
 
 import pygame
 from pygame.locals import *
+from Image import Image
 
 
 pygame.font.init()
@@ -125,6 +126,13 @@ class Blank:
             if word.equals( acceptable ):
                 self.filled = True
                 self.filledWord = word
+                
+                size = [500, 500]
+                screen = pygame.display.set_mode(size)
+                
+                bubble = Image(60, 40, 100, 100)
+                bubble.setImage(pygame.image.load( "res/correct.png" ).convert())
+                bubble.draw(screen)
                 return True
             
         for unacceptable in self.unacceptableWords:
@@ -146,6 +154,7 @@ class Blank:
             return self.filledWord.toString()
         else:
             return self.BLANK_TEXT
+        
 '''
 * Represents a sentence that the user will have to complete
 '''

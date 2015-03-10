@@ -1,0 +1,19 @@
+# Every sentence goes on its own line, and must be on one line only.
+# Type "Sentence:" to indicate the start of the sentence.
+# Type words as you would normally do
+# Use [ ] to delimit blanks
+# Use | to separate the valid and invalid words for each blank
+# There must be spaces around bracks "[" and pipes "|" or the parser won't work
+# Begin a line with "#" to indicate that it is a comment
+
+Sentence: I [ want | Ohio yellow ] a [ toy | eat run blue ] .
+   
+Sentence: A cute [ kitten puppy | cactus jump ] is a [ pet | toy ] .
+   
+Sentence: Let's go to the [ store | ear long ] to [ buy get | wake flower orange ] some [ bread milk | hair canyon ] .
+ 
+Sentence: I like to [ give | oil shirt ] my friends [ hugs toys | nine rain ] .
+
+Sentence: The snow is [ white | ill goat ] and [ cold | far up ] .
+
+    
