@@ -37,7 +37,7 @@ class Button(pygame.sprite.Sprite):
 def menu():
 
     newGame = Button((255,255,255), "res/testButton.png", (50,50))
-    instructions = Button((255,255,255), "res/testButton.png", (100,100))
+    instructions = Button((255,255,255), "res/testButton.png", (100,50))
     
     state = 0
     while state == 0:
@@ -56,7 +56,7 @@ def menu():
         if (loc[0] > 50 and loc[0] < 90 and loc[1] > 50 and loc[1] < 90):
             print("main game")
             Tester.mainGame()
-        elif (loc[0] > 100 and loc[0] < 140 and loc[1] > 100 and loc[1] < 140):
+        if (loc[0] > 100 and loc[0] < 140 and loc[1] > 50 and loc[1] < 90):
             print("instructions")
             Instructions.instructions_load()
         menu()
