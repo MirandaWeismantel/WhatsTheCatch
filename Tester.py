@@ -241,4 +241,4 @@ def mainGame():
                 state = 0
             
             
-#mainGame()       
+mainGame()       
