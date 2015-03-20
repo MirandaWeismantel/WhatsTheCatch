@@ -120,6 +120,7 @@ class Blank:
     * Attempts to fill in this blank with the given word
     * 
     * @param word         the word with which to try to fill this blank
+    * @return             if the word was acceptable (True) or not (False)
     '''
     def tryToFillWith( self , word ):
         for acceptable in self.acceptableWords:

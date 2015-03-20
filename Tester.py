@@ -51,6 +51,10 @@ eels = []
 #contains the player's score, lives, etc.
 stats = Statistics()
 statsFont = pygame.font.SysFont('Courier New', 15)
+
+POINTS_PER_CORRECT = 50;
+POINT_PER_INCORRECT = 50;
+
 def drawStats( screen ):
     global stats
     global statsFont
@@ -60,14 +64,20 @@ def drawStats( screen ):
     
 
 #player starts with 3 lives
-stats.addLife()
-stats.addLife()
-stats.addLife()
+def resetStats():
+    global stats
+    stats = Statistics();
+    stats.addLife()
+    stats.addLife()
+    stats.addLife()
 
-factory = SentenceFactory( "sample.txt" )
+factory = None
+def resetSentenceFactory():
+    global factory
+    factory = SentenceFactory( "sample.txt" )
 
-#check that the data file is formatted correctly
-factory.validate()
+    #check that the data file is formatted correctly
+    factory.validate()
 
 testSentence = None
     
@@ -81,6 +91,7 @@ def createFish( word ):
     newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 450 ) )
     sprites.append( newFish )
     fishes.append( newFish )
+    
     
 totalAcceptableFish = 3
 totalUnacceptableFish = 2
@@ -132,42 +143,58 @@ def createNewSentence():
     else :
         testSentence = endSentence
         
+testHook = None
+testBoat = None
+testLine = None
 
-#just create all your images and sprites here and add them to the images
-#and sprites list
-testFish = Fish( Word( "want" ) )
-testFish.moveTo(-50, 200)
-sprites.append( testFish )
-fishes.append( testFish )
-
-testBoat = Boat()
-testBoat.moveTo(300, 100)
-sprites.append( testBoat )
-
-testLine = FishingLine(testBoat)
-testLine.moveTo(testBoat.x + 31, 111)
-sprites.append( testLine )
-
-testHook = FishingHook( testBoat, testLine )
-testHook.moveTo(testBoat.x, 180)
-sprites.append( testHook )
-
-testEel = Eel( stats , testHook , testLine )
-testEel.EEL_SPEED = 1.5      #in the future this can be randomized
-testEel.moveTo( -250 , 250 )
-sprites.append( testEel )
-
-testEel2 = Eel( stats , testHook , testLine )
-testEel2.EEL_SPEED = 2
-testEel2.moveTo( -100 , 400 )
-sprites.append( testEel2 )
+'''
+* Resets everything - the fish, the score, etc.
+'''
+def restart():
+    global sprites, images, fishes, eels , state , testHook , testBoat , testLine
+    state = 0
+    sprites = []
+    images = []
+    fishes = []
+    eels = []
+    
+    resetSentenceFactory()
+    resetStats()
+    
+    #just create all your images and sprites here and add them to the images
+    #and sprites list
+    
+    testBoat = Boat()
+    testBoat.moveTo(300, 100)
+    sprites.append( testBoat )
+    
+    testLine = FishingLine(testBoat)
+    testLine.moveTo(testBoat.x + 31, 111)
+    sprites.append( testLine )
+    
+    testHook = FishingHook( testBoat, testLine )
+    testHook.moveTo(testBoat.x, 180)
+    sprites.append( testHook )
+    
+    testEel = Eel( stats , testHook , testLine )
+    testEel.EEL_SPEED = 1.5      #in the future this can be randomized
+    testEel.moveTo( -250 , 250 )
+    sprites.append( testEel )
+    
+    testEel2 = Eel( stats , testHook , testLine )
+    testEel2.EEL_SPEED = 2
+    testEel2.moveTo( -100 , 400 )
+    sprites.append( testEel2 )
+    
+    createNewSentence()
+    generateFish()
 
 def createEel():
     newEel = Eel( stats , testHook , testLine  )
     newEel.moveTo( -250, 300 ) #TODO Make Random
     sprites.append( newEel )
     eels.append( newEel )
-    testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
+    #testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
 
 
 #No need to modify the code below. It just runs the game.
@@ -178,13 +205,19 @@ def createEel():
 # 2 = game is paused
 # 3 = game is over (i.e. player has to start a new game
 
+state = 0
+
+'''
+* Runs the game
+'''
 def mainGame():
+    global state , testSentence
     state = 1
-    createNewSentence()
-    generateFish()
     while( state != 0 ):
+        print state
         
         if ( state == 1 ):
+            print "running"
             #start with the background image and get the user input from the boat
             screen.blit(background, backgroundRect)
             
@@ -205,13 +238,18 @@ def mainGame():
                 if ( isinstance( fish , Fish ) ):
                     if ( fish.caught ):
                         if ( not testSentence.isComplete() ):
-                            testSentence.fillInNextBlank( fish.word )
+                            success = testSentence.fillInNextBlank( fish.word )
+                            if ( success ):
+                                stats.addPoints( 50 );
+                            else:
+                                stats.subtractPoints( 50 );
                             fishes.remove( fish )
                             sprites.remove( fish )
                             generateFish()
                             testHook.resetHook()
                         
-                        if ( testSentence.isComplete() ):  
+                        if ( testSentence.isComplete() ): 
+                                stats.addPoints( 50 ); 
                                 createNewSentence()
                                 generateFish()
             
@@ -224,7 +262,7 @@ def mainGame():
                         if ( pygame.sprite.collide_rect( sprite1 , sprite2 ) ):
                             sprite1.onCollide( sprite2 )
                             sprite2.onCollide( sprite1 )
-                        
+            
             testSentence.draw( screen )
             drawStats( screen )
             
@@ -239,6 +277,21 @@ def mainGame():
                 state = 0
             if event.type == pygame.QUIT:
                 state = 0
-            
-            
-mainGame()       
+
+'''
+* Pauses the game and hides the game window
+'''
+def pause():
+    global state
+    state = 0
+    
+'''
+* Resumes the game and shows the game window
+'''
+def resume():
+    global state
+    state = 1
+    mainGame()
+          
+#mainGame()  
+     
