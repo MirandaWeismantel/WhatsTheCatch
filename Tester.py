@@ -52,8 +52,9 @@ eels = []
 stats = Statistics()
 statsFont = pygame.font.SysFont('Courier New', 15)
 
-POINTS_PER_CORRECT = 50;
-POINT_PER_INCORRECT = 50;
+POINTS_PER_CORRECT_WORD = 50;
+POINTS_PER_INCORRECT_WORD = 50;
+POINTS_PER_SENTENCE = 25;
 
 def drawStats( screen ):
     global stats
@@ -61,6 +62,10 @@ def drawStats( screen ):
     livesText = "Lives: " + str( stats.getLives() )
     text = statsFont.render(livesText , True , (0, 0, 0))
     screen.blit( text , (400 , 0 ) )
+    
+    scoreText = "Score: " + str( stats.getPoints() );
+    text = statsFont.render( scoreText , True , (0, 0, 0))
+    screen.blit( text , (400 , 20 ) )
     
 
 #player starts with 3 lives
@@ -214,10 +219,8 @@ def mainGame():
     global state , testSentence
     state = 1
     while( state != 0 ):
-        print state
-        
+
         if ( state == 1 ):
-            print "running"
             #start with the background image and get the user input from the boat
             screen.blit(background, backgroundRect)
             
@@ -240,16 +243,16 @@ def mainGame():
                         if ( not testSentence.isComplete() ):
                             success = testSentence.fillInNextBlank( fish.word )
                             if ( success ):
-                                stats.addPoints( 50 );
+                                stats.addPoints( POINTS_PER_CORRECT_WORD );
                             else:
-                                stats.subtractPoints( 50 );
+                                stats.subtractPoints( POINTS_PER_INCORRECT_WORD );
                             fishes.remove( fish )
                             sprites.remove( fish )
                             generateFish()
                             testHook.resetHook()
                         
                         if ( testSentence.isComplete() ): 
-                                stats.addPoints( 50 ); 
+                                stats.addPoints( POINTS_PER_SENTENCE ); 
                                 createNewSentence()
                                 generateFish()
             
