@@ -39,6 +39,8 @@ def menu():
     newGame = Button((255,255,255), "res/testButton.png", (50,50))
     instructions = Button((255,255,255), "res/testButton.png", (100,50))
     
+    Tester.restart()
+    
     state = 0
     while state == 0:
         screen.fill([255,255,255])
@@ -55,7 +57,7 @@ def menu():
             loc = pygame.mouse.get_pos()
             if (loc[0] > 50 and loc[0] < 90 and loc[1] > 50 and loc[1] < 90):
                 print("main game")
-                Tester.mainGame()
+                Tester.resume()
             state = 0
 #         if (loc[0] > 100 and loc[0] < 140 and loc[1] > 50 and loc[1] < 90):
 #             print("instructions")
