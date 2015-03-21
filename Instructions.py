@@ -12,7 +12,7 @@ import Menu
 pygame.init()
 pygame.font.init()
 
-background = pygame.image.load("res/background.png")
+background = pygame.image.load("res/MenuBackground.png")
 backgroundRect = background.get_rect()
 
 
