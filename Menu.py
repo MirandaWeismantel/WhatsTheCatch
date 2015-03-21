@@ -8,7 +8,8 @@ import pygame
 from pygame.locals import *
 
 import Tester
-import Instructions 
+import Instructions
+import sys
 
 
 pygame.init()
@@ -39,7 +40,7 @@ def menu():
     BUTTON_HEIGHT = 40
     PLAY_BUTTON_LOCATION = (100, 300)
     INSTRUCTION_BUTTON_LOCATION = (300, 300)
-    newGame = Button((255,255,255), "Buttons/MenuButton.png", (PLAY_BUTTON_LOCATION))
+    newGame = Button((255,255,255), "Buttons/PlayButton.png", (PLAY_BUTTON_LOCATION))
     instructions = Button((255,255,255), "Buttons/InstructionButton.png", (INSTRUCTION_BUTTON_LOCATION))
     
     Tester.restart()
@@ -53,7 +54,7 @@ def menu():
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-                state = 1
+                sys.exit("quit game")
             if event.type == MOUSEBUTTONDOWN:
                 state = 2
             
@@ -66,8 +67,8 @@ def menu():
                 Tester.resume()
             elif (loc[0] > INSTRUCTION_BUTTON_LOCATION[0] and loc[0] < (INSTRUCTION_BUTTON_LOCATION[0] + BUTTON_WIDTH) and 
                 loc[1] > INSTRUCTION_BUTTON_LOCATION[1] and loc[1] < (INSTRUCTION_BUTTON_LOCATION[1] + BUTTON_HEIGHT)):
-                print("main game")
-                Tester.resume()
+                print("instruction menu")
+                Instructions.load()
             state = 0
 #         if (loc[0] > 100 and loc[0] < 140 and loc[1] > 50 and loc[1] < 90):
 #             print("instructions")

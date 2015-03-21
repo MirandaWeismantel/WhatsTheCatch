@@ -12,7 +12,7 @@ import Menu
 pygame.init()
 pygame.font.init()
 
-background = pygame.image.load("res/MenuBackground.png")
+background = pygame.image.load("res/InstructionBackground.png")
 backgroundRect = background.get_rect()
 
 
@@ -24,32 +24,37 @@ class Button(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(filename).convert()
         self.image.set_colorkey(color) 
-        self.image = pygame.transform.scale(self.image, (40,40))
+        self.image = pygame.transform.scale(self.image, (100,60))
         self.rect = self.image.get_rect()
         self.rect.x = location[0]
         self.rect.y = location[1]
 
-def instructions_load():
-    return_button = Button((255,255,255), "res/testButton.png", (50,50))
+def load():
+    BUTTON_WIDTH = 100
+    BUTTON_HEIGHT = 60
+    RETURN_BUTTON_LOC = (250, 200)
+    return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
     
+
     state = 1
-    while( state != 0 ):
+    while( state == 1 ):
         screen.fill([255,255,255])
         screen.blit(return_button.image, return_button)
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-                state = 1
+                state = 0
             if event.type == MOUSEBUTTONDOWN:
                 state = 2
                 
     if (state == 2):
         print("mouse click")
         loc = pygame.mouse.get_pos()
-        if (loc[0] > 50 and loc[0] < 90 and loc[1] > 50 and loc[1] < 90):
+        if (loc[0] > RETURN_BUTTON_LOC[0] and loc[0] < (RETURN_BUTTON_LOC[0] + BUTTON_WIDTH) 
+            and loc[1] > RETURN_BUTTON_LOC[1] and loc[1] < (RETURN_BUTTON_LOC[1] + BUTTON_HEIGHT)):
             print("run game")
             Menu.menu()
-        instructions_load()
+        load()
             
         
 # instructions_load()
