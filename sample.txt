@@ -16,4 +16,33 @@ Sentence: I like to [ give | oil shirt ] my friends [ hugs toys | nine rain ] .
 
 Sentence: The snow is [ white | ill goat ] and [ cold | far up ] .
 
-    
+Sentence: I [want need | hate green seven] to go to the [store game park | love yellow cold] .
+
+Sentence: the [dog | cat mouse monkey] barked at Ryan .
+
+Sentence: I [saw found | six ball wet bounce] Alex and Matt at the [bus train | below car weight bricks] station .
+
+Sentence: The [boy girl | left orange coat] yelled at James.
+
+
+Sentences: I can see a [turtle dolphin fish shark | building garage yellow great] in the sea .
+
+Sentences: The [lion tiger| cat mouse bug] roared at the approaching human at the zoo.
+
+Sentences: Baseball is Austin’s favorite [sport hobby | potato billy green]
+
+Sentences: The lovely [red white pink smelly | car eye bring swag] rose is on the [table | Asia air party bank] .
+
+Sentences: Tom and Harry [read skim | boring passing go] over books in class .
+
+Sentences: A [good bad | cloud fault result] boy was in the [box house | comb stamp worry] .
+
+Sentences: I saw a [red blue | worry ticket threat] bird in the [tree forest sky| knife golf slipper] . 
+
+Sentences: The [boys girls | eleven boot fork uniform loaf] went to the [park gym | resting internet comic bill] .
+
+Sentences: John will [come arrive | honey turtle come roaring] late .
+
+Sentences: Can you tie your [hair shoes | arms horse China myth] ?
+
+Sentences: Hailey just [bought purchased | bullfight ankle grass] a new dress. 
