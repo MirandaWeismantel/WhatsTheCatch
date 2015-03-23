@@ -55,6 +55,8 @@ statsFont = pygame.font.SysFont('Courier New', 15)
 POINTS_PER_CORRECT_WORD = 50;
 POINTS_PER_INCORRECT_WORD = 50;
 POINTS_PER_SENTENCE = 25;
+fishSpeed = 1;
+eelSpeed = 1.5;
 
 def drawStats( screen ):
     global stats
@@ -92,11 +94,29 @@ endSentence = Sentence( [endWord] , "." )
 def createFish( word ):
     global fishes
     global sprites
-    newFish = Fish( word )
+    changeSpeed()
+    newFish = Fish( word, fishSpeed )
     newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 450 ) )
     sprites.append( newFish )
     fishes.append( newFish )
     
+def changeSpeed( ):
+    numCompletedSentences = stats.getCompletedSentenceCount()
+    if numCompletedSentences > 10:
+        eelSpeed = 3
+        fishSpeed = 2.5
+        Eel.updateSpeed(3)
+        Fish.updateSpeed(2.5)
+    elif numCompletedSentences > 5:
+        eelSpeed = 2.5
+        fishSpeed = 2
+        Eel.updateSpeed(2.5)
+        Fish.updateSpeed(2)
+    else: 
+        eelSpeed = 1.5
+        fishSpeed = 1
+        Eel.updateSpeed(1.5)
+        Fish.updateSpeed(1)
     
 totalAcceptableFish = 3
 totalUnacceptableFish = 2
@@ -172,6 +192,7 @@ def restart():
     testBoat = Boat()
     testBoat.moveTo(300, 100)
     sprites.append( testBoat )
+    changeSpeed()
     
     testLine = FishingLine(testBoat)
     testLine.moveTo(testBoat.x + 31, 111)
@@ -195,7 +216,8 @@ def restart():
     generateFish()
 
 def createEel():
-    newEel = Eel( stats , testHook , testLine  )
+    changeSpeed()
+    newEel = Eel( stats , testHook , testLine, eelSpeed )
     newEel.moveTo( -250, 300 ) #TODO Make Random
     sprites.append( newEel )
     eels.append( newEel )
@@ -252,7 +274,8 @@ def mainGame():
                             testHook.resetHook()
                         
                         if ( testSentence.isComplete() ): 
-                                stats.addPoints( POINTS_PER_SENTENCE ); 
+                                stats.addPoints( POINTS_PER_SENTENCE )
+                                stats.incrementCompletedSentences() 
                                 createNewSentence()
                                 generateFish()
             

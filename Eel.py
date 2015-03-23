@@ -17,6 +17,8 @@ class Eel( Sprite ):
     '''
     EEL_SPEED = 1
     EEL_SHIFT = 30
+    speed = 1
+    
     '''
     * The statistics object that stores the player's lives. The eel will
     * subtract lives from the statistics object if it touches the fishing line
@@ -27,7 +29,7 @@ class Eel( Sprite ):
     fishingHook = None
     fishingLine = None
     
-    def __init__( self , stats , fishingHook , fishingLine ):
+    def __init__( self , stats , fishingHook , fishingLine, eelSpeed ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/eel.png" ).convert() );
         self.stats = stats
@@ -38,6 +40,7 @@ class Eel( Sprite ):
         #slightly offset eel picture's extra whitespace width
         self.setWidth( 48 )
         self.setHeight( 15 )
+        self.speed = eelSpeed
     
     '''
     * Draws this eel onto the screen 
@@ -45,6 +48,9 @@ class Eel( Sprite ):
     def draw( self , screen ):
         Sprite.draw( self , screen )
         pass
+    
+    def updateSpeed(self, eelSpeed):
+        self.speed = eelSpeed
     
     '''
     * TEMPORARY: The eel png is too tall (height too great). We need to offset

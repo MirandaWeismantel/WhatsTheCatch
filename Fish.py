@@ -33,13 +33,14 @@ class Fish( Sprite ):
     facingRight = True
     
         
-    def __init__( self, word ):
+    def __init__( self, word, speed ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         self.setImage( pygame.image.load( "res/fish.png" ).convert() );
         self.hooked = False
         self.word = word
         self.setWidth( 32 )
         self.setHeight( 25 )
+        self.fishSpeed = speed
         pass
     
     '''
@@ -51,6 +52,9 @@ class Fish( Sprite ):
         self.drawWord( screen )
         pass
     
+    def updateSpeed(self, speed):
+        self.fishSpeed = speed
+        
     def moveTo( self , x , y ):
         self.x = x
         self.y = y
