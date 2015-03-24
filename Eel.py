@@ -10,7 +10,7 @@ from FishingHook import FishingHook
 from FishingLine import FishingLine
 
 pygame.mixer.init()
-# ShockSound = pygame.mixer.Sound('res/ShockSound.wav')
+ShockSound = pygame.mixer.Sound('res/ShockSound.wav')
 
 class Eel( Sprite ):
     
@@ -106,14 +106,14 @@ class Eel( Sprite ):
     def onCollide( self , otherSprite ):
         if ( isinstance( otherSprite , FishingHook ) ):
             self.stats.subtractLife()
-#             ShockSound.play(1,0)
+            ShockSound.play(0,0)
             #reset the fishing hook to start back at the surface
             #so that it doesn't keep colliding with  this eel
             self.fishingLine.resetLine()
             otherSprite.resetHook()
             pass
         elif ( isinstance( otherSprite , FishingLine ) ):
-#             ShockSound.play(1,0)
+            ShockSound.play(1,0)
             self.stats.subtractLife()
             otherSprite.resetLine()
             self.fishingHook.resetHook()

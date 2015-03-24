@@ -139,14 +139,14 @@ class Blank:
                 bubble = Image(60, 40, 100, 100)
                 bubble.setImage(pygame.image.load( "res/correct.png" ).convert())
                 
-                correct_Word_Sound.play(1,0)
+                correct_Word_Sound.play(0,0)
                 bubble.draw(screen)
                 return True
                 
             
         for unacceptable in self.unacceptableWords:
             if word.equals( unacceptable ):
-                incorrect_Word_Sound.play(1,0)
+                incorrect_Word_Sound.play(0,0)
                 self.filled = False
                 return False
             
