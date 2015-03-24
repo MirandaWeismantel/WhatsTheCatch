@@ -24,7 +24,9 @@ class FishingHook( Sprite ):
      
     def __init__( self , boat, line):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
-        self.setImage( pygame.image.load( "res/hook.png" ).convert() );
+        hookImage = pygame.image.load( "res/hook.png" );
+        hookImage = pygame.transform.scale( hookImage , ( 50 , 50 ) );
+        self.setImage( hookImage );
         self.boat = boat
         self.line = line
         self.setHeight( 40 )

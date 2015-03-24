@@ -305,7 +305,7 @@ class Sentence:
         
         #blitting the text before the first blank is easy, we just draw it
         #where is should start
-        screen.blit( display1 , (10 , 10 ) )
+        screen.blit( display1 , (10 , 50 ) )
         
         #we have to calculate offsets to render the text of the first blank - 
         #particularly, it is width1 to the left of its previous text
@@ -315,12 +315,12 @@ class Sentence:
         #
         #the extra 3 offset on the height is there to help even it out with
         #the height of other blanks and look nice
-        screen.blit( displayBlank , (10 + width1 , 10 - 
+        screen.blit( displayBlank , (10 + width1 , 50 - 
                                      (heightBlank - height1 ) + 3 ) )
         
         #blitting the text after the first blank is straightforward.
         #we just offset it by the width of the text up to and including the
         #first blank
-        screen.blit( display3 , (10 + width1 + widthBlank , 10 ) )
+        screen.blit( display3 , (10 + width1 + widthBlank , 50 ) )
 
         

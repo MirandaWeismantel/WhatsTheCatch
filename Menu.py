@@ -40,8 +40,8 @@ class Button(pygame.sprite.Sprite):
 def menu():
     BUTTON_WIDTH = 100
     BUTTON_HEIGHT = 40
-    PLAY_BUTTON_LOCATION = (100, 300)
-    INSTRUCTION_BUTTON_LOCATION = (300, 300)
+    PLAY_BUTTON_LOCATION = (100, 240)
+    INSTRUCTION_BUTTON_LOCATION = (300, 240)
     newGame = Button((255,255,255), "Buttons/PlayButton.png", (PLAY_BUTTON_LOCATION))
     instructions = Button((255,255,255), "Buttons/InstructionButton.png", (INSTRUCTION_BUTTON_LOCATION))
     
