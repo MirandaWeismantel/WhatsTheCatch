@@ -22,6 +22,8 @@ backgroundRect = background.get_rect()
 size = (width, height) = background.get_size()
 screen = pygame.display.set_mode(size)
 
+instructionsBox = 0
+
 
 class Button(pygame.sprite.Sprite):
     def __init__(self, color, filename, location):
