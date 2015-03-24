@@ -137,12 +137,12 @@ class Blank:
                 correct_Word_Sound.play()
                 bubble.draw(screen)
                 return True
-            else:
-                incorrect_Word_Sound = pygame.mixer.Sound('Resources/InorrectWordSound.wav')
-                incorrect_Word_Sound.play()
+                
             
         for unacceptable in self.unacceptableWords:
             if word.equals( unacceptable ):
+                incorrect_Word_Sound = pygame.mixer.Sound('Resources/InorrectWordSound.wav')
+                incorrect_Word_Sound.play()
                 self.filled = False
                 return False
             
