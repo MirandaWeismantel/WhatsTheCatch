@@ -313,6 +313,7 @@ def mainGame():
 '''
 * Pauses the game and hides the game window
 '''
+                
 def pause():
     global state
     state = 0
