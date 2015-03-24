@@ -27,9 +27,9 @@ Sentence: The [ boy girl | left orange coat ] yelled at James.
 
 Sentence: I can see a [ turtle dolphin fish shark | building garage yellow great ] in the sea .
 
-Sentence: The [ lion tiger| cat mouse bug ] roared at the approaching human at the zoo.
+Sentence: The [ lion tiger | cat mouse bug ] roared at the approaching human at the zoo .
 
-Sentence: Baseball is Austin’s favorite [ sport hobby | potato billy green ]
+Sentence: Baseball is Austin’s favorite [ sport hobby | potato billy green ] .
 
 Sentence: The lovely [ red white pink smelly | car eye bring swag ] rose is on the [ table | Asia air party bank ] .
 
