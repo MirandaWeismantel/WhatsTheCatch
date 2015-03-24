@@ -123,7 +123,6 @@ def changeSpeed( ):
             Eel.updateSpeed(1.5)
         for fish in fishes:
             Fish.updateSpeed(1)
-
     
 totalAcceptableFish = 3
 totalUnacceptableFish = 2
@@ -209,12 +208,12 @@ def restart():
     testHook.moveTo(testBoat.x, 180)
     sprites.append( testHook )
     
-    testEel = Eel( stats , testHook , testLine )
+    testEel = Eel( stats , testHook , testLine, eelSpeed )
     testEel.EEL_SPEED = 1.5      #in the future this can be randomized
     testEel.moveTo( -250 , 250 )
     sprites.append( testEel )
     
-    testEel2 = Eel( stats , testHook , testLine )
+    testEel2 = Eel( stats , testHook , testLine, eelSpeed )
     testEel2.EEL_SPEED = 2
     testEel2.moveTo( -100 , 400 )
     sprites.append( testEel2 )
