@@ -133,6 +133,8 @@ class Blank:
                 
                 bubble = Image(60, 40, 100, 100)
                 bubble.setImage(pygame.image.load( "res/correct.png" ).convert())
+                correct_Word_Sound = pygame.mixer.Sound('Resources/CorrectWordSound.wav')
+                correct_Word_Sound.play()
                 bubble.draw(screen)
                 return True
             
