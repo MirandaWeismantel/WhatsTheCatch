@@ -196,7 +196,7 @@ def restart():
     #and sprites list
     
     testBoat = Boat()
-    testBoat.moveTo(300, 100)
+    testBoat.moveTo(300, 50)
     sprites.append( testBoat )
     changeSpeed()
     
