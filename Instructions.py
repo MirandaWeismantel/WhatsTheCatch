@@ -8,8 +8,6 @@ import pygame
 from pygame.locals import *
 import sys
 
-import Menu
-
 pygame.init()
 pygame.font.init()
 
@@ -71,6 +69,7 @@ def load():
         if (loc[0] > RETURN_BUTTON_LOC[0] and loc[0] < (RETURN_BUTTON_LOC[0] + BUTTON_WIDTH) 
             and loc[1] > RETURN_BUTTON_LOC[1] and loc[1] < (RETURN_BUTTON_LOC[1] + BUTTON_HEIGHT)):
             print("run game")
+            import Menu
             Menu.menu()
             
         '''
