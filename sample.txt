@@ -37,12 +37,12 @@ Sentence: Tom and Harry [ read skim | boring passing go ] over books in class .
 
 Sentence: A [ good bad | cloud fault result ] boy was in the [ box house | comb stamp worry ] .
 
-Sentence: I saw a [ red blue | worry ticket threat ] bird in the [ tree forest sky| knife golf slipper ] . 
+Sentence: I saw a [ red blue | worry ticket threat ] bird in the [ tree forest sky | knife golf slipper ] . 
 
 Sentence: The [ boys girls | eleven boot fork uniform loaf ] went to the [ park gym | resting internet comic bill ] .
 
-Sentence: John will [ come arrive | honey turtle come roaring ] late .
+Sentence: John will [ come arrive | honey turtle roaring ] late .
 
 Sentence: Can you tie your [ hair shoes | arms horse China myth ] ?
 
-Sentence: Hailey just [ bought purchased | bullfight ankle grass ] a new dress. 
+Sentence: Hailey just [ bought purchased | bullfight ankle grass ] a new dress . 
