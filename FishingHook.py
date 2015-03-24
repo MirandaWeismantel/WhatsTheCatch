@@ -118,7 +118,7 @@ class FishingHook( Sprite ):
     '''            
     def resetHook( self ):
         boatLocation = self.boat.getLocation()
-        self.moveTo( boatLocation[ 0 ] , boatLocation[ 1 ]+10 )
+        self.moveTo( boatLocation[ 0 ] , 115 )
         self.line.setHeight(10)
         self.line.image = pygame.transform.scale(self.line.image, (5, self.height))
         if ( not self.hookedFish == None ):

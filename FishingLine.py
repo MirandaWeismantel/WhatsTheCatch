@@ -46,7 +46,7 @@ class FishingLine( Sprite ):
             #move fishing hook left
             self.move( -1*dist , 0 )
         if key[pygame.K_UP]:
-            if (self.height < 2):
+            if (self.height < 20):
                 pass
             else: 
                 self.image = pygame.transform.scale(self.image, (5, self.height))
@@ -78,7 +78,7 @@ class FishingLine( Sprite ):
         boatLocation = self.boat.getLocation()
         self.setHeight( 1 )
         self.image = pygame.transform.scale(self.image, (5, self.height))
-        self.moveTo( boatLocation[ 0 ]+31 , 111 )
+        self.moveTo( boatLocation[ 0 ]+31 , 122 )
     
 
             

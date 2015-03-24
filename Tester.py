@@ -201,7 +201,7 @@ def restart():
     changeSpeed()
     
     testLine = FishingLine(testBoat)
-    testLine.moveTo(testBoat.x + 31, 111)
+    testLine.moveTo(testBoat.x + 31, 122)
     sprites.append( testLine )
     
     testHook = FishingHook( testBoat, testLine )
