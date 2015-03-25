@@ -94,11 +94,11 @@ endSentence = Sentence( [endWord] , "!" )
 def createFish( word ):
     global fishes
     global sprites
-    changeSpeed()
     newFish = Fish( word, fishSpeed )
     newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 450 ) )
     sprites.append( newFish )
     fishes.append( newFish )
+    changeSpeed()
     
 def changeSpeed( ):
     numCompletedSentences = stats.getCompletedSentenceCount()
@@ -109,7 +109,7 @@ def changeSpeed( ):
             eel.updateSpeed(3)
         for fish in fishes:
             fish.updateSpeed(2.5)
-    elif numCompletedSentences > 5:
+    elif numCompletedSentences > 1:
         eelSpeed = 2.5
         fishSpeed = 2
         for eel in eels:
@@ -227,11 +227,11 @@ def restart():
     generateFish()
 
 def createEel():
-    changeSpeed()
     newEel = Eel( stats , testHook , testLine, eelSpeed )
     newEel.moveTo( -250, 300 ) #TODO Make Random
     sprites.append( newEel )
     eels.append( newEel )
+    changeSpeed()
     #testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
 
 
