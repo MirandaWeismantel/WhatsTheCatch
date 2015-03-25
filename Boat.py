@@ -31,6 +31,8 @@ class Boat( Sprite ):
         pass
     
     def key_press(self):
+        pass
+        return
         """ Handles Keys """
         key = pygame.key.get_pressed()
         dist = 1

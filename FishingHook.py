@@ -39,6 +39,10 @@ class FishingHook( Sprite ):
         self.rect.x = x
         self.rect.y = y-10
     
+    def moveHookedFish( self , dx , dy ):
+        if ( self.hookedFish != None ):
+            self.hookedFish.moveTo( self.hookedFish.x + dx , self.hookedFish.y + dy )
+    
     '''
     * Draws this fishing hook onto the screen 
     '''
@@ -51,15 +55,20 @@ class FishingHook( Sprite ):
         """ Handles Keys """
         key = pygame.key.get_pressed()
         dist = 1
-        if key[pygame.K_RIGHT]: # right key
+        if key[pygame.K_RIGHT] and (self.boat.x + dist <= 450) : # right key
             
             #move fishing hook right
             self.move( dist , 0 )
-        elif key[pygame.K_LEFT]: # left key
+            self.moveHookedFish( dist , 0 )
+            self.boat.move( dist , 0 )
+        elif key[pygame.K_LEFT] and (self.boat.x - dist >= 0) : # left key
             
             #move fishing hook left
             self.move( -1*dist , 0 )
+            self.moveHookedFish( -1*dist , 0 )
+            self.boat.move( -1*dist , 0 )
         if key[pygame.K_UP]:
+            self.moveHookedFish( 0 , -1*dist )
             if (self.y - dist <105):
                 
                 #don't let hook move too high, so we do nothing
@@ -77,6 +86,7 @@ class FishingHook( Sprite ):
                 
                 #move left
                 self.move( 0 , dist )
+                self.moveHookedFish( 0 , dist )
         if key[pygame.K_SPACE]:
             self.hookedFish = None
 

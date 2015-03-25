@@ -37,11 +37,11 @@ class FishingLine( Sprite ):
         """ Handles Keys """
         key = pygame.key.get_pressed()
         dist = 1
-        if key[pygame.K_RIGHT]: # right key
+        if key[pygame.K_RIGHT] and ( self.boat.x + dist <= 450 ): # right key
             
             #move fishing hook right
             self.move( dist , 0 )
-        elif key[pygame.K_LEFT]: # left key
+        elif key[pygame.K_LEFT] and (self.boat.x - dist >= 0 ): # left key
             
             #move fishing hook left
             self.move( -1*dist , 0 )
@@ -52,7 +52,7 @@ class FishingLine( Sprite ):
                 self.image = pygame.transform.scale(self.image, (5, self.height))
                 self.setHeight( self.getHeight()-1 )
         elif key[pygame.K_DOWN]:
-            if (self.y + dist >490):
+            if (self.y + self.getHeight() + dist >500):
                 
                 #don't let hook move too low, so we do nothing
                 pass
