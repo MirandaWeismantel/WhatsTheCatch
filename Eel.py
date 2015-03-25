@@ -34,7 +34,11 @@ class Eel( Sprite ):
     
     def __init__( self , stats , fishingHook , fishingLine, eelSpeed ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
-        self.setImage( pygame.image.load( "res/eel.png" ).convert() );
+        eelImage = pygame.image.load( "res/eel.png" ).convert()
+        #eelImage = pygame.image.load( "res/eel1.png" ).convert()
+        #eelImage = pygame.transform.scale( eelImage , (100 , 50) )
+        #eelImage.set_colorkey( (255,255,255) )
+        self.setImage( eelImage );
         self.stats = stats
         
         self.fishingHook = fishingHook
@@ -116,7 +120,7 @@ class Eel( Sprite ):
             otherSprite.resetHook()
             pass
         elif ( isinstance( otherSprite , FishingLine ) ):
-            ShockSound.play(1,0)
+            ShockSound.play(0,0)
             self.stats.subtractLife()
             otherSprite.resetLine()
             self.fishingHook.resetHook()
