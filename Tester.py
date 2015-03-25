@@ -89,7 +89,7 @@ def resetSentenceFactory():
 testSentence = None
     
 endWord = Word( "Congratulations!!" )
-endSentence = Sentence( [endWord] , "." )    
+endSentence = Sentence( [endWord] , "!" )    
     
 def createFish( word ):
     global fishes
@@ -132,6 +132,11 @@ def generateFish():
     global totalUnacceptableFish
     global fishes
     global sprites
+    
+    for fish in fishes:
+        sprites.remove( fish )
+        
+    fishes = []
     
     if testSentence.isComplete():
         return
@@ -272,11 +277,14 @@ def mainGame():
                             success = testSentence.fillInNextBlank( fish.word )
                             if ( success ):
                                 stats.addPoints( POINTS_PER_CORRECT_WORD );
+                                generateFish()
                             else:
                                 stats.subtractPoints( POINTS_PER_INCORRECT_WORD );
-                            fishes.remove( fish )
-                            sprites.remove( fish )
-                            generateFish()
+                                fishes.remove( fish )
+                                sprites.remove( fish )
+                            #fishes.remove( fish )
+                            #sprites.remove( fish )
+                            #generateFish()
                             testHook.resetHook()
                         
                         if ( testSentence.isComplete() ): 
