@@ -199,6 +199,7 @@ class Sentence:
     '''
     def __init__( self , sequence , punctuation ):
         self.sequence = sequence
+        self.punctuation = punctuation
 
     '''
     * @return             if this sentence is complete, that is, if it has

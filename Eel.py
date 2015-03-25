@@ -53,7 +53,10 @@ class Eel( Sprite ):
         pass
     
     def updateSpeed(self, eelSpeed):
-        self.speed = eelSpeed
+        if ( self.speed < 0 ):
+            self.speed = eelSpeed * -1
+        else:
+            self.speed = eelSpeed
     
     '''
     * TEMPORARY: The eel png is too tall (height too great). We need to offset

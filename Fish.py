@@ -53,7 +53,10 @@ class Fish( Sprite ):
         pass
     
     def updateSpeed(self, speed):
-        self.fishSpeed = speed
+        if ( self.fishSpeed < 0 ) :
+            self.fishSpeed = -1*speed
+        else:
+            self.fishSpeed = speed
         
     def moveTo( self , x , y ):
         self.x = x
