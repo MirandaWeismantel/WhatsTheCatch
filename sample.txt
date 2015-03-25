@@ -3,7 +3,7 @@
 # Type words as you would normally do
 # Use [ ] to delimit blanks
 # Use | to separate the valid and invalid words for each blank
-# There must be spaces around bracks "[" and pipes "|" or the parser won't work
+# There must be spaces around brackets "[" and pipes "|" or the parser won't work
 # Begin a line with "#" to indicate that it is a comment
 
 Sentence: I [ want | Ohio yellow ] a [ toy | eat run blue ] .
@@ -22,8 +22,7 @@ Sentence: the [ dog | cat mouse monkey ] barked at Ryan .
 
 Sentence: I [ saw found | six ball wet bounce ] Alex and Matt at the [ bus train | below car weight bricks ] station .
 
-Sentence: The [ boy girl | left orange coat ] yelled at James.
-
+Sentence: The [ boy girl | left orange coat ] yelled at James .
 
 Sentence: I can see a [ turtle dolphin fish shark | building garage yellow great ] in the sea .
 
