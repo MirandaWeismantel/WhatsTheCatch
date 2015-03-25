@@ -68,11 +68,11 @@ class Fish( Sprite ):
         * Draws this fish onto the screen
         '''
     def move(self, dx, dy):
-        if (self.x + dx == 600 and self.facingRight):
+        if (self.x + dx >= 600 and self.facingRight):
             self.fishSpeed = self.fishSpeed * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
-        elif (self.x + dx == -100 and not self.facingRight):
+        elif (self.x + dx <= -100 and not self.facingRight):
             self.fishSpeed = self.fishSpeed * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
