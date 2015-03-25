@@ -26,7 +26,7 @@ Sentence: The [ boy girl | left orange coat ] yelled at James .
 
 Sentence: I can see a [ turtle dolphin fish shark | building garage yellow great ] in the sea .
 
-Sentence: The [ lion tiger | cat mouse bug ] roared at the approaching human at the zoo .
+Sentence: The [ lion tiger | cat mouse bug ] roared at the human .
 
 Sentence: Baseball is Austin's favorite [ sport hobby | potato billy green ] .
 
@@ -34,7 +34,7 @@ Sentence: The lovely [ red white pink smelly | car eye bring swag ] rose is on t
 
 Sentence: Tom and Harry [ read skim | boring passing go ] over books in class .
 
-Sentence: A [ good bad | cloud fault result ] boy was in the [ box house | comb stamp worry ] .
+Sentence: A [ good bad | cloud fault result ] boy was in the [ building house | comb stamp worry ] .
 
 Sentence: I saw a [ red blue | worry ticket threat ] bird in the [ tree forest sky | knife golf slipper ] . 
 
