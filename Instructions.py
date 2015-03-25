@@ -56,28 +56,31 @@ def load():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 state = 0
             if event.type == MOUSEBUTTONDOWN:
-                state = 2
+                print("mouse click")
+                loc = pygame.mouse.get_pos()
                 
-    if (state == 2):
-        print("mouse click")
-        loc = pygame.mouse.get_pos()
-        
-        '''
-        Return Button Press
-        
-        '''
-        if (loc[0] > RETURN_BUTTON_LOC[0] and loc[0] < (RETURN_BUTTON_LOC[0] + BUTTON_WIDTH) 
-            and loc[1] > RETURN_BUTTON_LOC[1] and loc[1] < (RETURN_BUTTON_LOC[1] + BUTTON_HEIGHT)):
-            print("run game")
-            
-        '''
-        Game Play Button Press
-        
-        '''
-        if (loc[0] > GAMEPLAY_BUTTON_LOC[0] and loc[0] < (GAMEPLAY_BUTTON_LOC[0] + BUTTON_WIDTH) 
-            and loc[1] > GAMEPLAY_BUTTON_LOC[1] and loc[1] < (GAMEPLAY_BUTTON_LOC[1] + BUTTON_HEIGHT)):
-            print("game play screen")
-            load()
+                '''
+                Return Button Press
+                
+                '''
+                if (loc[0] > RETURN_BUTTON_LOC[0] and loc[0] < (RETURN_BUTTON_LOC[0] + BUTTON_WIDTH) 
+                    and loc[1] > RETURN_BUTTON_LOC[1] and loc[1] < (RETURN_BUTTON_LOC[1] + BUTTON_HEIGHT)):
+                    print("run game")
+                    state = 0
+                    
+                #game play button press
+                elif (loc[0] > GAMEPLAY_BUTTON_LOC[0] and loc[0] < (GAMEPLAY_BUTTON_LOC[0] + BUTTON_WIDTH) 
+                    and loc[1] > GAMEPLAY_BUTTON_LOC[1] and loc[1] < (GAMEPLAY_BUTTON_LOC[1] + BUTTON_HEIGHT)):
+                    print("game play screen")
+                    
+                    #TODO load game play screen - do not use load() method
+                    #because it will make another instance of the Instructions
+                    #menu and you will have to click return twice to exit
+                    #instructions - instead, make a new state (e.g. 3)
+                    #to indicate viewing whatever information
+                    state = 1
+                else:
+                    state = 1
         
      
          
