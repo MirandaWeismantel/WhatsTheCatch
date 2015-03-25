@@ -74,11 +74,11 @@ class Eel( Sprite ):
     '''
         
     def move(self, dx, dy):
-        if (self.x + dx == 1000):
+        if (self.x + dx >= 1000):
             self.EEL_SPEED = self.EEL_SPEED * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
-        elif (self.x + dx == -500):
+        elif (self.x + dx <= -500):
             self.EEL_SPEED = self.EEL_SPEED * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
