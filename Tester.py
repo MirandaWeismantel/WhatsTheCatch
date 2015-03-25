@@ -89,7 +89,10 @@ def resetSentenceFactory():
 testSentence = None
     
 endWord = Word( "Congratulations!!" )
-endSentence = Sentence( [endWord] , "!" )    
+endSentence = Sentence( [endWord] , "!" )  
+
+lostWord = Word( "You are out of lives!!" )
+lostSentence = Sentence( [lostWord] , "!" )  
     
 def createFish( word ):
     global fishes
@@ -249,7 +252,7 @@ state = 0
 * Runs the game
 '''
 def mainGame():
-    global state , testSentence
+    global state , testSentence , lostSentence
     state = 1
     while( state != 0 ):
 
@@ -302,11 +305,28 @@ def mainGame():
                         if ( pygame.sprite.collide_rect( sprite1 , sprite2 ) ):
                             sprite1.onCollide( sprite2 )
                             sprite2.onCollide( sprite1 )
+                            
+            if ( stats.getLives() <= 0 ):
+                testSentence = lostSentence
             
             testSentence.draw( screen )
             drawStats( screen )
             
             pygame.display.update()
+            
+        elif state == 3:
+            from Instructions import Button
+            backToMenu = Button((255,255,255), "Buttons/Return.png", (200,200))
+            screen.blit( backToMenu.image , backToMenu )
+            pygame.display.update() 
+            
+            for event in pygame.event.get():
+                if ( event.type == MOUSEBUTTONDOWN ):
+                    loc = pygame.mouse.get_pos()
+                    if loc[ 0 ] >= 200 and loc[ 0 ] <= 300 and loc[ 1 ] >= 200 and loc[ 1 ] <= 240 :
+                        restart()
+                        pause()
+                        return
         
         if ( stats.getLives() <= 0 ):
             state = 3
@@ -317,6 +337,7 @@ def mainGame():
                 state = 0
             if event.type == pygame.QUIT:
                 state = 0
+        
 
 '''
 * Pauses the game and hides the game window
