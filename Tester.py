@@ -112,7 +112,7 @@ def changeSpeed( ):
             eel.updateSpeed(3)
         for fish in fishes:
             fish.updateSpeed(2.5)
-    elif numCompletedSentences > 1:
+    elif numCompletedSentences > 5:
         eelSpeed = 2.5
         fishSpeed = 2
         for eel in eels:
