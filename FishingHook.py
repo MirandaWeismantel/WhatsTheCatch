@@ -29,15 +29,15 @@ class FishingHook( Sprite ):
         self.setImage( hookImage );
         self.boat = boat
         self.line = line
-        self.setHeight( 43 )
-        self.setWidth( 50 )
+        self.setHeight( 35 )
+        self.setWidth( 30 )
         pass
     
     def moveTo( self , x , y ):
         self.x = x
         self.y = y
-        self.rect.x = x
-        self.rect.y = y-10
+        self.rect.x = x+5
+        self.rect.y = y
     
     def moveHookedFish( self , dx , dy ):
         if ( self.hookedFish != None ):

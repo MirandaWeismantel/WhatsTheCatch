@@ -47,6 +47,7 @@ class Fish( Sprite ):
         text = font.render(self.word.toString(), True, (255, 255, 0))
         textpos=text.get_rect()
         textwidth = tuple(textpos)[2]
+        self.image2.set_colorkey( (0,0,0) )
         self.setImage( pygame.transform.scale((self.image2),(textwidth+10,32)));
         self.setWidth( textwidth)
         self.setHeight( 25 )
