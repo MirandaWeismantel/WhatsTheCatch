@@ -66,12 +66,13 @@ class Eel( Sprite ):
     * TEMPORARY: The eel png is too tall (height too great). We need to offset
     * this by overriding the moveTo method to offset this extra height in
     * detecting collisions
-    '''
+    '''        
+            
     def moveTo( self , x , y ):
         self.x = x
         self.y = y
         self.rect.x = x
-        self.rect.y = y+15
+        self.rect.y = y
         
     '''
     * Moves the eel to the right by the speed of an eel
