@@ -34,7 +34,7 @@ class Eel( Sprite ):
     
     def __init__( self , stats , fishingHook , fishingLine, eelSpeed ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
-        eelImage = pygame.image.load( "res/eel.png" ).convert()
+        eelImage = pygame.image.load( "res/eel.png" ).convert_alpha()
         #eelImage = pygame.image.load( "res/eel1.png" ).convert()
         #eelImage = pygame.transform.scale( eelImage , (100 , 50) )
         #eelImage.set_colorkey( (255,255,255) )
