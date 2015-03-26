@@ -8,6 +8,8 @@ import pygame
 from Sprite import Sprite
 from FishingHook import FishingHook
 
+
+
 class Fish( Sprite ):
     
     '''
@@ -32,14 +34,23 @@ class Fish( Sprite ):
     '''
     facingRight = True
     
+    
         
     def __init__( self, word, speed ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
-        self.setImage( pygame.image.load( "res/fish.png" ).convert() );
+        #self.image1=pygame.image.load("Fish/Fish1.png")
+        self.image2=pygame.image.load("Fish/Fish2.png")
+        #self.image3=pygame.image.load("Fish/Fish3.png")
         self.hooked = False
         self.word = word
-        self.setWidth( 32 )
+        font = pygame.font.SysFont('Courier New', 15)
+        text = font.render(self.word.toString(), True, (255, 255, 0))
+        textpos=text.get_rect()
+        textwidth = tuple(textpos)[2]
+        self.setImage( pygame.transform.scale((self.image2),(textwidth+10,32)));
+        self.setWidth( textwidth)
         self.setHeight( 25 )
+        #self = pygame.transform.scale(self, (1200,800))
         self.fishSpeed = speed
         pass
     
@@ -51,6 +62,9 @@ class Fish( Sprite ):
         Sprite.draw( self , screen )
         self.drawWord( screen )
         pass
+    
+            
+    
     
     def updateSpeed(self, speed):
         if ( self.fishSpeed < 0 ) :
@@ -102,8 +116,15 @@ class Fish( Sprite ):
     '''
     def drawWord( self , screen ):
         font = pygame.font.SysFont('Courier New', 15)
-        text = font.render(self.word.toString(), True, (0, 0, 0))
-        screen.blit(text, (self.x+10 , self.y+15) )
+        font.set_bold(True)
+        text = font.render(self.word.toString(), True, (255, 255, 255))
+        screen.blit(text, (self.x+0 , self.y+5) )
+        textpos=text.get_rect()
+        textwidth = tuple(textpos)[2]
+        self.setWidth( textwidth)
+        
+        
+        
             
             
     def key_press(self):
