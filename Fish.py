@@ -77,8 +77,8 @@ class Fish( Sprite ):
         self.x = x
         self.y = y
         self.rect.x = x
-        self.rect.y = y-7
-    
+        self.rect.y = y#-7
+        #
     '''
         * Draws this fish onto the screen
         '''
