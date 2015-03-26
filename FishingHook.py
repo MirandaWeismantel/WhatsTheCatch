@@ -29,7 +29,7 @@ class FishingHook( Sprite ):
         self.setImage( hookImage );
         self.boat = boat
         self.line = line
-        self.setHeight( 50 )
+        self.setHeight( 43 )
         self.setWidth( 50 )
         pass
     
