@@ -9,6 +9,9 @@ from Sprite import Sprite
 from FishingHook import FishingHook
 from FishingLine import FishingLine
 
+pygame.mixer.init()
+ShockSound = pygame.mixer.Sound('res/ShockSound.wav')
+
 class Eel( Sprite ):
     
     '''
@@ -31,7 +34,11 @@ class Eel( Sprite ):
     
     def __init__( self , stats , fishingHook , fishingLine, eelSpeed ):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
-        self.setImage( pygame.image.load( "res/eel.png" ).convert() );
+        eelImage = pygame.image.load( "res/eel.png" ).convert()
+        #eelImage = pygame.image.load( "res/eel1.png" ).convert()
+        #eelImage = pygame.transform.scale( eelImage , (100 , 50) )
+        #eelImage.set_colorkey( (255,255,255) )
+        self.setImage( eelImage );
         self.stats = stats
         
         self.fishingHook = fishingHook
@@ -50,7 +57,10 @@ class Eel( Sprite ):
         pass
     
     def updateSpeed(self, eelSpeed):
-        self.speed = eelSpeed
+        if ( self.speed < 0 ):
+            self.speed = eelSpeed * -1
+        else:
+            self.speed = eelSpeed
     
     '''
     * TEMPORARY: The eel png is too tall (height too great). We need to offset
@@ -68,11 +78,11 @@ class Eel( Sprite ):
     '''
         
     def move(self, dx, dy):
-        if (self.x + dx == 1000):
+        if (self.x + dx >= 1000):
             self.EEL_SPEED = self.EEL_SPEED * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
-        elif (self.x + dx == -500):
+        elif (self.x + dx <= -500):
             self.EEL_SPEED = self.EEL_SPEED * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
@@ -103,13 +113,14 @@ class Eel( Sprite ):
     def onCollide( self , otherSprite ):
         if ( isinstance( otherSprite , FishingHook ) ):
             self.stats.subtractLife()
-            
+            ShockSound.play(0,0)
             #reset the fishing hook to start back at the surface
             #so that it doesn't keep colliding with  this eel
             self.fishingLine.resetLine()
             otherSprite.resetHook()
             pass
         elif ( isinstance( otherSprite , FishingLine ) ):
+            ShockSound.play(0,0)
             self.stats.subtractLife()
             otherSprite.resetLine()
             self.fishingHook.resetHook()

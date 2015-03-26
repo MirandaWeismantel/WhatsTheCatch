@@ -53,7 +53,10 @@ class Fish( Sprite ):
         pass
     
     def updateSpeed(self, speed):
-        self.fishSpeed = speed
+        if ( self.fishSpeed < 0 ) :
+            self.fishSpeed = -1*speed
+        else:
+            self.fishSpeed = speed
         
     def moveTo( self , x , y ):
         self.x = x
@@ -65,11 +68,11 @@ class Fish( Sprite ):
         * Draws this fish onto the screen
         '''
     def move(self, dx, dy):
-        if (self.x + dx == 600 and self.facingRight):
+        if (self.x + dx >= 600 and self.facingRight):
             self.fishSpeed = self.fishSpeed * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
-        elif (self.x + dx == -100 and not self.facingRight):
+        elif (self.x + dx <= -100 and not self.facingRight):
             self.fishSpeed = self.fishSpeed * -1
             self.moveTo( self.x , self.y + dy )
             self.flipImage()
@@ -108,23 +111,12 @@ class Fish( Sprite ):
         if(self.hooked == True):
             key = pygame.key.get_pressed()
             dist = 1
-            if key[pygame.K_RIGHT]: # right key
-                self.x += dist # move right
-            elif key[pygame.K_LEFT]: # left key
-                self.x -= dist # move left
             if key[pygame.K_UP]: # right key
                 if (self.y - dist <125):
                     self.y = 20
                     self.x = 0
                     self.hooked = False
                     self.caught = True
-                else:   
-                    self.y -= dist # move right
-            elif key[pygame.K_DOWN]: # left key
-                if (self.y + dist >490):
-                    self.y = self.y
-                else:   
-                    self.y += dist # move left
             if key[pygame.K_SPACE]:
                 self.unhook()
                 

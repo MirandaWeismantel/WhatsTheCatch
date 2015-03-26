@@ -17,7 +17,8 @@ class Boat( Sprite ):
     def __init__( self):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
         boatImage = pygame.image.load( "res/boat.png" ).convert()
-        boatImage = pygame.transform.scale( boatImage , ( 200 , 100 ) )
+        boatImage.set_colorkey( (255, 255, 255) )
+        boatImage = pygame.transform.scale( boatImage , ( 180 , 140 ) )
         self.setImage( boatImage );
         pass
     
@@ -30,6 +31,8 @@ class Boat( Sprite ):
         pass
     
     def key_press(self):
+        pass
+        return
         """ Handles Keys """
         key = pygame.key.get_pressed()
         dist = 1

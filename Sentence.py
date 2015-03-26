@@ -4,13 +4,18 @@ Created on Feb 15, 2015
 @author: mjchao
 '''
 
-import pygame
+import pygame, os
 from pygame.locals import *
 from Image import Image
 
 
 pygame.font.init()
 
+pygame.mixer.init()
+
+correct_Word_Sound = pygame.mixer.Sound('res/CorrectWordSound.wav')
+incorrect_Word_Sound = pygame.mixer.Sound('res/IncorrectWordSound.wav')                
+                
 '''
 * Represents a word in a sentence
 '''
@@ -133,11 +138,15 @@ class Blank:
                 
                 bubble = Image(60, 40, 100, 100)
                 bubble.setImage(pygame.image.load( "res/correct.png" ).convert())
+                
+                correct_Word_Sound.play(0,0)
                 bubble.draw(screen)
                 return True
+                
             
         for unacceptable in self.unacceptableWords:
             if word.equals( unacceptable ):
+                incorrect_Word_Sound.play(0,0)
                 self.filled = False
                 return False
             
@@ -190,6 +199,7 @@ class Sentence:
     '''
     def __init__( self , sequence , punctuation ):
         self.sequence = sequence
+        self.punctuation = punctuation
 
     '''
     * @return             if this sentence is complete, that is, if it has

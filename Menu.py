@@ -58,24 +58,15 @@ def menu():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 sys.exit("quit game")
             if event.type == MOUSEBUTTONDOWN:
-                state = 2
-            
-    if (state == 2):
-        print("mouse click")
-        loc = pygame.mouse.get_pos()
-        if (loc[0] > PLAY_BUTTON_LOCATION[0] and loc[0] < (PLAY_BUTTON_LOCATION[0] + BUTTON_WIDTH) and 
-            loc[1] > PLAY_BUTTON_LOCATION[1] and loc[1] < (PLAY_BUTTON_LOCATION[1] + BUTTON_HEIGHT)):
-            print("main game")
-            Tester.resume()
-        elif (loc[0] > INSTRUCTION_BUTTON_LOCATION[0] and loc[0] < (INSTRUCTION_BUTTON_LOCATION[0] + BUTTON_WIDTH) and 
-              loc[1] > INSTRUCTION_BUTTON_LOCATION[1] and loc[1] < (INSTRUCTION_BUTTON_LOCATION[1] + BUTTON_HEIGHT)):
-            print("instruction menu")
-            Instructions.load()
-            state = 0
-#         if (loc[0] > 100 and loc[0] < 140 and loc[1] > 50 and loc[1] < 90):
-#             print("instructions")
-#             Instructions.instructions_load()
-        #menu()
-
+                print("mouse click")
+                loc = pygame.mouse.get_pos()
+                if (loc[0] > PLAY_BUTTON_LOCATION[0] and loc[0] < (PLAY_BUTTON_LOCATION[0] + BUTTON_WIDTH) and 
+                    loc[1] > PLAY_BUTTON_LOCATION[1] and loc[1] < (PLAY_BUTTON_LOCATION[1] + BUTTON_HEIGHT)):
+                    print("main game")
+                    Tester.resume()
+                elif (loc[0] > INSTRUCTION_BUTTON_LOCATION[0] and loc[0] < (INSTRUCTION_BUTTON_LOCATION[0] + BUTTON_WIDTH) and 
+                      loc[1] > INSTRUCTION_BUTTON_LOCATION[1] and loc[1] < (INSTRUCTION_BUTTON_LOCATION[1] + BUTTON_HEIGHT)):
+                    print("instruction menu")
+                    Instructions.load()
             
 menu()

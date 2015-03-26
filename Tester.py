@@ -89,16 +89,19 @@ def resetSentenceFactory():
 testSentence = None
     
 endWord = Word( "Congratulations!!" )
-endSentence = Sentence( [endWord] , "." )    
+endSentence = Sentence( [endWord] , "!" )  
+
+lostWord = Word( "You are out of lives!!" )
+lostSentence = Sentence( [lostWord] , "!" )  
     
 def createFish( word ):
     global fishes
     global sprites
-    changeSpeed()
     newFish = Fish( word, fishSpeed )
     newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 450 ) )
     sprites.append( newFish )
     fishes.append( newFish )
+    changeSpeed()
     
 def changeSpeed( ):
     numCompletedSentences = stats.getCompletedSentenceCount()
@@ -109,7 +112,7 @@ def changeSpeed( ):
             eel.updateSpeed(3)
         for fish in fishes:
             fish.updateSpeed(2.5)
-    elif numCompletedSentences > 5:
+    elif numCompletedSentences > 1:
         eelSpeed = 2.5
         fishSpeed = 2
         for eel in eels:
@@ -132,6 +135,11 @@ def generateFish():
     global totalUnacceptableFish
     global fishes
     global sprites
+    
+    for fish in fishes:
+        sprites.remove( fish )
+        
+    fishes = []
     
     if testSentence.isComplete():
         return
@@ -196,12 +204,12 @@ def restart():
     #and sprites list
     
     testBoat = Boat()
-    testBoat.moveTo(300, 100)
+    testBoat.moveTo(300, 50)
     sprites.append( testBoat )
     changeSpeed()
     
     testLine = FishingLine(testBoat)
-    testLine.moveTo(testBoat.x + 31, 111)
+    testLine.moveTo(testBoat.x + 31, 122)
     sprites.append( testLine )
     
     testHook = FishingHook( testBoat, testLine )
@@ -222,11 +230,11 @@ def restart():
     generateFish()
 
 def createEel():
-    changeSpeed()
     newEel = Eel( stats , testHook , testLine, eelSpeed )
     newEel.moveTo( -250, 300 ) #TODO Make Random
     sprites.append( newEel )
     eels.append( newEel )
+    changeSpeed()
     #testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
 
 
@@ -244,7 +252,7 @@ state = 0
 * Runs the game
 '''
 def mainGame():
-    global state , testSentence
+    global state , testSentence , lostSentence
     state = 1
     while( state != 0 ):
 
@@ -272,11 +280,14 @@ def mainGame():
                             success = testSentence.fillInNextBlank( fish.word )
                             if ( success ):
                                 stats.addPoints( POINTS_PER_CORRECT_WORD );
+                                generateFish()
                             else:
                                 stats.subtractPoints( POINTS_PER_INCORRECT_WORD );
-                            fishes.remove( fish )
-                            sprites.remove( fish )
-                            generateFish()
+                                fishes.remove( fish )
+                                sprites.remove( fish )
+                            #fishes.remove( fish )
+                            #sprites.remove( fish )
+                            #generateFish()
                             testHook.resetHook()
                         
                         if ( testSentence.isComplete() ): 
@@ -294,11 +305,28 @@ def mainGame():
                         if ( pygame.sprite.collide_rect( sprite1 , sprite2 ) ):
                             sprite1.onCollide( sprite2 )
                             sprite2.onCollide( sprite1 )
+                            
+            if ( stats.getLives() <= 0 ):
+                testSentence = lostSentence
             
             testSentence.draw( screen )
             drawStats( screen )
             
             pygame.display.update()
+            
+        elif state == 3:
+            from Instructions import Button
+            backToMenu = Button((255,255,255), "Buttons/Return.png", (200,200))
+            screen.blit( backToMenu.image , backToMenu )
+            pygame.display.update() 
+            
+            for event in pygame.event.get():
+                if ( event.type == MOUSEBUTTONDOWN ):
+                    loc = pygame.mouse.get_pos()
+                    if loc[ 0 ] >= 200 and loc[ 0 ] <= 300 and loc[ 1 ] >= 200 and loc[ 1 ] <= 240 :
+                        restart()
+                        pause()
+                        return
         
         if ( stats.getLives() <= 0 ):
             state = 3
@@ -309,6 +337,7 @@ def mainGame():
                 state = 0
             if event.type == pygame.QUIT:
                 state = 0
+        
 
 '''
 * Pauses the game and hides the game window
