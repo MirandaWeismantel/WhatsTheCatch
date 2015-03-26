@@ -10,13 +10,13 @@ Sentence: I [ want | Ohio yellow ] a [ toy | eat run blue ] .
    
 Sentence: A cute [ kitten puppy | cactus jump ] is a [ pet | toy ] .
    
-Sentence: Let's go to the [ store | ear long ] to [ buy get | wake flower orange ] some [ bread milk | hair canyon ] .
+Sentence: Let's go to the [ store | ear long ] to [ buy get | wake flower orange ] some [ bread milk | hair road ] .
  
-Sentence: I like to [ give | oil shirt ] my friends [ hugs toys | nine rain ] .
+Sentence: I like to [ give | oil shirt ] my friends [ hugs gifts | nine rain ] .
 
 Sentence: The snow is [ white | ill goat ] and [ cold | far up ] .
 
-Sentence: I [ want need | hate green seven ] to go to the [ store game park | love yellow cold ] .
+Sentence: I [ want need | hate green seven ] to go to the [ store park | love yellow cold ] .
 
 Sentence: the [ dog | cat mouse monkey ] barked at Ryan .
 
