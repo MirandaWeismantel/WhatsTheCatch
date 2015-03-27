@@ -154,7 +154,8 @@ class Fish( Sprite ):
         self.hooked = True
         
     def unhook(self):
-        self.moveTo(self.x, self.y+20)
+        newY = max( self.y + 20 , 180 )
+        self.moveTo(self.x, newY)
         
         if ( self.facingRight ):
             self.fishSpeed = 1
