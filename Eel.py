@@ -46,7 +46,7 @@ class Eel( Sprite ):
         
         #slightly offset eel picture's extra whitespace width
         self.setWidth( 48 )
-        self.setHeight( 15 )
+        #self.setHeight( 15 )
         self.speed = eelSpeed
     
     '''
@@ -71,7 +71,7 @@ class Eel( Sprite ):
     def moveTo( self , x , y ):
         self.x = x
         self.y = y
-        self.rect.x = x
+        self.rect.x = x+3
         self.rect.y = y
         
     '''
