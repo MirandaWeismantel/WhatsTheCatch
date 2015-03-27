@@ -16,6 +16,7 @@ Please note that due to time constraints on the alpha release, some of the contr
 * If you run out of lives, the game stops running and you must close the window and restart to try again.
 
 === Beta Release Notes ===
+
 To run the game, import the project into Eclipse, and run Menu.py
 
 * All Alpha Release controls still apply (up, down, right left arrow keys) 
