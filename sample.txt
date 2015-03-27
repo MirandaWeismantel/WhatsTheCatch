@@ -2,7 +2,7 @@
 # Type "Sentence:" to indicate the start of the sentence.
 # Type words as you would normally do
 # Use [ ] to delimit blanks
-# Use | to separate the valid and invalid words for each blank
+# Use | to separate the valid and invalid words for each blank. Valid words go on the left, invalid words go on the right.
 # There must be spaces around brackets "[" and pipes "|" or the parser won't work
 # Begin a line with "#" to indicate that it is a comment
 
