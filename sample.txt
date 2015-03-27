@@ -5,6 +5,8 @@
 # Use | to separate the valid and invalid words for each blank. Valid words go on the left, invalid words go on the right.
 # There must be spaces around brackets "[" and pipes "|" or the parser won't work
 # Begin a line with "#" to indicate that it is a comment
+# Sentences must have at least 1 word, 1 blank, and 1 punctuation
+# Blanks must have at least 1 correct word, and 1 incorrect word
 
 Sentence: I [ want | Ohio yellow ] a [ toy | eat run blue ] .
    
