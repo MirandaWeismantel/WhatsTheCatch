@@ -23,7 +23,7 @@
 
 === Final ===
 * I will ask for points for the other category of nontrivial implementation as File I/O was not covered in discussion (+2,3 pts)
-* Improve menu functionality (+4,5 pts)
+* Improve instructions (+4,5 pts to menu functionality) - give it next, prev buttons, separate out the instructions, etc.
 * Multiple sentence input files (+1,2 for multiple levels/difficulties, +1,2 for for user customizability)
 * Record best score for each input file (+1, 2 pts to larger gameplay goals)
 * Get animations working (+2,3 pts for graphics)
