@@ -20,3 +20,8 @@
 * Abstract out Screen object for larger world
 * SentenceFactory
 * Animations
+
+=== Final ===
+* I will ask for points for the other category of nontrivial implementation (+2,3 pts)
+* Improve menu functionality (+4,5 pts)
+* Multiple sentence input files (+1,2 for multiple levels/difficulties, +1,2 for for user customizability)
