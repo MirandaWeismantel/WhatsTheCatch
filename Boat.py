@@ -26,18 +26,5 @@ class Boat( Sprite ):
     * Draws this eel onto the screen 
     '''
     def draw( self , screen ):
-        self.key_press()
         Sprite.draw( self , screen )
-        pass
-    
-    def key_press(self):
-        pass
-        return
-        """ Handles Keys """
-        key = pygame.key.get_pressed()
-        dist = 1
-        if key[pygame.K_RIGHT]: # right key
-            self.x += dist # move right
-        elif key[pygame.K_LEFT]: # left key
-            self.x -= dist # move left
 

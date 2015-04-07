@@ -365,6 +365,14 @@ def getState():
 def setSentenceFile( filename ):
     global sentenceFilename
     sentenceFilename = filename
+    
+def setTwoPlayerMode( on ):
+    global testHook
+    if ( on ):
+        testHook.twoPlayerMode = True
+        testLine.twoPlayerMode = True
+    else:
+        testHook.twoPlayerMode = False
+        testLine.twoPlayerMode = False
           
-#mainGame()  
-     
+#mainGame()

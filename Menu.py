@@ -36,6 +36,7 @@ def menu():
     quitGame = Button( (255,255,255) , "Buttons/QuitButton.png" , (200,450) , MENU_BUTTON_SIZE )
     
     Tester.restart()
+    Tester.setTwoPlayerMode( False )
     
     state = 0
     while state == 0:

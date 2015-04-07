@@ -16,6 +16,7 @@ class FishingLine( Sprite ):
     '''
     boat = None
     
+    twoPlayerMode = False
      
     def __init__( self , boat):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
@@ -37,11 +38,19 @@ class FishingLine( Sprite ):
         """ Handles Keys """
         key = pygame.key.get_pressed()
         dist = 1
-        if key[pygame.K_RIGHT] and ( self.boat.x + dist <= 450 ): # right key
+        
+        if ( self.twoPlayerMode ):
+            rightKeyPressed = key[ pygame.K_d ]
+            leftKeyPressed = key[ pygame.K_a ]
+        else :
+            rightKeyPressed = key[ pygame.K_RIGHT ]
+            leftKeyPressed = key[ pygame.K_LEFT ]
+            
+        if rightKeyPressed and ( self.boat.x + dist <= 450 ): # right key
             
             #move fishing hook right
             self.move( dist , 0 )
-        elif key[pygame.K_LEFT] and (self.boat.x - dist >= 0 ): # left key
+        elif leftKeyPressed and (self.boat.x - dist >= 0 ): # left key
             
             #move fishing hook left
             self.move( -1*dist , 0 )

@@ -21,6 +21,13 @@ class FishingHook( Sprite ):
     * The fish that is currently hooked (None, if no fish is hooked)
     '''
     hookedFish = None
+    
+    '''
+    * If we are in two player mode or not (in two player mode, the controls
+    * change where A,D moves the boat left and right and UP/DOWN moves the
+    * hook up and down
+    '''
+    twoPlayerMode = False
      
     def __init__( self , boat, line):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
@@ -55,13 +62,20 @@ class FishingHook( Sprite ):
         """ Handles Keys """
         key = pygame.key.get_pressed()
         dist = 1
-        if key[pygame.K_RIGHT] and (self.boat.x + dist <= 450) : # right key
+        if ( self.twoPlayerMode ):
+            rightKeyPressed = key[ pygame.K_d ]
+            leftKeyPressed = key[ pygame.K_a ]
+        else :
+            rightKeyPressed = key[ pygame.K_RIGHT ]
+            leftKeyPressed = key[ pygame.K_LEFT ]
+            
+        if rightKeyPressed and (self.boat.x + dist <= 450) : # right key
             
             #move fishing hook right
             self.move( dist , 0 )
             self.moveHookedFish( dist , 0 )
             self.boat.move( dist , 0 )
-        elif key[pygame.K_LEFT] and (self.boat.x - dist >= 0) : # left key
+        elif leftKeyPressed and (self.boat.x - dist >= 0) : # left key
             
             #move fishing hook left
             self.move( -1*dist , 0 )
