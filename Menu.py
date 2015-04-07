@@ -60,6 +60,7 @@ def menu():
                     Tester.resume()
                 elif (newGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     print("main game")
+                    Tester.setSentenceFile( "sentences/" + SentenceSelector.getSelected() )
                     Tester.restart()
                     Tester.resume()
                 elif ( instructions.clicked( loc[ 0 ] , loc[ 1 ] ) ):

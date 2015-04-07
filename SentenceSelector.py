@@ -56,5 +56,8 @@ def load():
                 elif ( prevButton.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     sentenceManager.prev()
                     
+def getSelected():
+    return sentenceManager.getSelectedFilename()
+                    
                     
                 

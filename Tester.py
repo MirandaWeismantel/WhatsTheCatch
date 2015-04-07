@@ -80,9 +80,10 @@ def resetStats():
     stats.addLife()
 
 factory = None
+sentenceFilename = "sentences/ Sample"
 def resetSentenceFactory():
     global factory
-    factory = SentenceFactory( "sample.txt" )
+    factory = SentenceFactory( sentenceFilename )
 
     #check that the data file is formatted correctly
     factory.validate()
@@ -360,6 +361,10 @@ def resume():
 def getState():
     global state
     return state
+
+def setSentenceFile( filename ):
+    global sentenceFilename
+    sentenceFilename = filename
           
 #mainGame()  
      
