@@ -68,7 +68,7 @@ def menu():
                 elif( customizations.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     #TODO
                     pass
-                elif ( quit.clicked( loc[ 0 ] , loc[ 1 ] ) ):
+                elif ( quitGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     return
             
 menu()

@@ -8,6 +8,8 @@ import pygame
 from pygame.locals import *
 import sys
 
+from UIUtils import Button
+
 pygame.init()
 pygame.font.init()
 
@@ -21,24 +23,11 @@ screen = pygame.display.set_mode(size)
 font = pygame.font.SysFont('Courier New', 20)
 textBox = pygame.Rect((100, 100, 200, 300))
 
-
-
-
-class Button(pygame.sprite.Sprite):
-    def __init__(self, color, filename, location):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(filename).convert()
-        self.image.set_colorkey(color) 
-        self.image = pygame.transform.scale(self.image, (100,40))
-        self.rect = self.image.get_rect()
-        self.rect.x = location[0]
-        self.rect.y = location[1]
-
 def load():
     BUTTON_WIDTH = 100
     BUTTON_HEIGHT = 40
     
-    RETURN_BUTTON_LOC = (50, 50)
+    RETURN_BUTTON_LOC = (0, 0)
     return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
    
 #     GAMEPLAY_BUTTON_LOC = (50, 100)
@@ -49,7 +38,7 @@ def load():
     while( state == 1 ):
         screen.fill([255,255,255])
         screen.blit(background, backgroundRect)
-        #screen.blit(return_button.image, return_button)
+        screen.blit(return_button.image, return_button)
 #         screen.blit(gameplay_button.image, gameplay_button)
         pygame.display.update()
         for event in pygame.event.get():
@@ -63,10 +52,8 @@ def load():
                 Return Button Press
                 
                 '''
-                if (loc[0] > RETURN_BUTTON_LOC[0] and loc[0] < (RETURN_BUTTON_LOC[0] + BUTTON_WIDTH) 
-                    and loc[1] > RETURN_BUTTON_LOC[1] and loc[1] < (RETURN_BUTTON_LOC[1] + BUTTON_HEIGHT)):
-                    print("run game")
-                    state = 0
+                if (return_button.clicked( loc[ 0 ] , loc[ 1 ] ) ):
+                    return
                     
                 #game play button press
 #                 elif (loc[0] > GAMEPLAY_BUTTON_LOC[0] and loc[0] < (GAMEPLAY_BUTTON_LOC[0] + BUTTON_WIDTH) 
