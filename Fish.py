@@ -17,6 +17,7 @@ class Fish( Sprite ):
     * in pixels
     '''
     fishSpeed = 1
+    fishSpeedOld = fishSpeed
     
     '''
     * the speed of the fish before it was hooked. This way, if the fish gets
@@ -65,7 +66,9 @@ class Fish( Sprite ):
         pass
     
             
-    
+    def setOldSpeed(self, speed):
+        self.fishSpeedOld = speed
+          
     
     def updateSpeed(self, speed):
         if ( self.fishSpeed < 0 ) :
@@ -110,7 +113,10 @@ class Fish( Sprite ):
     def onCollide( self , otherSprite ):
         if ( isinstance( otherSprite , FishingHook ) ):
             if ( otherSprite.canHookFish( self ) ):
+                if ( self.fishSpeed != 0):
+                    self.setOldSpeed(self.fishSpeed)
                 self.hook()
+    
         
     '''
     * Draws the word on to the fish
@@ -149,17 +155,19 @@ class Fish( Sprite ):
         self.image = pygame.transform.flip(self.image, 1, 0)
         
     def hook( self ):
-        #TODO
         self.fishSpeed = 0
         self.hooked = True
         
     def unhook(self):
         newY = max( self.y + 20 , 180 )
         self.moveTo(self.x, newY)
+        #print(self.fishSpeedOld)
+        self.fishSpeed = self.fishSpeedOld
         
-        if ( self.facingRight ):
-            self.fishSpeed = 1
-        else:
-            self.fishSpeed = -1
+        #if ( self.facingRight ):
+            #self.fishSpeed = self.fishSpeedOld
+        #else:
+            #self.fishSpeed = self.fishSpeedOld
+        
         
         self.hooked = False

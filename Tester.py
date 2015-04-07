@@ -99,7 +99,7 @@ def createFish( word ):
     global fishes
     global sprites
     newFish = Fish( word, fishSpeed )
-    newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 450 ) )
+    newFish.moveTo( random.randrange( -500 , 0 ) , random.randrange( 200 , 420 ) )
     sprites.append( newFish )
     fishes.append( newFish )
     changeSpeed()
