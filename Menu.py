@@ -10,6 +10,8 @@ from pygame.locals import *
 import Tester
 import Instructions
 import sys
+import SentenceSelector
+
 from UIUtils import Button
 
 pygame.init()
@@ -25,12 +27,13 @@ screen = pygame.display.set_mode(size)
 instructionsBox = 0
         
 def menu():
-    continueGame = Button( (255,255,255) , "Buttons/ContinueButton.png" , (200 , 200) )
-    newGame = Button((255,255,255), "Buttons/NewGameButton.png", (200, 250))
-    instructions = Button((255,255,255), "Buttons/InstructionButton.png", (200, 300))
-    sentences = Button( (255,255,255) , "Buttons/SentencesButton.png" , (200 , 350) )
-    customizations = Button( (255,255,255) , "Buttons/CustomizationsButton.png" , (200,400) )
-    quitGame = Button( (255,255,255) , "Buttons/QuitButton.png" , (200,450) )
+    MENU_BUTTON_SIZE = (100,40)
+    continueGame = Button( (255,255,255) , "Buttons/ContinueButton.png" , (200 , 200) , MENU_BUTTON_SIZE )
+    newGame = Button((255,255,255), "Buttons/NewGameButton.png", (200, 250) , MENU_BUTTON_SIZE )
+    instructions = Button((255,255,255), "Buttons/InstructionButton.png", (200, 300) , MENU_BUTTON_SIZE )
+    sentences = Button( (255,255,255) , "Buttons/SentencesButton.png" , (200 , 350) , MENU_BUTTON_SIZE )
+    customizations = Button( (255,255,255) , "Buttons/CustomizationsButton.png" , (200,400) , MENU_BUTTON_SIZE )
+    quitGame = Button( (255,255,255) , "Buttons/QuitButton.png" , (200,450) , MENU_BUTTON_SIZE )
     
     Tester.restart()
     
@@ -63,7 +66,7 @@ def menu():
                     print("instruction menu")
                     Instructions.load()
                 elif( sentences.clicked( loc[ 0 ] , loc[ 1 ] ) ):
-                    #TODO
+                    SentenceSelector.load()
                     pass
                 elif( customizations.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     #TODO
