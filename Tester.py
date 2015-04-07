@@ -26,6 +26,7 @@ from FishingHook import FishingHook
 from Sentence import Word , Sentence
 from FishingLine import FishingLine
 from SentenceFactory import SentenceFactory
+from UIUtils import Button
 
 pygame.init()
 pygame.font.init()
@@ -252,13 +253,18 @@ state = 0
 * Runs the game
 '''
 def mainGame():
+    
+    
     global state , testSentence , lostSentence
     state = 1
+    backToMenu = Button((255,255,255), "Buttons/Return.png", (0,0))
     while( state != 0 ):
 
         if ( state == 1 ):
             #start with the background image and get the user input from the boat
             screen.blit(background, backgroundRect)
+
+            screen.blit( backToMenu.image , backToMenu )
             
             #draw images into the background
             for image in images:
@@ -315,18 +321,7 @@ def mainGame():
             pygame.display.update()
             
         elif state == 3:
-            from Instructions import Button
-            backToMenu = Button((255,255,255), "Buttons/Return.png", (200,200))
-            screen.blit( backToMenu.image , backToMenu )
-            pygame.display.update() 
-            
-            for event in pygame.event.get():
-                if ( event.type == MOUSEBUTTONDOWN ):
-                    loc = pygame.mouse.get_pos()
-                    if loc[ 0 ] >= 200 and loc[ 0 ] <= 300 and loc[ 1 ] >= 200 and loc[ 1 ] <= 240 :
-                        restart()
-                        pause()
-                        return
+            pass
         
         if ( stats.getLives() <= 0 ):
             state = 3
@@ -336,7 +331,14 @@ def mainGame():
             if event.type == KEYDOWN and event.key == K_ESCAPE:
                 state = 0
             if event.type == pygame.QUIT:
-                state = 0
+                state = 0               
+            if ( event.type == MOUSEBUTTONDOWN ):
+                loc = pygame.mouse.get_pos()
+                if backToMenu.clicked( loc[ 0 ] , loc[ 1 ] ) :
+                    if ( state == 3 ):
+                        restart()
+                    pause()
+                    return
         
 
 '''
@@ -354,6 +356,10 @@ def resume():
     global state
     state = 1
     mainGame()
+    
+def getState():
+    global state
+    return state
           
 #mainGame()  
      

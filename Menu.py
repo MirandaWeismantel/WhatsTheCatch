@@ -10,7 +10,7 @@ from pygame.locals import *
 import Tester
 import Instructions
 import sys
-
+from UIUtils import Button
 
 pygame.init()
 pygame.font.init()
@@ -23,23 +23,8 @@ size = (width, height) = background.get_size()
 screen = pygame.display.set_mode(size)
 
 instructionsBox = 0
-
-
-class Button(pygame.sprite.Sprite):
-    def __init__(self, color, filename, location):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(filename).convert_alpha()
-        self.image.set_colorkey(color) 
-        self.image = pygame.transform.scale(self.image, (100,40))
-        self.rect = self.image.get_rect()
-        self.rect.x = location[0]
-        self.rect.y = location[1]
-    
-     
         
 def menu():
-    BUTTON_WIDTH = 100
-    BUTTON_HEIGHT = 40
     PLAY_BUTTON_LOCATION = (100, 240)
     INSTRUCTION_BUTTON_LOCATION = (300, 240)
     newGame = Button((255,255,255), "Buttons/PlayButton.png", (PLAY_BUTTON_LOCATION))
@@ -60,12 +45,10 @@ def menu():
             if event.type == MOUSEBUTTONDOWN:
                 print("mouse click")
                 loc = pygame.mouse.get_pos()
-                if (loc[0] > PLAY_BUTTON_LOCATION[0] and loc[0] < (PLAY_BUTTON_LOCATION[0] + BUTTON_WIDTH) and 
-                    loc[1] > PLAY_BUTTON_LOCATION[1] and loc[1] < (PLAY_BUTTON_LOCATION[1] + BUTTON_HEIGHT)):
+                if (newGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     print("main game")
                     Tester.resume()
-                elif (loc[0] > INSTRUCTION_BUTTON_LOCATION[0] and loc[0] < (INSTRUCTION_BUTTON_LOCATION[0] + BUTTON_WIDTH) and 
-                      loc[1] > INSTRUCTION_BUTTON_LOCATION[1] and loc[1] < (INSTRUCTION_BUTTON_LOCATION[1] + BUTTON_HEIGHT)):
+                elif ( instructions.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     print("instruction menu")
                     Instructions.load()
             
