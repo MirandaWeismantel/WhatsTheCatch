@@ -105,7 +105,6 @@ class Eel( Sprite ):
     '''
     def isOutOfBounds( self ):    
         if (self.x > 500):
-            print "yes"
             return True
         
     '''

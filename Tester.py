@@ -187,7 +187,9 @@ def createNewSentence():
         ScoreManager.initialize()
         ScoreManager.updateScore( sentenceSet , stats.getPoints() , factory.getMaxPoints() )
         ScoreManager.saveScores()
-        eels = []
+        for eel in eels:
+            sprites.remove( eel )
+        del eels[:]
         
 testHook = None
 testBoat = None
@@ -226,11 +228,13 @@ def restart():
     testEel = Eel( stats , testHook , testLine, eelSpeed )
     testEel.EEL_SPEED = 1.5      #in the future this can be randomized
     testEel.moveTo( -250 , 250 )
+    eels.append( testEel )
     sprites.append( testEel )
     
     testEel2 = Eel( stats , testHook , testLine, eelSpeed )
     testEel2.EEL_SPEED = 2
     testEel2.moveTo( -100 , 400 )
+    eels.append( testEel2 )
     sprites.append( testEel2 )
     
     createNewSentence()
@@ -280,10 +284,6 @@ def mainGame():
             for sprite in sprites:
                 sprite.animate()
                 sprite.draw( screen )
-                
-            for eel in eels:
-                if ( eel.isOutOfBounds() ):
-                        createEel()
                         
             for fish in fishes:
                 if ( isinstance( fish , Fish ) ):
