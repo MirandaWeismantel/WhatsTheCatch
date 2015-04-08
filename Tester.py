@@ -27,6 +27,7 @@ from Sentence import Word , Sentence
 from FishingLine import FishingLine
 from SentenceFactory import SentenceFactory
 from UIUtils import Button
+import ScoreManager
 
 pygame.init()
 pygame.font.init()
@@ -53,9 +54,6 @@ eels = []
 stats = Statistics()
 statsFont = pygame.font.SysFont('Courier New', 15)
 
-POINTS_PER_CORRECT_WORD = 50;
-POINTS_PER_INCORRECT_WORD = 50;
-POINTS_PER_SENTENCE = 25;
 fishSpeed = 1;
 eelSpeed = 1.5;
 
@@ -80,6 +78,7 @@ def resetStats():
     stats.addLife()
 
 factory = None
+sentenceSet = " Sample"
 sentenceFilename = "sentences/ Sample"
 def resetSentenceFactory():
     global factory
@@ -173,6 +172,8 @@ def createNewSentence():
     global fishes
     global sprites
     global factory
+    global endSentence
+    global stats
     
     for fish in fishes:
         sprites.remove( fish )
@@ -183,6 +184,10 @@ def createNewSentence():
         testSentence = factory.next()
     else :
         testSentence = endSentence
+        ScoreManager.initialize()
+        ScoreManager.updateScore( sentenceSet , stats.getPoints() , factory.getMaxPoints() )
+        ScoreManager.saveScores()
+        eels = []
         
 testHook = None
 testBoat = None
@@ -286,10 +291,10 @@ def mainGame():
                         if ( not testSentence.isComplete() ):
                             success = testSentence.fillInNextBlank( fish.word )
                             if ( success ):
-                                stats.addPoints( POINTS_PER_CORRECT_WORD );
+                                stats.addPoints( SentenceFactory.POINTS_PER_CORRECT_WORD );
                                 generateFish()
                             else:
-                                stats.subtractPoints( POINTS_PER_INCORRECT_WORD );
+                                stats.subtractPoints( SentenceFactory.POINTS_PER_INCORRECT_WORD );
                                 fishes.remove( fish )
                                 sprites.remove( fish )
                             #fishes.remove( fish )
@@ -298,7 +303,7 @@ def mainGame():
                             testHook.resetHook()
                         
                         if ( testSentence.isComplete() ): 
-                                stats.addPoints( POINTS_PER_SENTENCE )
+                                stats.addPoints( SentenceFactory.POINTS_PER_SENTENCE )
                                 stats.incrementCompletedSentences() 
                                 createNewSentence()
                                 generateFish()
@@ -363,8 +368,9 @@ def getState():
     return state
 
 def setSentenceFile( filename ):
-    global sentenceFilename
-    sentenceFilename = filename
+    global sentenceFilename , sentenceSet
+    sentenceSet = filename
+    sentenceFilename = "sentences/" + filename
     
 def setTwoPlayerMode( on ):
     global testHook

@@ -6,7 +6,7 @@ Created on Mar 6, 2015
 
 import random
 from Sentence import Sentence , Blank , Word
-from IOUtils import BufferedReader , StringTokenizer
+from IOUtils import BufferedReader , StringTokenizer   
     
 '''
 * Stores data about a sentence. Specifically, it contains the Sentence
@@ -29,6 +29,10 @@ class SentenceData:
 '''
 class SentenceFactory:
     
+    POINTS_PER_CORRECT_WORD = 50;
+    POINTS_PER_INCORRECT_WORD = 50;
+    POINTS_PER_SENTENCE = 25; 
+    
     '''
     * the list of sentences this factory contains 
     '''
@@ -38,6 +42,12 @@ class SentenceFactory:
     * the filename in which sentence data is stored
     '''
     filename = ""
+    
+    '''
+    * the maximum number of points that the user can score by completing
+    * all sentences without any errors
+    '''
+    maxPoints = 0
     
     '''
     * Loads sentence data into this factory. This method is not to be called
@@ -59,6 +69,7 @@ class SentenceFactory:
             #sentence data. Sentence data is always on its own line
             #and starts with the "Sentence:" identifier
             if ( nextLine.startswith( "Sentence:" ) ):
+                self.maxPoints += SentenceFactory.POINTS_PER_SENTENCE
                 sentenceComponents = []
                 st = StringTokenizer( nextLine )
                 
@@ -99,6 +110,7 @@ class SentenceFactory:
                         #"[" indicates the start of a blank and the words
                         #that can be used to fill it
                         if ( nextToken == "[" ):
+                            self.maxPoints += SentenceFactory.POINTS_PER_CORRECT_WORD
                             readingBlank = True
                             readingBlankValid = True
                         else:
@@ -159,4 +171,8 @@ class SentenceFactory:
                         sentenceData.filename + " ... line " + \
                         str( sentenceData.lineNumber )
         print "Finished Validating \"" + self.filename + "\""
+        print "Maximum points for \"" + self.filename + "\": " + str( self.maxPoints )
+        
+    def getMaxPoints( self ):
+        return self.maxPoints
         

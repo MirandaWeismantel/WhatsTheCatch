@@ -25,3 +25,6 @@ class SentenceListManager:
         
     def getSelectedFilename(self):
         return self.filenames[ self.currIdx ]
+    
+    def getAllDirectories( self ):
+        return self.filenames

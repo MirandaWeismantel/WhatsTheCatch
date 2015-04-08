@@ -45,6 +45,19 @@ class BufferedReader:
         self.lineIdx += 1
         return rtn
     
+class PrintWriter:
+    
+    filestream = None 
+    
+    def __init__(self, filename):
+        self.filestream = open( filename , 'w' )
+        
+    def write(self, text):
+        self.filestream.write( str(text) )
+        
+    def writeln(self, text):
+        self.filestream.write( str(text) + "\n" )
+        
 '''
 * Turns a string into tokens using a given delimiter
 '''    
