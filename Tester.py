@@ -31,6 +31,7 @@ import ScoreManager
 
 pygame.init()
 pygame.font.init()
+ScoreManager.initialize()
 
 background = pygame.image.load("res/background.png")
 backgroundRect = background.get_rect()
@@ -184,7 +185,6 @@ def createNewSentence():
         testSentence = factory.next()
     else :
         testSentence = endSentence
-        ScoreManager.initialize()
         ScoreManager.updateScore( sentenceSet , stats.getPoints() , factory.getMaxPoints() )
         ScoreManager.saveScores()
         for eel in eels:

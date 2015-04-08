@@ -54,6 +54,7 @@ class SentenceFactory:
     * outside this class
     '''
     def load( self ):
+        self.maxPoints = 0
         f = BufferedReader( self.filename )
         
         #keep track of line numbers, which can be used to display

@@ -16,9 +16,11 @@ class SentenceFileScore:
     def __init__( self , filename , bestScore = None , maxPoints = None ):
         self.filename = filename
         if ( maxPoints == None ):
-            factory = SentenceFactory( filename )
+            factory = SentenceFactory( "sentences/" + filename )
             factory.load()
-            maxPoints = factory.getMaxPoints()
+            factory.validate()
+            self.maxPoints = factory.getMaxPoints()
+            print self.maxPoints
         else:
             self.maxPoints = maxPoints
             
@@ -60,10 +62,21 @@ def updateScore( filename , bestScore , maxPoints ):
             data.bestScore = max( data.bestScore , bestScore )
             data.maxPoints = maxPoints
             
+    saveScores()
+            
 def getScoreFor( filename ):
     for data in scoreData :
         if ( data.filename == filename ):
             return data.bestScore
+     
+    newSentenceData = SentenceFileScore( filename , 0 , None )
+    for i in range(0, len(scoreData) ):
+        if filename < scoreData[ i ].filename:
+            scoreData.insert( i , newSentenceData )
+            return 0
+        
+    scoreData.append( newSentenceData )
+    return 0
         
 def getMaxPointsFor( filename ):
     for data in scoreData:
