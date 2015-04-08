@@ -14,6 +14,7 @@ import ScoreManager
 
 pygame.init()
 pygame.font.init()
+ScoreManager.initialize()
 
 MASTERY_X = 50
 MASTERY_Y = 100
@@ -65,7 +66,6 @@ def setSelectedSentences( sentenceFile ):
     selectedSentences.setText( sentenceFile )
 
 def load():
-    ScoreManager.initialize()
     masteryLabel.setText( str(ScoreManager.getNumSetsMastered()) + "/" + 
             str(ScoreManager.getTotalSets()) + " sentence sets mastered!" ) 
     state = 1

@@ -79,8 +79,8 @@ def resetStats():
     stats.addLife()
 
 factory = None
-sentenceSet = " Sample"
-sentenceFilename = "sentences/ Sample"
+sentenceSet = " A"
+sentenceFilename = "sentences/ A"
 def resetSentenceFactory():
     global factory
     factory = SentenceFactory( sentenceFilename )

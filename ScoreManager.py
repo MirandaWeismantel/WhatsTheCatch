@@ -61,8 +61,15 @@ def updateScore( filename , bestScore , maxPoints ):
             print "Updated " + filename + ": " + str(bestScore) + " " + str(maxPoints)
             data.bestScore = max( data.bestScore , bestScore )
             data.maxPoints = maxPoints
-            
-    saveScores()
+            saveScores()
+            return
+        
+    newSentenceData = SentenceFileScore( filename , bestScore , None )
+    for i in range(0, len(scoreData) ):
+        if filename < scoreData[ i ].filename:
+            scoreData.insert( i , newSentenceData )
+            saveScores()
+            return
             
 def getScoreFor( filename ):
     for data in scoreData :
