@@ -130,6 +130,11 @@ class Fish( Sprite ):
         textwidth = tuple(textpos)[2]
         self.setWidth( textwidth)
         
+    def drawWordAbsolute( self , screen , pos ):
+        font = pygame.font.SysFont('Courier New', 15)
+        font.set_bold(True)
+        text = font.render(self.word.toString(), True, (255, 255, 255))
+        screen.blit(text, (pos[ 0 ] , pos[ 1 ]+5) )
         
         
             
@@ -142,7 +147,7 @@ class Fish( Sprite ):
             if key[pygame.K_UP]: # right key
                 if (self.y - dist <125):
                     self.y = 20
-                    self.x = 0
+                    self.x = 125
                     self.hooked = False
                     self.caught = True
             if key[pygame.K_SPACE]:

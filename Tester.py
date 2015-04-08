@@ -48,6 +48,11 @@ sprites = []
 #list of active fish in the ocean
 fishes = []
 
+#the last fish the user caught that was incorrect
+lastIncorrectFish = None
+xFont = pygame.font.SysFont( 'Courier New' , 50 )
+xText = xFont.render( "X" , 1 , (255,0,0) )
+
 #list of active eels on the screen
 eels = []
 
@@ -265,7 +270,7 @@ state = 0
 def mainGame():
     
     
-    global state , testSentence , lostSentence
+    global state , testSentence , lostSentence , lastIncorrectFish
     state = 1
     backToMenu = Button((255,255,255), "Buttons/Return.png", (0,0))
     while( state != 0 ):
@@ -275,6 +280,11 @@ def mainGame():
             screen.blit(background, backgroundRect)
 
             screen.blit( backToMenu.image , backToMenu )
+            
+            if ( lastIncorrectFish != None ):
+                screen.blit( lastIncorrectFish.image , (125,0) )
+                lastIncorrectFish.drawWordAbsolute( screen , (125,0) )
+                screen.blit( xText , (125+lastIncorrectFish.rect.width/2 , -lastIncorrectFish.rect.height/2 ) )
             
             #draw images into the background
             for image in images:
@@ -292,9 +302,11 @@ def mainGame():
                             success = testSentence.fillInNextBlank( fish.word )
                             if ( success ):
                                 stats.addPoints( SentenceFactory.POINTS_PER_CORRECT_WORD );
+                                lastIncorrectFish = None
                                 generateFish()
                             else:
                                 stats.subtractPoints( SentenceFactory.POINTS_PER_INCORRECT_WORD );
+                                lastIncorrectFish = fish
                                 fishes.remove( fish )
                                 sprites.remove( fish )
                             #fishes.remove( fish )
