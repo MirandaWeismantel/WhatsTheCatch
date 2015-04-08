@@ -6,7 +6,6 @@ Created on Feb 13, 2015
 
 import pygame
 from Sprite import Sprite
-from Boat import Boat
 
 class FishingLine( Sprite ):
 

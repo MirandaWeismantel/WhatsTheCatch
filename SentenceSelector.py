@@ -6,7 +6,6 @@ Created on Apr 7, 2015
 
 import pygame 
 from pygame.locals import *
-import sys
 
 from UIUtils import Button, Label
 from SentenceListManager import SentenceListManager

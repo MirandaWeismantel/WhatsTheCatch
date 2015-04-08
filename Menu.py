@@ -11,7 +11,6 @@ import Tester
 import Instructions
 import sys
 import SentenceSelector
-import ScoreManager
 
 from UIUtils import Button
 
