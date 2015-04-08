@@ -17,6 +17,8 @@ class FishingLine( Sprite ):
     boat = None
     
     twoPlayerMode = False
+    
+    moveRate = 1
      
     def __init__( self , boat):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
@@ -37,7 +39,6 @@ class FishingLine( Sprite ):
     def key_press(self):
         """ Handles Keys """
         key = pygame.key.get_pressed()
-        dist = 1
         
         if ( self.twoPlayerMode ):
             rightKeyPressed = key[ pygame.K_d ]
@@ -46,29 +47,29 @@ class FishingLine( Sprite ):
             rightKeyPressed = key[ pygame.K_RIGHT ]
             leftKeyPressed = key[ pygame.K_LEFT ]
             
-        if rightKeyPressed and ( self.boat.x + dist <= 450 ): # right key
+        if rightKeyPressed and ( self.boat.x + self.moveRate <= 450 ): # right key
             
             #move fishing hook right
-            self.move( dist , 0 )
-        elif leftKeyPressed and (self.boat.x - dist >= 0 ): # left key
+            self.move( self.moveRate , 0 )
+        elif leftKeyPressed and (self.boat.x - self.moveRate >= 0 ): # left key
             
             #move fishing hook left
-            self.move( -1*dist , 0 )
+            self.move( -1*self.moveRate , 0 )
         if key[pygame.K_UP]:
             if (self.height < 20):
                 pass
             else: 
                 self.image = pygame.transform.scale(self.image, (5, self.height))
-                self.setHeight( self.getHeight()-1 )
+                self.setHeight( self.getHeight()-self.moveRate )
         elif key[pygame.K_DOWN]:
-            if (self.y + self.getHeight() + dist >500):
+            if (self.y + self.getHeight() + self.moveRate >510):
                 
                 #don't let hook move too low, so we do nothing
                 pass
             else:   
                 #move left
                 self.image = pygame.transform.scale(self.image, (5, self.height))
-                self.setHeight( self.getHeight()+1 )
+                self.setHeight( self.getHeight()+self.moveRate )
     
 
     '''

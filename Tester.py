@@ -79,8 +79,8 @@ def resetStats():
     stats.addLife()
 
 factory = None
-sentenceSet = " A"
-sentenceFilename = "sentences/ A"
+sentenceSet = " Sample"
+sentenceFilename = "sentences/ Sample"
 def resetSentenceFactory():
     global factory
     factory = SentenceFactory( sentenceFilename )
@@ -373,12 +373,21 @@ def setSentenceFile( filename ):
     sentenceFilename = "sentences/" + filename
     
 def setTwoPlayerMode( on ):
-    global testHook
+    global testHook , testLine
     if ( on ):
-        testHook.twoPlayerMode = True
-        testLine.twoPlayerMode = True
+        FishingHook.twoPlayerMode = True
+        FishingLine.twoPlayerMode = True
     else:
-        testHook.twoPlayerMode = False
-        testLine.twoPlayerMode = False
+        FishingHook.twoPlayerMode = False
+        FishingLine.twoPlayerMode = False
+        
+def setJetpackMode( on ):
+    global testHook , testLine
+    if ( on ):
+        FishingHook.moveRate = 5
+        FishingLine.moveRate = 5
+    else:
+        FishingHook.moveRate = 1
+        FishingLine.moveRate = 1
           
 #mainGame()

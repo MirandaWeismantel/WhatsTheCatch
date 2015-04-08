@@ -28,6 +28,8 @@ class FishingHook( Sprite ):
     * hook up and down
     '''
     twoPlayerMode = False
+    
+    moveRate = 1
      
     def __init__( self , boat, line):
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
@@ -61,7 +63,7 @@ class FishingHook( Sprite ):
     def key_press(self):
         """ Handles Keys """
         key = pygame.key.get_pressed()
-        dist = 1
+        
         if ( self.twoPlayerMode ):
             rightKeyPressed = key[ pygame.K_d ]
             leftKeyPressed = key[ pygame.K_a ]
@@ -69,38 +71,38 @@ class FishingHook( Sprite ):
             rightKeyPressed = key[ pygame.K_RIGHT ]
             leftKeyPressed = key[ pygame.K_LEFT ]
             
-        if rightKeyPressed and (self.boat.x + dist <= 450) : # right key
+        if rightKeyPressed and (self.boat.x + self.moveRate <= 450) : # right key
             
             #move fishing hook right
-            self.move( dist , 0 )
-            self.moveHookedFish( dist , 0 )
-            self.boat.move( dist , 0 )
-        elif leftKeyPressed and (self.boat.x - dist >= 0) : # left key
+            self.move( self.moveRate , 0 )
+            self.moveHookedFish( self.moveRate , 0 )
+            self.boat.move( self.moveRate , 0 )
+        elif leftKeyPressed and (self.boat.x - self.moveRate >= 0) : # left key
             
             #move fishing hook left
-            self.move( -1*dist , 0 )
-            self.moveHookedFish( -1*dist , 0 )
-            self.boat.move( -1*dist , 0 )
+            self.move( -1*self.moveRate , 0 )
+            self.moveHookedFish( -1*self.moveRate , 0 )
+            self.boat.move( -1*self.moveRate , 0 )
         if key[pygame.K_UP]:
-            self.moveHookedFish( 0 , -1*dist )
-            if (self.y - dist <105):
+            self.moveHookedFish( 0 , -1*self.moveRate )
+            if (self.y - self.moveRate <105):
                 
                 #don't let hook move too high, so we do nothing
                 pass
             else:   
                 
                 #move right
-                self.move( 0 , -1*dist )
+                self.move( 0 , -1*self.moveRate )
         elif key[pygame.K_DOWN]:
-            if (self.y + dist >490):
+            if (self.y + self.moveRate >490):
                 
                 #don't let hook move too low, so we do nothing
                 pass
             else:   
                 
                 #move left
-                self.move( 0 , dist )
-                self.moveHookedFish( 0 , dist )
+                self.move( 0 , self.moveRate )
+                self.moveHookedFish( 0 , self.moveRate )
         if key[pygame.K_SPACE]:
             self.hookedFish = None
 

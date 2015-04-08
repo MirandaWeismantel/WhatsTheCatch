@@ -38,6 +38,7 @@ def menu():
     
     Tester.restart()
     Tester.setTwoPlayerMode( False )
+    Tester.setJetpackMode( False )
     
     state = 0
     while state == 0:
