@@ -47,9 +47,9 @@ class Fish( Sprite ):
         font = pygame.font.SysFont('Courier New', 15)
         text = font.render(self.word.toString(), True, (255, 255, 0))
         textpos=text.get_rect()
-        textwidth = tuple(textpos)[2]
+        textwidth = tuple(textpos)[2] + 15
         self.image2.set_colorkey( (0,0,0) )
-        self.setImage( pygame.transform.scale((self.image2),(textwidth+10,32)));
+        self.setImage( pygame.transform.scale((self.image2),(textwidth,32)));
         self.setWidth( textwidth)
         self.setHeight( 25 )
         #self = pygame.transform.scale(self, (1200,800))
@@ -125,7 +125,7 @@ class Fish( Sprite ):
         font = pygame.font.SysFont('Courier New', 15)
         font.set_bold(True)
         text = font.render(self.word.toString(), True, (255, 255, 255))
-        screen.blit(text, (self.x+0 , self.y+5) )
+        screen.blit(text, (self.x+5 , self.y+5) )
         textpos=text.get_rect()
         textwidth = tuple(textpos)[2]
         self.setWidth( textwidth)
