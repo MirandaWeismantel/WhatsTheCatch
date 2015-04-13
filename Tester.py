@@ -63,8 +63,8 @@ statsFont = pygame.font.SysFont('Courier New', 15)
 fishSpeed = 1;
 eelSpeed = 1.5;
 
-bg_music = pygame.mixer.music
-bg_music.load('bkgroundMusic.mp3')
+#bg_music = pygame.mixer.music
+#bg_music.load('bkgroundMusic.mp3')
 
 
 def drawStats( screen ):
