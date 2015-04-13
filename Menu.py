@@ -11,7 +11,7 @@ import Tester
 import Instructions
 import sys
 import SentenceSelector
-import Cust
+import Credits
 
 from UIUtils import Button
 
@@ -73,7 +73,7 @@ def menu():
                     SentenceSelector.load()
                     pass
                 elif( customizations.clicked( loc[ 0 ] , loc[ 1 ] ) ):
-                    Cust.load()
+                    Credits.load()
                     pass
                 elif ( quitGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     return
