@@ -53,9 +53,10 @@ def load():
 #     
     
     state = 1
+        
+    box_loc = (200, 0)
     while( state == 1 ):
         
-        box_loc = (200, 0)
         box = Button((255,255,255), "res/check.png", (box_loc[0], box_loc[1]), (160, 160))
     
         screen.fill([255,255,255])
@@ -70,6 +71,7 @@ def load():
         
 #         screen.blit(gameplay_button.image, gameplay_button)
         pygame.display.update()
+        
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 state = 0

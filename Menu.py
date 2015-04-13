@@ -31,8 +31,8 @@ instructionsBox = 0
 def menu():
     continueGame = Button( (255,255,255) , "Buttons/ContinueButton.png" , (0 , 200) )
     newGame = Button((255,255,255), "Buttons/NewGameButton.png", (0, 250))
-    instructions = Button((255,255,255), "Buttons/InstructionButton.png", (200, 200))
-    sentences = Button( (255,255,255) , "Buttons/SentencesButton.png" , (200 , 250) )
+    instructions = Button((255,255,255), "Buttons/InstructionButton.png", (200, 200) )
+    sentences = Button( (255,255,255) , "Buttons/SentencesButton.png" , (200 , 250) , (100,40) )
     customizations = Button( (255,255,255) , "Buttons/CustomizationsButton.png" , (400,200) )
     credits = Button ( (255,255,255) , "Buttons/creditsButton.png" , (400,250) )
     quit = Button( (255,255,255) , "Buttons/QuitButton.png" , (200,450) )
