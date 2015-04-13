@@ -11,6 +11,7 @@ import Tester
 import Instructions
 import sys
 import SentenceSelector
+import Cust
 
 from UIUtils import Button
 
@@ -72,7 +73,7 @@ def menu():
                     SentenceSelector.load()
                     pass
                 elif( customizations.clicked( loc[ 0 ] , loc[ 1 ] ) ):
-                    #TODO
+                    Cust.load()
                     pass
                 elif ( quitGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     return
