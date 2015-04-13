@@ -10,12 +10,9 @@ from pygame.locals import *
 import Tester
 import Instructions
 import sys
-<<<<<<< HEAD
 import SentenceSelector
-import Cust
+import Credits
 
-=======
->>>>>>> 45cfb2ef523dcbc5b0bd990f24a7e58db218d06c
 from UIUtils import Button
 
 pygame.init()
