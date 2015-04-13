@@ -57,12 +57,10 @@ def menu():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 sys.exit("quit game")
             if event.type == MOUSEBUTTONDOWN:
-                print("mouse click")
                 loc = pygame.mouse.get_pos()
                 if (continueGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     Tester.resume()
                 elif (newGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
-                    print("main game")
                     Tester.setSentenceFile( SentenceSelector.getSelected() )
                     Tester.restart()
                     Tester.resume()
