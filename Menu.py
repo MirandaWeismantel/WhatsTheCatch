@@ -10,9 +10,12 @@ from pygame.locals import *
 import Tester
 import Instructions
 import sys
+<<<<<<< HEAD
 import SentenceSelector
-import Credits
+import Cust
 
+=======
+>>>>>>> 45cfb2ef523dcbc5b0bd990f24a7e58db218d06c
 from UIUtils import Button
 
 pygame.init()
@@ -28,17 +31,14 @@ screen = pygame.display.set_mode(size)
 instructionsBox = 0
         
 def menu():
-    MENU_BUTTON_SIZE = (100,40)
-    continueGame = Button( (255,255,255) , "Buttons/ContinueButton.png" , (200 , 200) , MENU_BUTTON_SIZE )
-    newGame = Button((255,255,255), "Buttons/NewGameButton.png", (200, 250) , MENU_BUTTON_SIZE )
-    instructions = Button((255,255,255), "Buttons/InstructionButton.png", (200, 300) , MENU_BUTTON_SIZE )
-    sentences = Button( (255,255,255) , "Buttons/SentencesButton.png" , (200 , 350) , MENU_BUTTON_SIZE )
-    customizations = Button( (255,255,255) , "Buttons/CustomizationsButton.png" , (200,400) , MENU_BUTTON_SIZE )
-    quitGame = Button( (255,255,255) , "Buttons/QuitButton.png" , (200,450) , MENU_BUTTON_SIZE )
+    continueGame = Button( (255,255,255) , "Buttons/PlayButton.png" , (200 , 200) )
+    newGame = Button((255,255,255), "Buttons/PlayButton.png", (200, 250))
+    instructions = Button((255,255,255), "Buttons/InstructionButton.png", (200, 300))
+    sentences = Button( (255,255,255) , "Buttons/PlayButton.png" , (200 , 350) )
+    customizations = Button( (255,255,255) , "Buttons/PlayButton.png" , (200,400) )
+    quit = Button( (255,255,255) , "Buttons/PlayButton.png" , (200,450) )
     
     Tester.restart()
-    Tester.setTwoPlayerMode( False )
-    Tester.setJetpackMode( False )
     
     state = 0
     while state == 0:
@@ -50,7 +50,7 @@ def menu():
         screen.blit(instructions.image, instructions)
         screen.blit( sentences.image , sentences )
         screen.blit( customizations.image , customizations )
-        screen.blit( quitGame.image , quitGame )
+        screen.blit( quit.image , quit )
         
         pygame.display.update()
         for event in pygame.event.get():
@@ -63,19 +63,18 @@ def menu():
                     Tester.resume()
                 elif (newGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     print("main game")
-                    Tester.setSentenceFile( SentenceSelector.getSelected() )
                     Tester.restart()
                     Tester.resume()
                 elif ( instructions.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     print("instruction menu")
                     Instructions.load()
                 elif( sentences.clicked( loc[ 0 ] , loc[ 1 ] ) ):
-                    SentenceSelector.load()
+                    #TODO
                     pass
                 elif( customizations.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     Credits.load()
                     pass
-                elif ( quitGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
+                elif ( quit.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     return
             
 menu()

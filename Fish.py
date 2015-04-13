@@ -29,11 +29,14 @@ class Fish( Sprite ):
     fishShift = 50
     caught = False
     hooked = False
+    textwidth = 0
     
     '''
     * if the fish is facing right
     '''
     facingRight = True
+    
+
     
     
         
@@ -42,18 +45,33 @@ class Fish( Sprite ):
         #self.image1=pygame.image.load("Fish/Fish1.png")
         self.image2=pygame.image.load("Fish/Fish2.png")
         #self.image3=pygame.image.load("Fish/Fish3.png")
+        
+        
         self.hooked = False
         self.word = word
         font = pygame.font.SysFont('Courier New', 15)
         text = font.render(self.word.toString(), True, (255, 255, 0))
         textpos=text.get_rect()
+
         textwidth = tuple(textpos)[2] + 15
         self.image2.set_colorkey( (0,0,0) )
         self.setImage( pygame.transform.scale((self.image2),(textwidth,32)));
         self.setWidth( textwidth)
         self.setHeight( 25 )
+
+        self.textwidth = tuple(textpos)[2]
+        self.image2.set_colorkey( (0,0,0) )
+       # self.image = self.all_images[self.frame]
+        
+
         #self = pygame.transform.scale(self, (1200,800))
         self.fishSpeed = speed
+        
+        
+        self.last_update = 0
+        self.frame = 0
+        
+        
         pass
     
     '''
@@ -65,7 +83,9 @@ class Fish( Sprite ):
         self.drawWord( screen )
         pass
     
-            
+
+        
+                
     def setOldSpeed(self, speed):
         self.fishSpeedOld = speed
           

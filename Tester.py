@@ -63,6 +63,10 @@ statsFont = pygame.font.SysFont('Courier New', 15)
 fishSpeed = 1;
 eelSpeed = 1.5;
 
+bg_music = pygame.mixer.music
+bg_music.load('bkgroundMusic.mp3')
+
+
 def drawStats( screen ):
     global stats
     global statsFont
@@ -254,6 +258,9 @@ def createEel():
     #testEel.EEL_SPEED = 1.5 #TODO Make random (negative and positive)
 
 
+
+
+
 #No need to modify the code below. It just runs the game.
 
 # States:
@@ -276,6 +283,10 @@ def mainGame():
     while( state != 0 ):
 
         if ( state == 1 ):
+            
+            bg_music.play(-1, 0.0)
+          
+            
             #start with the background image and get the user input from the boat
             screen.blit(background, backgroundRect)
 
@@ -296,6 +307,8 @@ def mainGame():
                 sprite.draw( screen )
                         
             for fish in fishes:
+                
+                
                 if ( isinstance( fish , Fish ) ):
                     if ( fish.caught ):
                         if ( not testSentence.isComplete() ):
@@ -355,6 +368,7 @@ def mainGame():
                 if backToMenu.clicked( loc[ 0 ] , loc[ 1 ] ) :
                     if ( state == 3 ):
                         restart()
+                    bg_music.pause()
                     pause()
                     return
         
