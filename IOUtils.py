@@ -4,6 +4,8 @@ Created on Mar 6, 2015
 @author: mjchao
 '''
 
+import codecs
+
 '''
 * Reads files line by line
 '''
@@ -26,7 +28,7 @@ class BufferedReader:
     * @param filename         the file to be read
     '''
     def __init__( self , filename ):
-        self.lines = open( filename , 'r' ).read().splitlines()
+        self.lines = codecs.open ( filename , 'r', encoding='utf-8').read().splitlines()
         
     '''
     * @return             if the end of the file has been reached
