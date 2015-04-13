@@ -44,10 +44,10 @@ def load():
     return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
     
     NEXT_BUTTON_LOC = (400, 0)
-    next_button = Button((255,255,255), "Buttons/ContinueButton.png", (NEXT_BUTTON_LOC[0],NEXT_BUTTON_LOC[1]))
+    next_button = Button((255,255,255), "Buttons/NextButton.png", (NEXT_BUTTON_LOC[0],NEXT_BUTTON_LOC[1]))
     
     PREV_BUTTON_LOC = (0, 0)
-    prev_button = Button((255,255,255), "Buttons/ContinueButton.png", (PREV_BUTTON_LOC[0],PREV_BUTTON_LOC[1]))
+    prev_button = Button((255,255,255), "Buttons/BackButton.png", (PREV_BUTTON_LOC[0],PREV_BUTTON_LOC[1]))
     
     
     page = 1
