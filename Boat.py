@@ -21,23 +21,14 @@ class Boat( Sprite ):
     boatYellow = "res/boatYellow.png"
     boatImage = boat
     
+    modified = False
+    
 
     
-    def __init__( self):
+    def __init__( self ):
         
-        if(Customizations.boat == 1):
-            self.boatImage = self.boat
-        elif(Customizations.boat == 2):
-            self.boatImage = self.boatBlue
-        elif(Customizations.boat == 3):
-            self.boatImage = self.boatGreen
-        elif(Customizations.boat == 4):
-            self.boatImage = self.boatRed
-        elif(Customizations.boat == 5):
-            self.boatImage = self.boatYellow
-            
         Sprite.__init__( self , 32 , 32 , 0 , 0 )
-        boatImage = pygame.image.load( self.boatImage ).convert()
+        boatImage = pygame.image.load( "res/boat.png" ).convert()
         boatImage.set_colorkey( (255, 255, 255) )
         boatImage = pygame.transform.scale( boatImage , ( 180 , 140 ) )
         self.setImage( boatImage );

@@ -398,6 +398,13 @@ def setSentenceFile( filename ):
     sentenceSet = filename
     sentenceFilename = "sentences/" + filename
     
+def setBoatImage( imageFilename ):
+    global testBoat
+    newBoatImage = pygame.image.load( imageFilename ).convert()
+    newBoatImage.set_colorkey( (255, 255, 255) )
+    newBoatImage = pygame.transform.scale( newBoatImage , ( 180 , 140 ) )
+    testBoat.setImage( newBoatImage )
+    
 def setTwoPlayerMode( on ):
     global testHook , testLine
     if ( on ):

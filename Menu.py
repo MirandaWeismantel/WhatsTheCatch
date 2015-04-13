@@ -59,10 +59,12 @@ def menu():
             if event.type == MOUSEBUTTONDOWN:
                 loc = pygame.mouse.get_pos()
                 if (continueGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
+                    Tester.setBoatImage( Customizations.getSelectedBoat() )
                     Tester.resume()
                 elif (newGame.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     Tester.setSentenceFile( SentenceSelector.getSelected() )
                     Tester.restart()
+                    Tester.setBoatImage( Customizations.getSelectedBoat() )
                     Tester.resume()
                 elif ( instructions.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     print("instruction menu")

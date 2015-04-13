@@ -24,28 +24,31 @@ font = pygame.font.SysFont('Courier New', 20)
 textBox = pygame.Rect((100, 100, 200, 300))
 
 boat = 1
+box_loc = (200, 0)
+
+RETURN_BUTTON_LOC = (0, 0 )
+return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
+
+BROWN_BOAT_LOC = (200, 0)
+brown_boat = Button((0,0,0), "res/boat.png", (BROWN_BOAT_LOC[0],BROWN_BOAT_LOC[1]), (150, 150))
+
+BLUE_BOAT_LOC = (200, 160)
+blue_boat = Button((255,255,255), "res/boatBlue.png", (BLUE_BOAT_LOC[0],BLUE_BOAT_LOC[1]), (150, 150))
+
+GREEN_BOAT_LOC = (0, 160)
+green_boat = Button((255,255,255), "res/boatGreen.png", (GREEN_BOAT_LOC[0],GREEN_BOAT_LOC[1]), (150, 150))
+
+RED_BOAT_LOC = (200, 320)
+red_boat = Button((255,255,255), "res/boatRed.png", (RED_BOAT_LOC[0],RED_BOAT_LOC[1]), (150, 150))
+
+YELLOW_BOAT_LOC = (0, 320)
+yellow_boat = Button((255,255,255), "res/boatYellow.png", (YELLOW_BOAT_LOC[0],YELLOW_BOAT_LOC[1]), (150, 150))
 
 def load():
+    global box_loc , boat
+    
     BUTTON_WIDTH = 100
     BUTTON_HEIGHT = 40
-    
-    RETURN_BUTTON_LOC = (0, 0 )
-    return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
-    
-    BROWN_BOAT_LOC = (200, 0)
-    brown_boat = Button((0,0,0), "res/boat.png", (BROWN_BOAT_LOC[0],BROWN_BOAT_LOC[1]), (150, 150))
-   
-    BLUE_BOAT_LOC = (200, 160)
-    blue_boat = Button((255,255,255), "res/boatBlue.png", (BLUE_BOAT_LOC[0],BLUE_BOAT_LOC[1]), (150, 150))
-   
-    GREEN_BOAT_LOC = (0, 160)
-    green_boat = Button((255,255,255), "res/boatGreen.png", (GREEN_BOAT_LOC[0],GREEN_BOAT_LOC[1]), (150, 150))
-   
-    RED_BOAT_LOC = (200, 320)
-    red_boat = Button((255,255,255), "res/boatRed.png", (RED_BOAT_LOC[0],RED_BOAT_LOC[1]), (150, 150))
-   
-    YELLOW_BOAT_LOC = (0, 320)
-    yellow_boat = Button((255,255,255), "res/boatYellow.png", (YELLOW_BOAT_LOC[0],YELLOW_BOAT_LOC[1]), (150, 150))
    
     
 #     GAMEPLAY_BUTTON_LOC = (50, 100)
@@ -54,7 +57,6 @@ def load():
     
     state = 1
         
-    box_loc = (200, 0)
     while( state == 1 ):
         
         box = Button((255,255,255), "res/check.png", (box_loc[0], box_loc[1]), (160, 160))
@@ -114,4 +116,16 @@ def load():
                     state = 1
                 else:
                     state = 1
+                
+def getSelectedBoat():
+    if ( boat == 1 ) :
+        return "res/boat.png"
+    elif ( boat == 2 ) :
+        return "res/boatBlue.png"
+    elif( boat == 3 ):
+        return "res/boatGreen.png"
+    elif( boat == 4 ):
+        return "res/boatRed.png"
+    elif( boat == 5 ):
+        return "res/boatYellow.png"
         
