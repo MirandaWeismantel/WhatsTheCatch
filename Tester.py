@@ -284,7 +284,7 @@ def mainGame():
 
         if ( state == 1 ):
             
-            bg_music.play(-1, 0.0)
+            #bg_music.play(-1, 0.0)
           
             
             #start with the background image and get the user input from the boat
@@ -368,7 +368,7 @@ def mainGame():
                 if backToMenu.clicked( loc[ 0 ] , loc[ 1 ] ) :
                     if ( state == 3 ):
                         restart()
-                    bg_music.pause()
+                    #bg_music.pause()
                     pause()
                     return
         
