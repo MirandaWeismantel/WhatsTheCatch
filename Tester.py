@@ -32,6 +32,7 @@ import ScoreManager
 pygame.init()
 pygame.font.init()
 ScoreManager.initialize()
+pygame.mixer.init()
 
 background = pygame.image.load("res/background.png")
 backgroundRect = background.get_rect()
@@ -63,8 +64,8 @@ statsFont = pygame.font.SysFont('Courier New', 15)
 fishSpeed = 1;
 eelSpeed = 1.5;
 
-#bg_music = pygame.mixer.music
-#bg_music.load('bkgroundMusic.mp3')
+bg_music = pygame.mixer.music
+bg_music.load('bkgroundMusic.mp3')
 
 
 def drawStats( screen ):
@@ -280,11 +281,14 @@ def mainGame():
     global state , testSentence , lostSentence , lastIncorrectFish
     state = 1
     backToMenu = Button((255,255,255), "Buttons/Return.png", (0,0))
+    bg_music.play(1, 0.0)
+   
+     
     while( state != 0 ):
 
         if ( state == 1 ):
             
-            #bg_music.play(-1, 0.0)
+           
           
             
             #start with the background image and get the user input from the boat
@@ -368,7 +372,7 @@ def mainGame():
                 if backToMenu.clicked( loc[ 0 ] , loc[ 1 ] ) :
                     if ( state == 3 ):
                         restart()
-                    #bg_music.pause()
+                    bg_music.pause()
                     pause()
                     return
         
