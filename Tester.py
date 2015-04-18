@@ -18,6 +18,7 @@ import pygame
 import random
 from pygame.locals import *
 
+from Image import Image
 from Eel import Eel
 from Statistics import Statistics
 from Fish import Fish
@@ -66,6 +67,9 @@ eelSpeed = 1.5;
 
 #sound does not work on everyone's computers
 soundOn = False
+
+correct_Word_Sound = pygame.mixer.Sound('res/CorrectWordSound.wav')
+incorrect_Word_Sound = pygame.mixer.Sound('res/IncorrectWordSound.wav') 
 
 if soundOn :
     bg_music = pygame.mixer.music
@@ -289,12 +293,14 @@ def mainGame():
         bg_music.play(1, 0.0)
    
      
+    CORRECT_BUBBLE_COUNTDOWN = 50
+    correctBubbleCounter = 0
+    bubble = Image(60, 40, 100, 100)
+    bubble.setImage(pygame.image.load( "res/correct.png" ).convert())
+
     while( state != 0 ):
 
         if ( state == 1 ):
-            
-           
-          
             
             #start with the background image and get the user input from the boat
             screen.blit(background, backgroundRect)
@@ -317,7 +323,6 @@ def mainGame():
                         
             for fish in fishes:
                 
-                
                 if ( isinstance( fish , Fish ) ):
                     if ( fish.caught ):
                         if ( not testSentence.isComplete() ):
@@ -326,11 +331,14 @@ def mainGame():
                                 stats.addPoints( SentenceFactory.POINTS_PER_CORRECT_WORD );
                                 lastIncorrectFish = None
                                 generateFish()
+                                correct_Word_Sound.play(0,0)
+                                correctBubbleCounter = CORRECT_BUBBLE_COUNTDOWN
                             else:
                                 stats.subtractPoints( SentenceFactory.POINTS_PER_INCORRECT_WORD );
                                 lastIncorrectFish = fish
                                 fishes.remove( fish )
                                 sprites.remove( fish )
+                                incorrect_Word_Sound.play(0,0)
                             #fishes.remove( fish )
                             #sprites.remove( fish )
                             #generateFish()
@@ -351,6 +359,10 @@ def mainGame():
                         if ( pygame.sprite.collide_rect( sprite1 , sprite2 ) ):
                             sprite1.onCollide( sprite2 )
                             sprite2.onCollide( sprite1 )
+                            
+            if ( correctBubbleCounter > 0 ) :
+                correctBubbleCounter = correctBubbleCounter - 1
+                bubble.draw( screen )
                             
             if ( stats.getLives() <= 0 ):
                 testSentence = lostSentence

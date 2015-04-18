@@ -9,12 +9,7 @@ from pygame.locals import *
 from Image import Image
 
 
-pygame.font.init()
-
-pygame.mixer.init()
-
-correct_Word_Sound = pygame.mixer.Sound('res/CorrectWordSound.wav')
-incorrect_Word_Sound = pygame.mixer.Sound('res/IncorrectWordSound.wav')                
+pygame.font.init()             
                 
 '''
 * Represents a word in a sentence
@@ -132,21 +127,11 @@ class Blank:
             if word.equals( acceptable ):
                 self.filled = True
                 self.filledWord = word
-                
-                size = [500, 500]
-                screen = pygame.display.set_mode(size)
-                
-                bubble = Image(60, 40, 100, 100)
-                bubble.setImage(pygame.image.load( "res/correct.png" ).convert())
-                
-                correct_Word_Sound.play(0,0)
-                bubble.draw(screen)
                 return True
                 
             
         for unacceptable in self.unacceptableWords:
             if word.equals( unacceptable ):
-                incorrect_Word_Sound.play(0,0)
                 self.filled = False
                 return False
             

@@ -166,8 +166,8 @@ class Fish( Sprite ):
             dist = 1
             if key[pygame.K_UP]: # right key
                 if (self.y - dist <125):
-                    self.y = 20
-                    self.x = 125
+                    #self.y = 20
+                    #self.x = 125
                     self.hooked = False
                     self.caught = True
             if key[pygame.K_SPACE]:
