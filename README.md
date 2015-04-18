@@ -53,7 +53,7 @@ To run the game, import the project into Eclipse, and run Menu.py
 === Grading rubric ===
 * Non-trivial Implementation (18)
   * Sound and/or music: We have sounds (played when you catch a fish) and background music. The background music works if the pygame on your computer can work with it. It works on ours. +2
-  * Graphics: We have graphics. They're not the best, but they're decent. +3
+  * Graphics: We have graphics. They're not the best, but they're decent. Getting the blanks in sentences to be drawn correctly was nontrivial and making sure that the fish were big enough to contain the entire word was also a challenge. +3
   * Physics: No physics. +0
   * Multiple levels/difficulties: We have multiple sentence sets allowing the user to choose whatever difficulty/subject s/he wants. We also have multiple difficulties within each sentence set. As the user completes more sentences, the fish and eels speed up. +4
   * Complex interactions between player and other objects: Hook interacts with fish and Eel. The eels interact with the fishing line and hook. Colliding the eel with the variable length fishing line was nontrivial. +2
