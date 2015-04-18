@@ -14,7 +14,8 @@ pygame.init()
 pygame.font.init()
 
 
-background1 = pygame.image.load("pdf2png/Instructions1/Instructions1-1.png")
+background1 = pygame.image.load("Instruction Images/1.png")
+background1 = pygame.transform.scale( background1 , (500,500) )
 backgroundRect1 = background1.get_rect()
 
 background2 = pygame.image.load("pdf2png/Instructions2/Instructions2-1.png")
@@ -41,12 +42,12 @@ def load():
     BUTTON_HEIGHT = 40
     
     RETURN_BUTTON_LOC = (0, 0)
-    return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
+    return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]) , (80,40) )
     
-    NEXT_BUTTON_LOC = (400, 400)
+    NEXT_BUTTON_LOC = (400, 240)
     next_button = Button((255,255,255), "Buttons/NextButton.png", (NEXT_BUTTON_LOC[0],NEXT_BUTTON_LOC[1]))
     
-    PREV_BUTTON_LOC = (0, 400)
+    PREV_BUTTON_LOC = (0, 240)
     prev_button = Button((255,255,255), "Buttons/BackButton.png", (PREV_BUTTON_LOC[0],PREV_BUTTON_LOC[1]))
     
     
