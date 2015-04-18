@@ -37,6 +37,12 @@ def menu():
     credits = Button ( (255,255,255) , "Buttons/creditsButton.png" , (400,250) )
     quit = Button( (255,255,255) , "Buttons/QuitButton.png" , (200,450) )
     
+    jetpackMode = False
+    jetpack = Button( (255,255,255), "res/testButton.png" , (450,450) , (50,50) )
+    
+    twoPlayerMode = False
+    twoPlayer = Button( (255,255,255), "res/testButton.png" , (0,450) , (50,50) )
+    
     Tester.restart()
 
     state = 0
@@ -50,6 +56,8 @@ def menu():
         screen.blit( sentences.image , sentences )
         screen.blit( customizations.image , customizations )
         screen.blit( credits.image , credits )
+        screen.blit( jetpack.image , jetpack )
+        screen.blit( twoPlayer.image , twoPlayer )
         screen.blit( quit.image , quit )
         
         pygame.display.update()
@@ -78,6 +86,14 @@ def menu():
                 elif( credits.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     Credits.load()
                     pass
+                elif( jetpack.clicked(loc[ 0 ] , loc[ 1 ] ) ):
+                    jetpackMode = not jetpackMode
+                    print "Jetpack mode: " + str( jetpackMode )
+                    Tester.setJetpackMode( jetpackMode )
+                elif( twoPlayer.clicked( loc[ 0 ] , loc[ 1 ] ) ):
+                    twoPlayerMode = not twoPlayerMode
+                    print "Two player mode: " + str( twoPlayerMode )
+                    Tester.setTwoPlayerMode( twoPlayerMode )
                 elif ( quit.clicked( loc[ 0 ] , loc[ 1 ] ) ):
                     return
             

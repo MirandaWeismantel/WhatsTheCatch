@@ -64,8 +64,12 @@ statsFont = pygame.font.SysFont('Courier New', 15)
 fishSpeed = 1;
 eelSpeed = 1.5;
 
-bg_music = pygame.mixer.music
-bg_music.load('bkgroundMusic.mp3')
+#sound does not work on everyone's computers
+soundOn = False
+
+if soundOn :
+    bg_music = pygame.mixer.music
+    bg_music.load('bkgroundMusic.mp3')
 
 
 def drawStats( screen ):
@@ -281,7 +285,8 @@ def mainGame():
     global state , testSentence , lostSentence , lastIncorrectFish
     state = 1
     backToMenu = Button((255,255,255), "Buttons/Return.png", (0,0))
-    bg_music.play(1, 0.0)
+    if soundOn:
+        bg_music.play(1, 0.0)
    
      
     while( state != 0 ):
@@ -372,7 +377,8 @@ def mainGame():
                 if backToMenu.clicked( loc[ 0 ] , loc[ 1 ] ) :
                     if ( state == 3 ):
                         restart()
-                    bg_music.pause()
+                    if soundOn :
+                        bg_music.pause()
                     pause()
                     return
         
