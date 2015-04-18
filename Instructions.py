@@ -40,13 +40,13 @@ def load():
     BUTTON_WIDTH = 100
     BUTTON_HEIGHT = 40
     
-    RETURN_BUTTON_LOC = (200, 0)
+    RETURN_BUTTON_LOC = (0, 0)
     return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
     
-    NEXT_BUTTON_LOC = (400, 0)
+    NEXT_BUTTON_LOC = (400, 400)
     next_button = Button((255,255,255), "Buttons/NextButton.png", (NEXT_BUTTON_LOC[0],NEXT_BUTTON_LOC[1]))
     
-    PREV_BUTTON_LOC = (0, 0)
+    PREV_BUTTON_LOC = (0, 400)
     prev_button = Button((255,255,255), "Buttons/BackButton.png", (PREV_BUTTON_LOC[0],PREV_BUTTON_LOC[1]))
     
     
