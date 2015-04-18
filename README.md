@@ -34,3 +34,32 @@ To run the game, import the project into Eclipse, and run Menu.py
 * If you do catch too many incorrect fish, we feel sorry for you, and eventually, there will only be correct fish left for you to catch
 * If you lose all three of your lives, the game ends, and you will be offered to return to the main menu. There, if you click "Play Game," the game will restart
 * If the game is still going on and you exit the game screen, it will pause and bring you back to the main menu. You can resume your game by clicking "Play Game"
+
+=== Final Release notes ===
+
+To run the game, import the project into Eclipse, and run Menu.py
+
+* All Alpha Release controls still apply (up, donw, right left arrow keys)
+* 
+
+=== Grading rubric ===
+* Non-trivial Implementation
+  * Sound and/or music: We have sounds and background music. (The background music works if your the pygame on your computer can work with it. It works on ours). +2
+  * Graphics: We have graphics. They're not the best, but they're decent. +3
+  * Physics: No physics. +0
+  * Multiple levels/difficulties: We have multiple sentence sets allowing the user to choose whatever difficulty/subject s/he wants. We also have multiple difficulties within each sentence set. As the user completes more sentences, the fish and eels speed up. +4
+  * Complex interactions between player and other objects: Hook interacts with fish and Eel. The eels interact with the fishing line and hook. Colliding the eel with the variable length fishing line was nontrivial. +2
+  * Complex properties of player (health, shields,...): We have lives. +1
+  * Multiple players: We have a hidden 2-player mode. +1
+  * Universe bigger than screen: No. +0
+  * Other: Sentence generation is nontrivial and is a big part of our game. It does not fit in any category though. It uses a lot of File I/O which was not covered in lecture and it is capable of recording scores, number of sentence sets mastered, as well as allows you to create any sentence sets you want in the sentences folder. This gives our game a much wider target audience. +5
+* Game Play
+  * Larger gameplay goals past single level of goals: You want to master (get perfect score) all the sentence sets, and the game records your overall progress and best score. +2
+  * Originality of the game: Seems original... +3
+  * Dynamic difficulty adjustment: If you get too many wrong fish, only correct fish will be left for you to catch. This removes any possible source of frustration. In our opinion, this is pretty clever, elegant, and original. If you complete many sentences, the fish and eels swim faster. +4
+  * Availability of cheat codes: You can toggle two hidden modes, jetpack and 2-player, on/off in the menu screen. +2
+* Customer Focus
+  * Goals are well understood, well integrated, and appropriately rewarding: By design, the game seems simple to understand: catch the right fish, don't catch the wrong fish, avoid the eels. You probably don't even need to read the instructions to figure it out. You get rewarded for catching the right fish (mastery of the sentence set, getting points, hearing nice sound), and are punished for getting the wrong fish (hearing awful sound, incorrect fish has an X over it). +2
+  * Feedback informs players of what is important: You hear sounds (good/bad) depending on whether you caught the right fish or not. The last wrong fish remains on the screen reminding you of what you did incorrectly. +2
+  * User modifiable settings: You can change your boat color and you can change the sentence set that you want to play. If you are an instructor, you can make your own sentence sets in whatever language you want and tailor the game to whatever severity of ASD your student has. We think that's pretty sophisticated. +5
+  * Menu functionality: We have New Game, Continue Game, Instructions, Sentences, Customizations, Credits, Quit. The instructions are modular with next and prev buttons, the sentences let you select whatever set you want from existing sets, and the customizations let you highlight the avatar that you want. This seems pretty decent. +3
