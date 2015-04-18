@@ -8,7 +8,7 @@ import pygame
 from pygame.locals import *
 import sys
 import Image
-from UIUtils import Button
+from UIUtils import ButtonNoAlpha
 
 pygame.init()
 pygame.font.init()
@@ -27,22 +27,27 @@ boat = 1
 box_loc = (200, 0)
 
 RETURN_BUTTON_LOC = (0, 0 )
-return_button = Button((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
+return_button = ButtonNoAlpha((255,255,255), "Buttons/Return.png", (RETURN_BUTTON_LOC[0],RETURN_BUTTON_LOC[1]))
 
 BROWN_BOAT_LOC = (200, 0)
-brown_boat = Button((0,0,0), "res/boat.png", (BROWN_BOAT_LOC[0],BROWN_BOAT_LOC[1]), (150, 150))
+brown_boat = ButtonNoAlpha((0,0,0), "res/boat.png", (BROWN_BOAT_LOC[0],BROWN_BOAT_LOC[1]), (150, 150))
+brown_boat.image.set_colorkey( (255,255,255) )
 
 BLUE_BOAT_LOC = (200, 160)
-blue_boat = Button((255,255,255), "res/boatBlue.png", (BLUE_BOAT_LOC[0],BLUE_BOAT_LOC[1]), (150, 150))
+blue_boat = ButtonNoAlpha((255,255,255), "res/boatBlue.png", (BLUE_BOAT_LOC[0],BLUE_BOAT_LOC[1]), (150, 150))
+blue_boat.image.set_colorkey( (255,255,255) )
 
 GREEN_BOAT_LOC = (0, 160)
-green_boat = Button((255,255,255), "res/boatGreen.png", (GREEN_BOAT_LOC[0],GREEN_BOAT_LOC[1]), (150, 150))
+green_boat = ButtonNoAlpha((255,255,255), "res/boatGreen.png", (GREEN_BOAT_LOC[0],GREEN_BOAT_LOC[1]), (150, 150))
+green_boat.image.set_colorkey( (255,255,255) )
 
 RED_BOAT_LOC = (200, 320)
-red_boat = Button((255,255,255), "res/boatRed.png", (RED_BOAT_LOC[0],RED_BOAT_LOC[1]), (150, 150))
+red_boat = ButtonNoAlpha((255,255,255), "res/boatRed.png", (RED_BOAT_LOC[0],RED_BOAT_LOC[1]), (150, 150))
+red_boat.image.set_colorkey( (255,255,255) )
 
 YELLOW_BOAT_LOC = (0, 320)
-yellow_boat = Button((255,255,255), "res/boatYellow.png", (YELLOW_BOAT_LOC[0],YELLOW_BOAT_LOC[1]), (150, 150))
+yellow_boat = ButtonNoAlpha((255,255,255), "res/boatYellow.png", (YELLOW_BOAT_LOC[0],YELLOW_BOAT_LOC[1]), (150, 150))
+yellow_boat.image.set_colorkey( (255,255,255) )
 
 def load():
     global box_loc , boat
@@ -59,7 +64,7 @@ def load():
         
     while( state == 1 ):
         
-        box = Button((255,255,255), "res/check.png", (box_loc[0], box_loc[1]), (160, 160))
+        box = ButtonNoAlpha( None , "res/check.png", (box_loc[0], box_loc[1]), (160, 160))
     
         screen.fill([255,255,255])
         screen.blit(background, backgroundRect)
@@ -78,7 +83,6 @@ def load():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 state = 0
             if event.type == MOUSEBUTTONDOWN:
-                print("mouse click")
                 loc = pygame.mouse.get_pos()
                 
                 '''

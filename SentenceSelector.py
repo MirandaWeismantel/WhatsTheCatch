@@ -40,10 +40,13 @@ BEST_STATS_WIDTH = 500
 BEST_STATS_HEIGHT = 40
 
 
+backgroundColor = (135,206,235)
+
 screen = pygame.display.set_mode( ( 500 , 500 ) )
 
 sentenceManager = SentenceListManager()
 selectedSentences = Label( ( SELECT_X ,SELECT_Y ) , ( SELECT_WIDTH ,SELECT_HEIGHT ) )
+selectedSentences.setBackcolor( backgroundColor )
 returnButton = Button( (255,255,255) , "Buttons/Return.png" , (0,0) )
 prevButton = Button( (255,255,255) , "res/TriangleL.png" , ( PREV_BTN_X , PREV_BTN_Y ) )
 nextButton = Button( (255,255,255) , "res/TriangleR.png" , (NEXT_BTN_X , NEXT_BTN_Y ) )
@@ -51,14 +54,17 @@ nextButton = Button( (255,255,255) , "res/TriangleR.png" , (NEXT_BTN_X , NEXT_BT
 masteryLabel = Label( ( MASTERY_X , MASTERY_Y ) , ( MASTERY_WIDTH , MASTERY_HEIGHT ) )
 masteryLabel.setText( "0/0 sentence sets mastered!" )
 masteryLabel.setBorderVisible( False )
+masteryLabel.setBackcolor( backgroundColor )
 
 instructionsLabel = Label( ( INSTRUCTIONS_X , INSTRUCTIONS_Y ) , ( INSTRUCTIONS_WIDTH , INSTRUCTIONS_HEIGHT ) )
 instructionsLabel.setText( "Select a sentence file:" )
 instructionsLabel.setBorderVisible( False )
+instructionsLabel.setBackcolor( backgroundColor )
 
 bestStatsLabel = Label( ( BEST_STATS_X , BEST_STATS_Y ) , ( BEST_STATS_WIDTH , BEST_STATS_HEIGHT ) )
 bestStatsLabel.setText( "Best score: 0/0" )
 bestStatsLabel.setBorderVisible( False )
+bestStatsLabel.setBackcolor( backgroundColor )
 
 
 def setSelectedSentences( sentenceFile ):
@@ -69,12 +75,13 @@ def load():
             str(ScoreManager.getTotalSets()) + " sentence sets mastered!" ) 
     state = 1
     while( state != 0 ):
-        screen.fill( [255 , 255 , 255] )
+        screen.fill( backgroundColor )
         screen.blit( returnButton.image , returnButton )
         screen.blit( prevButton.image , prevButton )
         screen.blit( nextButton.image , nextButton )
         
         screen.blit( masteryLabel.image , masteryLabel )
+        
         screen.blit( instructionsLabel.image , instructionsLabel )
         
         selectedSentences.setText( sentenceManager.getSelectedFilename() )
