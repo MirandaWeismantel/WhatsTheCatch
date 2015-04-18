@@ -39,8 +39,16 @@ To run the game, import the project into Eclipse, and run Menu.py
 
 To run the game, import the project into Eclipse, and run Menu.py
 
-* All Alpha Release controls still apply (up, donw, right left arrow keys)
-* 
+* All Alpha Release controls still apply (up, down, right left arrow keys)
+* All Beta Release notes still apply
+* New game starts a new game, continue game continues the last game you started (or starts a new game if there was no previous game)
+* Instrutions are now improved
+* Select a sentence set you want to play in "Sentences"
+* Select the boat avatar in "Customizations"
+* Create your own sentence sets following the structure outlined in sample.txt
+* Best scores on sentence sets are recorded after you complete a sentence set. 
+* Background music
+* Last incorrect fish is shown with a red X over it
 
 === Grading rubric ===
 * Non-trivial Implementation
