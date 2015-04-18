@@ -51,7 +51,7 @@ To run the game, import the project into Eclipse, and run Menu.py
 * Last incorrect fish is shown with a red X over it
 
 === Grading rubric ===
-* Non-trivial Implementation
+* Non-trivial Implementation (18)
   * Sound and/or music: We have sounds (played when you catch a fish) and background music. The background music works if the pygame on your computer can work with it. It works on ours. +2
   * Graphics: We have graphics. They're not the best, but they're decent. +3
   * Physics: No physics. +0
@@ -61,12 +61,12 @@ To run the game, import the project into Eclipse, and run Menu.py
   * Multiple players: We have a hidden 2-player mode. +1
   * Universe bigger than screen: No. +0
   * Other: Sentence generation is nontrivial and is a big part of our game. It does not fit in any category though. It uses a lot of File I/O which was not covered in lecture and it is capable of recording scores, number of sentence sets mastered, as well as allows you to create any sentence sets you want in the sentences folder. This gives our game a much wider target audience. +5
-* Game Play
+* Game Play (20)
   * Larger gameplay goals past single level of goals: You want to master (get perfect score) all the sentence sets, and the game records your overall progress and best score. +2
   * Originality of the game: Seems original... +3
   * Dynamic difficulty adjustment: If you get too many wrong fish, only correct fish will be left for you to catch. This removes any possible source of frustration. In our opinion, this is pretty clever, elegant, and original. If you complete many sentences, the fish and eels swim faster. +4
   * Availability of cheat codes: You can toggle two hidden modes, jetpack and 2-player, on/off in the menu screen. +2
-* Customer Focus
+* Customer Focus (20)
   * Goals are well understood, well integrated, and appropriately rewarding: By design, the game seems simple to understand: catch the right fish, don't catch the wrong fish, avoid the eels. You probably don't even need to read the instructions to figure it out. You get rewarded for catching the right fish (mastery of the sentence set, getting points, hearing nice sound), and are punished for getting the wrong fish (hearing awful sound, incorrect fish has an X over it). +2
   * Feedback informs players of what is important: You hear sounds (good/bad) depending on whether you caught the right fish or not. The last wrong fish remains on the screen reminding you of what you did incorrectly. +2
   * User modifiable settings: You can change your boat color and you can change the sentence set that you want to play. If you are an instructor, you can make your own sentence sets in whatever language you want and tailor the game to whatever severity of ASD your student has. We think that's pretty sophisticated. +5
