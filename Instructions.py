@@ -14,20 +14,29 @@ pygame.init()
 pygame.font.init()
 
 
-background1 = pygame.image.load("Instruction Images/1.png")
+background1 = pygame.image.load("Instruction Images/1.png").convert()
+background1.set_colorkey( (25, 189, 255) )
 background1 = pygame.transform.scale( background1 , (500,500) )
 backgroundRect1 = background1.get_rect()
 
-background2 = pygame.image.load("pdf2png/Instructions2/Instructions2-1.png")
+background2 = pygame.image.load("Instruction Images/2.png").convert()
+background2.set_colorkey( (25,189,255) )
+background2 = pygame.transform.scale( background2 , (480,450) )
 backgroundRect2 = background2.get_rect()
 
-background3 = pygame.image.load("pdf2png/Instructions3/Instructions3-1.png")
+background3 = pygame.image.load("Instruction Images/3.png").convert()
+background3.set_colorkey( (25,189,255) )
+background3 = pygame.transform.scale( background3 , (500,450) )
 backgroundRect3 = background3.get_rect()
 
-background4 = pygame.image.load("pdf2png/Instructions4/Instructions4-1.png")
+background4 = pygame.image.load("Instruction Images/4.png").convert()
+background4.set_colorkey( (25,189,255) )
+background4 = pygame.transform.scale( background4 , (450,500) )
 backgroundRect4 = background4.get_rect()
 
-background5 = pygame.image.load("pdf2png/Instructions5/Instructions5-1.png")
+background5 = pygame.image.load("Instruction Images/5.png").convert()
+background5.set_colorkey( (25,189,255) )
+background5 = pygame.transform.scale( background5 , (480 , 500) )
 backgroundRect5 = background5.get_rect()
 
 
@@ -92,7 +101,6 @@ def load():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 state = 0
             if event.type == MOUSEBUTTONDOWN:
-                print("mouse click")
                 loc = pygame.mouse.get_pos()
                 
                 '''
