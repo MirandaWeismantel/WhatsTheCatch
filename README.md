@@ -2,7 +2,7 @@
 Engr100 Project  &lt;3
 
 Alpha Release Notes
-===
+---
 
 To run the game, run Tester.py in Eclipse
 
@@ -17,7 +17,7 @@ Please note that due to time constraints on the alpha release, some of the contr
 * If you run out of lives, the game stops running and you must close the window and restart to try again.
 
 Beta Release Notes
-====
+---
 
 To run the game, import the project into Eclipse, and run Menu.py
 
@@ -38,7 +38,7 @@ To run the game, import the project into Eclipse, and run Menu.py
 * If the game is still going on and you exit the game screen, it will pause and bring you back to the main menu. You can resume your game by clicking "Play Game"
 
 Final Release notes
-===
+---
 
 To run the game, import the project into Eclipse, and run Menu.py
 
@@ -56,7 +56,8 @@ To run the game, import the project into Eclipse, and run Menu.py
 * Click the undecorated button in the bottom right corner to toggle jetpack mode. Read the message in stdout to determine if the mode is on or off.
 
 Grading rubric
-===
+---
+This is how we feel our project should be graded.
 
 * Non-trivial Implementation (18)
   * Sound and/or music: We have sounds (played when you catch a fish) and background music. The background music works if the pygame on your computer can work with it. It works on ours. +2
