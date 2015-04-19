@@ -81,6 +81,6 @@ This is how we feel our project should be graded.
   * Feedback informs players of what is important: You hear sounds (good/bad) depending on whether you caught the right fish or not. The last wrong fish remains on the screen reminding you of what you did incorrectly. +2
   * User modifiable settings: You can change your boat color and you can change the sentence set that you want to play. If you are an instructor, you can make your own sentence sets in whatever language you want and tailor the game to whatever severity of ASD your student has. We think that's pretty sophisticated. +5
   * Menu functionality: We have New Game, Continue Game, Instructions, Sentences, Customizations, Credits, Quit. The instructions are modular with next and prev buttons, the sentences let you select whatever set you want from existing sets, and the customizations let you highlight the avatar that you want. This seems pretty decent. +3
-* Bugs and Design Flaws (0) 
+* Bugs and Design Flaws (20) 
  
 Total: 98
