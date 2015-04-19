@@ -1,7 +1,8 @@
 # WhatsTheCatch
 Engr100 Project  &lt;3
 
-=== Alpha Release Notes ===
+Alpha Release Notes
+===
 
 To run the game, run Tester.py in Eclipse
 
@@ -15,7 +16,8 @@ Please note that due to time constraints on the alpha release, some of the contr
 * If the fishing line touches an electric eel, you lose a life and the fishing hook goes back to the surface.
 * If you run out of lives, the game stops running and you must close the window and restart to try again.
 
-=== Beta Release Notes ===
+Beta Release Notes
+====
 
 To run the game, import the project into Eclipse, and run Menu.py
 
@@ -35,7 +37,8 @@ To run the game, import the project into Eclipse, and run Menu.py
 * If you lose all three of your lives, the game ends, and you will be offered to return to the main menu. There, if you click "Play Game," the game will restart
 * If the game is still going on and you exit the game screen, it will pause and bring you back to the main menu. You can resume your game by clicking "Play Game"
 
-=== Final Release notes ===
+Final Release notes
+===
 
 To run the game, import the project into Eclipse, and run Menu.py
 
@@ -45,12 +48,16 @@ To run the game, import the project into Eclipse, and run Menu.py
 * Instrutions are now improved
 * Select a sentence set you want to play in "Sentences"
 * Select the boat avatar in "Customizations"
-* Create your own sentence sets following the structure outlined in sample.txt
-* Best scores on sentence sets are recorded after you complete a sentence set. 
+* Create your own sentence sets following the structure outlined in sample.txt. Make sure the files are in the sentences folder
+* Best scores on sentence sets are automatically recorded after you complete a sentence set. 
 * Background music
 * Last incorrect fish is shown with a red X over it
+* Click the undecorated button in the bottom left corner to toggle 2-player mode. Read the message in stdout to determine if the mode is on or off.
+* Click the undecorated button in the bottom right corner to toggle jetpack mode. Read the message in stdout to determine if the mode is on or off.
 
-=== Grading rubric ===
+Grading rubric
+===
+
 * Non-trivial Implementation (18)
   * Sound and/or music: We have sounds (played when you catch a fish) and background music. The background music works if the pygame on your computer can work with it. It works on ours. +2
   * Graphics: We have graphics. They're not the best, but they're decent. Getting the blanks in sentences to be drawn correctly was nontrivial and making sure that the fish were big enough to contain the entire word was also a challenge. +3
@@ -60,7 +67,7 @@ To run the game, import the project into Eclipse, and run Menu.py
   * Complex properties of player (health, shields,...): We have lives. +1
   * Multiple players: We have a hidden 2-player mode. +1
   * Universe bigger than screen: No. +0
-  * Other: Sentence generation is nontrivial and is a big part of our game. It does not fit in any category though. It uses a lot of File I/O which was not covered in lecture and it is capable of recording scores, number of sentence sets mastered, as well as allows you to create any sentence sets you want in the sentences folder. This gives our game a much wider target audience. +5
+  * Other: Sentence generation is nontrivial and is a big part of our game. It does not fit in any category though. It uses a lot of File I/O which was not covered in discussion and it is capable of recording scores, number of sentence sets mastered, as well as allows you to create any sentence sets you want in the sentences folder. This gives our game a much wider target audience. +5
 * Game Play (20)
   * Larger gameplay goals past single level of goals: You want to master (get perfect score) all the sentence sets, and the game records your overall progress and best score. +2
   * Originality of the game: Seems original... +3
