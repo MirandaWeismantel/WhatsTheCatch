@@ -20,7 +20,6 @@ class SentenceFileScore:
             factory.load()
             factory.validate()
             self.maxPoints = factory.getMaxPoints()
-            print self.maxPoints
         else:
             self.maxPoints = maxPoints
             
@@ -58,7 +57,6 @@ def updateScore( filename , bestScore , maxPoints ):
     global scoreData
     for data in scoreData :
         if ( data.filename == filename ):
-            print "Updated " + filename + ": " + str(bestScore) + " " + str(maxPoints)
             data.bestScore = max( data.bestScore , bestScore )
             data.maxPoints = maxPoints
             saveScores()
@@ -70,6 +68,10 @@ def updateScore( filename , bestScore , maxPoints ):
             scoreData.insert( i , newSentenceData )
             saveScores()
             return
+        
+    scoreData.append( newSentenceData )
+    saveScores()
+    return
             
 def getScoreFor( filename ):
     for data in scoreData :
