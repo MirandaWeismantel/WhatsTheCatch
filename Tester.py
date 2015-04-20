@@ -217,12 +217,13 @@ testLine = None
 * Resets everything - the fish, the score, etc.
 '''
 def restart():
-    global sprites, images, fishes, eels , state , testHook , testBoat , testLine
+    global sprites, images, fishes, eels , state , testHook , testBoat , testLine , lastIncorrectFish
     state = 0
     sprites = []
     images = []
     fishes = []
     eels = []
+    lastIncorrectFish = None
     
     resetSentenceFactory()
     resetStats()
