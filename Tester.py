@@ -66,7 +66,7 @@ fishSpeed = 1;
 eelSpeed = 1.5;
 
 #sound does not work on everyone's computers
-soundOn = False
+soundOn = True
 
 correct_Word_Sound = pygame.mixer.Sound('res/CorrectWordSound.wav')
 incorrect_Word_Sound = pygame.mixer.Sound('res/IncorrectWordSound.wav') 
