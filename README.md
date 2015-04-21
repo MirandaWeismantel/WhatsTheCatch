@@ -50,7 +50,7 @@ To run the game, import the project into Eclipse, and run Menu.py
 * Select the boat avatar in "Customizations"
 * Create your own sentence sets following the structure outlined in sample.txt. Make sure the files are in the sentences folder
 * Best scores on sentence sets are automatically recorded after you complete a sentence set. 
-* Background music
+* Background music. If the music causes your program to throw an exception, you can toggle it off by setting soundOn = False in line 34 of tester. It only worked on some of our computers.
 * Last incorrect fish is shown with a red X over it
 * Click the undecorated button in the bottom left corner to toggle 2-player mode. Read the message in stdout to determine if the mode is on or off.
 * Click the undecorated button in the bottom right corner to toggle jetpack mode. Read the message in stdout to determine if the mode is on or off.
