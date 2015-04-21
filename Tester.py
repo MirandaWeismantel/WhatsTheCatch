@@ -30,6 +30,9 @@ from SentenceFactory import SentenceFactory
 from UIUtils import Button
 import ScoreManager
 
+#sound does not work on everyone's computers
+soundOn = True
+
 pygame.init()
 pygame.font.init()
 ScoreManager.initialize()
@@ -64,9 +67,6 @@ statsFont = pygame.font.SysFont('Courier New', 15)
 
 fishSpeed = 1;
 eelSpeed = 1.5;
-
-#sound does not work on everyone's computers
-soundOn = True
 
 correct_Word_Sound = pygame.mixer.Sound('res/CorrectWordSound.wav')
 incorrect_Word_Sound = pygame.mixer.Sound('res/IncorrectWordSound.wav') 
